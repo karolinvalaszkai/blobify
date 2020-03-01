@@ -1,21 +1,35 @@
 import React, { Component } from 'react';
+import { render } from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
+import MyPlaylist from './MyPlaylist.js';
 
 class App extends Component {
+
+  state = {
+    playlists : [{x: 2, y: 10}, {x: 3}]
+  };
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <React.Fragment>
+      <div>
+        <MyPlaylist
+          playlists = {this.state.playlists}
+          onUpdate = {this.addPlaylist}
+        />
       </div>
+      </React.Fragment>
     );
   }
-}
 
+/*
+  Add a playlist to the list of playlists.
+*/
+  addPlaylist = (playlist) => {
+    this.setState(state => ({
+      playlists : [this.state.playlists, playlist]
+    }))
+  }
+}
 export default App;
