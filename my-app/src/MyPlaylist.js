@@ -9,7 +9,7 @@ const MyPlaylist = ({playlists, onUpdate}) => {
     <React.Fragment>
     <div>
       {playlists.map((playlist, i)=>
-        <div>playlist {i}</div>
+        <div key={i}>playlist {i}</div>
       )}
     </div>
     </React.Fragment>
