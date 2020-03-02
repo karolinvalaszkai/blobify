@@ -4,7 +4,6 @@ import logo from './logo.svg';
 
 
 const MyPlaylist = ({playlists, onUpdate}) => {
-
   return (
     <React.Fragment>
     <div>
@@ -14,7 +13,6 @@ const MyPlaylist = ({playlists, onUpdate}) => {
     </div>
     </React.Fragment>
   );
-
 }
 
 export default MyPlaylist;

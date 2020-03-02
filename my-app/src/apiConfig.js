@@ -1,1 +1,5 @@
-const accessToken = "BQBBzdY698F6KZdEV4azsw9zUb6HR0Xo0p16oPee7founzWRSTog8fJM-2tI7QtZhPUy7zPE6PhYl_iKkxZLuzJrDKoeuLM6ZpwDBQP2KNeapzzX8Ao0GJ1aXOAxcoVqZb3qtw4rxJaLkKadX4yPDinoKLm6QnypH7iNbiydznbUCbynbEQP5ajDXZQYMkkcTue9XoEjBuJKfFqgQ7DNJ5aouHOKVUht-zFl7snjYivxxkygPbEaXCAuvnIomOhlFW9ZC4rtK8Js41BhF148tORWGnVS8g";
+const clientID = "440325bb5cab47af9d5f1af2cad762fa";
+const secretID = "c5bf0b3bd0ca4d4eac5b684505d7665d";
+
+export {clientID};
+export {secretID};
