@@ -11,6 +11,9 @@ const MyPlaylist = ({playlists, onUpdate}) => {
         <div key={i}>playlist {i}</div>
       )}
     </div>
+    <div>
+      <button>Click!</button>
+    </div>
     </React.Fragment>
   );
 }

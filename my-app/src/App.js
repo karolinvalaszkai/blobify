@@ -5,24 +5,39 @@ import './App.css';
 import {clientID, secretID} from './apiConfig.js';
 import MyPlaylist from './MyPlaylist.js';
 
-
-
-
 class App extends Component {
 
   state = {
-    playlists : [{x: 2, y: 10}, {x: 3}]
+    playlists : [{x: 2, y: 10}, {x: 3}],
+    songs : []
   };
 
+  componentDidMount() {
+    this.searchSong("viral hits")
+      .then(res => {
+        this.setState({
+          songs: res,
+        })
+      })
+  }
+
   render() {
-    this.searchSong("tech n9ne");
+    const {songs} = this.state;
+    console.log(songs);
     return (
       <React.Fragment>
-      <div>
-        <MyPlaylist
-          playlists = {this.state.playlists}
-          onUpdate = {this.addPlaylist}
-        />
+      <div style={mainPage}>
+        <div>
+          <MyPlaylist
+            playlists = {this.state.playlists}
+            onUpdate = {this.addPlaylist}
+          />
+        </div>
+        {songs.map(song => (
+          <div key={song.track.id}>
+            {song.track.name}
+          </div>
+        ))}
       </div>
       </React.Fragment>
     );
@@ -38,10 +53,9 @@ class App extends Component {
   }
 
   /*
-    Search for a [type] (=artist).
+    Search for a [type] (=album,artist,playlist,type).
   */
   searchSong(name, type) {
-    console.log(secretID);
     const payload = clientID+":"+secretID;
     const encodedPayload = new Buffer(payload).toString("base64");
 
@@ -69,18 +83,25 @@ class App extends Component {
     //--------At this point we have the authorization token---------//
     async function getSong() {
         let wait = await token.then(result => access_token = result.access_token);
-        fetch('https://api.spotify.com/v1/search?q='+name+'&type=artist', {
+        let playlist = fetch('https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF/tracks', {
           method: 'GET',headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
               'Authorization': 'Bearer ' + access_token
           }
         }).then((response) => {
-              response.json().then((data) => { console.log(data) });
+              return response.json().then(data => data.items);
           });
+          return playlist;
     }
-    getSong();
+      return getSong();
   }
 
 }
+
+//Style
+var mainPage = {
+
+}
+
 export default App;
