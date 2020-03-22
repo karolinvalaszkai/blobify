@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import SidebarPresentational from '../presentational/SidebarPresentational'
-import { getMenuPrice } from '../../DinnerModel.js'
+import NavbarPresentational from '../presentational/NavbarPresentational'
+import { getMenuPrice } from '../../PlaylistModel.js'
 import { setNoGuests, removeDish } from '../../actions'
 
 const mapStateToProps = state => {
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(SidebarPresentational);
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarPresentational);
