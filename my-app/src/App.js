@@ -28,8 +28,8 @@ class App extends Component {
 
     return (
       <React.Fragment>
-      <div>
-        <div style={mystyle}>
+      <div style={mainFlex}>
+        <div>
           <MyPlaylist
             playlists = {this.state.playlists}
             onUpdate = {this.addPlaylist}
@@ -142,22 +142,20 @@ class App extends Component {
 }
 
 //Style
-const mystyle = {
-  display: "flex",
-  //color: "white",
-  backgroundColor: "DodgerBlue",
-  //padding: "10px",
-  //fontFamily: "Arial",
-  flexDirection: "row"
-};
+const mainFlex = {
+  diplay:"flex",
+  flexDirection:"column",
+}
+
 
 const featuredSongs = {
   display: "flex",
+  flex:"1",
   //color: "white",
   //padding: "10px",
   //fontFamily: "Arial",
   flexDirection: "row",
-  overflowX: "hidden"
+  overflowX: "scroll"
   //flexWrap: "wrap"
 };
 
