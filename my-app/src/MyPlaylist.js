@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import logo from './logo.svg';
 import MainMenuButton from './components/MainMenuButton.js'
-import AddPlaylistButton from './components/AddPlaylistButton.js'
 
 
 const MyPlaylist = ({playlists, onUpdate, onDragOver, onDrop}) => {
   return (
     <React.Fragment>
-    <div>
-      <button>Click!</button>
-    </div>
     <div style = {mainPlaylistStyle}>
       <MainMenuButton/>
       {playlists.map((playlist, i)=>
