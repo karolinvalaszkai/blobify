@@ -4,7 +4,9 @@ import { render } from 'react-dom';
 const MainMenuButton = () =>{
   return (
     <React.Fragment>
-      <div style={addPlStyle}>Main Menu</div>
+      <div style={addPlStyle}>
+        Main Menu
+      </div>
     </React.Fragment>
   );
 }
