@@ -9,11 +9,16 @@ import * as apiConfig from './apiConfig.js'
     return dishes.sort((a, b) =>
               this.computeDishIndex(a) - this.computeDishIndex(b));
   }
-
-  export function getDishDetails(dish_id) {
-    return retrieve(`recipes/${dish_id}/information`);
-  }
   */
+
+  export function getSongDetails(dish_id) {
+    //return retrieve(`recipes/${dish_id}/information`);
+    //TODO FILL IN
+  }
+
+  export function getPlaylistSummary(songs) {
+    //get some info about all the songs in the playlist
+  }
 
   export function searchPlaylist(name) {
     // Replace variables in case they are falsy (e.g. empty string, null, undefined)
