@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import {clientID, secretID} from './apiConfig.js';
 import MyPlaylist from './MyPlaylist.js';
+import AddPlaylistForm from './components/AddPlaylistForm.js'
 
 class App extends Component {
 
@@ -23,13 +24,16 @@ class App extends Component {
 
   render() {
     const {playlists, songs} = this.state; //deconstruction.
-    console.log(songs);
-    console.log(playlists);
+    //console.log(songs);
+    //console.log(playlists);
 
     return (
       <React.Fragment>
-      <div>
-        <div style={mystyle}>
+      <div style={mainFlex}>
+        <div>
+          <AddPlaylistForm
+            addPlaylist = {this.addPlaylist}
+          />
           <MyPlaylist
             playlists = {this.state.playlists}
             onUpdate = {this.addPlaylist}
@@ -59,7 +63,7 @@ class App extends Component {
   }
 
   onDragStart = (ev, id) => {
-    console.log('dragstart', id);
+    //console.log('dragstart', id);
     ev.dataTransfer.setData("id", id);
   }
 
@@ -88,10 +92,14 @@ class App extends Component {
 /*
   Add a playlist to the list of playlists.
 */
-  addPlaylist = (playlist) => {
+  addPlaylist = (id) => {
+    let playlist = {name: id, songs: []};
+    let newPlaylist = this.state.playlists;
+    newPlaylist.push(playlist);
     this.setState(state => ({
-      playlists : [this.state.playlists, playlist]
+      playlists : newPlaylist
     }))
+    console.log(id);
   }
 
   /*
@@ -142,22 +150,20 @@ class App extends Component {
 }
 
 //Style
-const mystyle = {
-  display: "flex",
-  //color: "white",
-  backgroundColor: "DodgerBlue",
-  //padding: "10px",
-  //fontFamily: "Arial",
-  flexDirection: "row"
-};
+const mainFlex = {
+  diplay:"flex",
+  flexDirection:"column",
+}
+
 
 const featuredSongs = {
   display: "flex",
+  flex:"1",
   //color: "white",
   //padding: "10px",
   //fontFamily: "Arial",
   flexDirection: "row",
-  overflowX: "hidden"
+  overflowX: "scroll"
   //flexWrap: "wrap"
 };
 
