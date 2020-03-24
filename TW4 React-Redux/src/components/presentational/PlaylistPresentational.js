@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SummaryPresentational = (
+const PlaylistPresentational = (
   { ingredients, numberOfGuests, price, whenDone }) => {
 
     const [doneCallback, doneMessage] = whenDone;
@@ -35,4 +35,4 @@ const SummaryPresentational = (
 
 }
 
-export default SummaryPresentational
+export default PlaylistPresentational

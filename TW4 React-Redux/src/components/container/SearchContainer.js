@@ -1,7 +1,7 @@
 import SearchPresentational from '../presentational/SearchPresentational'
 import { connect } from 'react-redux'
 import { searchDish, setCurrentDish } from '../../actions'
-import { getDishDetails } from '../../DinnerModel'
+import { getDishDetails } from '../../PlaylistModel'
 
 var timerId = 0;  // Timer for search-as-you-type
 

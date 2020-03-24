@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SidebarPresentational = (
+const NavbarPresentational = (
   { numberOfGuests, setNoGuests, dishes, getMenuPrice, onDelete }) => {
 
   return (
@@ -29,4 +29,4 @@ const SidebarPresentational = (
   )
 }
 
-export default SidebarPresentational
+export default NavbarPresentational

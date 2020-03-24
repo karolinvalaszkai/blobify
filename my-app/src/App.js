@@ -8,7 +8,7 @@ import MyPlaylist from './MyPlaylist.js';
 class App extends Component {
 
   state = {
-    playlists : [{x: 2, y: 10}, {x: 3}],
+    playlists : [{name: "Playlist1", songs: []}, {name: "Favorites", songs: []}],
     songs : []
   };
 
@@ -22,25 +22,67 @@ class App extends Component {
   }
 
   render() {
-    const {songs} = this.state;
+    const {playlists, songs} = this.state; //deconstruction.
     console.log(songs);
+    console.log(playlists);
+
     return (
       <React.Fragment>
-      <div style={mainPage}>
-        <div>
+      <div>
+        <div style={mystyle}>
           <MyPlaylist
             playlists = {this.state.playlists}
             onUpdate = {this.addPlaylist}
+            onDragOver = {this.onDragOver}
+            onDrop = {this.onDrop}
           />
         </div>
-        {songs.map(song => (
-          <div key={song.track.id}>
-            {song.track.name}
+          <div style={featuredSongs}>
+            {songs.map(song => (
+              <div
+                onDragStart = {(e)=>this.onDragStart(e, song.track.id)}
+                draggable
+                className="draggable"
+                key={song.track.id}>
+                <img src={song.track.album.images[1].url} />
+                {song.track.name}
+              </div>
+            ))}
           </div>
-        ))}
       </div>
       </React.Fragment>
     );
+  }
+
+  onDragOver = (ev) => {
+    ev.preventDefault(); //Disables default dragover function.
+  }
+
+  onDragStart = (ev, id) => {
+    console.log('dragstart', id);
+    ev.dataTransfer.setData("id", id);
+  }
+
+  /*
+    Is called when a song is dropped on a playlist.
+    The playlist which the song is dropped in, is inside the param.
+
+    Note: Never mutate a state by doing state.x.name = ...
+    Instead use: setState.
+  */
+  onDrop = (ev, index) => {
+    let songId = ev.dataTransfer.getData("id");
+    //update the playlist => add the song in it.
+    let modifiedPlaylist = this.state.playlists;
+    let modifiedSongsList = this.state.playlists[index].songs.slice(); //slice() with no params creates a copy of the whole array.
+    modifiedSongsList.push(songId); //Add the song to the songList.
+
+    modifiedPlaylist[index].songs = modifiedSongsList; //Add the songlist to the desired playlist.
+    //console.log(modifiedSongsList);
+
+    this.setState(prevState => ({
+      playlists : modifiedPlaylist
+    }))
   }
 
 /*
@@ -100,8 +142,23 @@ class App extends Component {
 }
 
 //Style
-var mainPage = {
+const mystyle = {
+  display: "flex",
+  //color: "white",
+  backgroundColor: "DodgerBlue",
+  //padding: "10px",
+  //fontFamily: "Arial",
+  flexDirection: "row"
+};
 
-}
+const featuredSongs = {
+  display: "flex",
+  //color: "white",
+  //padding: "10px",
+  //fontFamily: "Arial",
+  flexDirection: "row",
+  overflowX: "hidden"
+  //flexWrap: "wrap"
+};
 
 export default App;

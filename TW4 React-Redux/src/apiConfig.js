@@ -1,2 +1,5 @@
-export const ENDPOINT="http://sunset.nada.kth.se:8080/iprog/group/44/";   // the DH2642 proxy server
-export const API_KEY="3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767";
+export const tokenENDPOINT= "https://accounts.spotify.com/api/token";
+export const playlistENDPOINT = "https://api.spotify.com/v1/playlists/"
+
+export const clientID = "440325bb5cab47af9d5f1af2cad762fa";
+export const secretID = "c5bf0b3bd0ca4d4eac5b684505d7665d";
