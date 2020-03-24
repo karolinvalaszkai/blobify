@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import logo from './logo.svg';
+import MainMenuButton from './components/MainMenuButton.js'
+import AddPlaylistButton from './components/AddPlaylistButton.js'
 
 
 const MyPlaylist = ({playlists, onUpdate, onDragOver, onDrop}) => {
@@ -10,6 +12,7 @@ const MyPlaylist = ({playlists, onUpdate, onDragOver, onDrop}) => {
       <button>Click!</button>
     </div>
     <div style = {mainPlaylistStyle}>
+      <MainMenuButton/>
       {playlists.map((playlist, i)=>
         <div
           style={playlistStyle}
@@ -17,7 +20,9 @@ const MyPlaylist = ({playlists, onUpdate, onDragOver, onDrop}) => {
           className="droppable"
           onDragOver={(e)=>onDragOver(e)}
           onDrop={(e)=>onDrop(e, i)}>
-          playlist {i}</div>
+          {playlist.name} <br/>
+          #Songs: {playlist.songs.length}
+        </div>
       )}
     </div>
     </React.Fragment>
