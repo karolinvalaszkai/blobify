@@ -1,43 +1,27 @@
 import SearchPresentational from '../presentational/SearchPresentational'
 import { connect } from 'react-redux'
-import { searchDish, setCurrentDish } from '../../actions'
-import { searchPlaylist } from '../../PlaylistModel'
+import { addSong, setCurrentPlaylist, loadPlaylist } from '../../actions'
 
-useEffect(() => {
-  setInterval(() => {
-    searchPlaylist('37i9dQZEVXbMDoHDwVN2tF')
-      //.then(res => setState({songs: res}))
-  }, 0);
-});
-
-var timerId = 0;  // Timer for search-as-you-type
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-      currentDish: state.currentDish,
-  }
+const mapStateToProps = (state) => {
+  return { songs: state.currentPlaylist }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  whenDone: [() => ownProps.history.push("/playlist"), "Playlist"],
-  /*
-  onSearchInput: (dishType, freeText) => {
-    clearTimeout(timerId);
-    timerId = setTimeout(() => dispatch(searchDish(dishType, freeText)), 500);
-  },
-  onSearchClick: [(dishType, freeText) =>
-    dispatch(searchDish(dishType, freeText)), "Search"],
-    */
+  whenDone: [() => ownProps.history.push("/myplaylist"), "Go to My Playlist"],
   onResultsClick: (clickedNode) => {
         var clickOnSong = clickedNode.parentNode.classList.contains("song");
         if (clickOnSong) {
           const song_id = clickedNode.parentNode.id;
           getSongDetails(song_id).then(song => {
-            dispatch(setCurrentSong(song));
-            //ownProps.history.push("/details");
+            //make options appear: add to playlist, make options disappear, some info maybe
           })
         }
-    }
+    },
+  onAdd: [(song) => dispatch(addSong(song)), "Add to the playlist"],
+  onLoadPlaylist: (idPlaylist) => {
+    dispatch(loadPlaylist(idPlaylist)).then(res => dispatch(setCurrentPlaylist(res)));
+    //searchPlaylist(idPlaylist).then(res => dispatch(setCurrentPlaylist(res)))
+  }
 })
 
 

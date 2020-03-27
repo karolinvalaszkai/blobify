@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux'
 import numberOfGuests from './numberOfGuests'
-import dishes from './dishes'
-import currentDish from './currentDish'
+import songs from './songs'
+import currentPlaylist from './currentPlaylist'
 
 export default combineReducers({
-  numberOfGuests,
-  dishes,
-  currentDish
+  songs,
+  currentPlaylist
 })

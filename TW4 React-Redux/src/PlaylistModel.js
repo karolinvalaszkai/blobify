@@ -1,19 +1,11 @@
 import * as apiConfig from './apiConfig.js'
 
-  /*
-  export function isInMenu(dish, dishes) {
-    return dishes.some(d => d.id === dish.id);
-  }
-
-  export function getSortedMenu(dishes) {
-    return dishes.sort((a, b) =>
-              this.computeDishIndex(a) - this.computeDishIndex(b));
-  }
-  */
-
-  export function getSongDetails(dish_id) {
-    //return retrieve(`recipes/${dish_id}/information`);
+  export function getSongDetails(song_id) {
     //TODO FILL IN
+  }
+
+  export function computeAdditionTimestamp(song) {
+    //return current time
   }
 
   export function getPlaylistSummary(songs) {

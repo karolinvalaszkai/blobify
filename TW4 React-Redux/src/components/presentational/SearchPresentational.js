@@ -1,24 +1,19 @@
 import React, { useRef, useEffect } from 'react'
 
-const SearchPresentational = (
-  //{ whenDone, onSearchClick, onSearchInput, onResultsClick }) => {
-  { whenDone, onResultsClick }) => {
+const SearchPresentational = ({ songs, whenDone, onResultsClick, onAdd, onLoadPlaylist }) => {
+  const [doneCallback, doneMessage] = whenDone;
+  const [addCallback, addMessage] = onAdd;
 
-    //const [searchDish, searchMessage] = onSearchClick;
-    const [doneCallback, doneMessage] = whenDone;
-    const freeText = useRef(null);
-    const dishType = useRef(null);
+  //WHERE DO I USE SONGS PROP?
 
-    /*
-    useEffect(() => {
-      // Initialize search
-      setTimeout(onSearchInput, 500, dishType.current.value, freeText.current.value);
-    }, [onSearchInput]);
-    */
+  useEffect(() => {
+    setInterval(() => {
+      onLoadPlaylist('37i9dQZEVXbMDoHDwVN2tF')
+    }, 0);
+  });
 
   return (
     <div id="search" className="mainContent debug">
-      //content of the trending song section
       <div id="resultsDiv" onClick={event => onResultsClick(event.target)}></div>
       <button className="nav" onClick={() => doneCallback()}>{doneMessage}</button>
     </div>
