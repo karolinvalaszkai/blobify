@@ -1,15 +1,13 @@
 import { computeAdditionTimestamp } from '../PlaylistModel.js'
-import RenderPromise from '../renderPromise.js'
-import React from 'react'
 
 function songs(state = [], action) {
   let song = action.song;
   switch (action.type) {
     case 'ADD_SONG':
       // Check if song is already in the playlist
-      let alreadyPresent = state.some(d => d.id === song.id);
+      let alreadyPresent = state.some(d => d.track.id === song.track.id);
       if (alreadyPresent) {
-        console.error(`${song.title} is already present in the playlist.`);
+        console.error(`${song.track.title} is already present in the playlist.`);
         return [...state];
       } else {
         // Compute time of addition
@@ -17,7 +15,7 @@ function songs(state = [], action) {
         return [...state, song];
       }
     case 'REMOVE_SONG':
-      return [...state].filter(d => d.id !== song.id);
+      return [...state].filter(d => d.track.id !== song.track.id);
     default:
       return [...state];
   }

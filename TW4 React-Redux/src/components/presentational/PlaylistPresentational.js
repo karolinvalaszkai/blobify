@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlaylistPresentational = ({ songs, whenDone, onDelete }) => {
+const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong }) => {
     const [doneCallback, doneMessage] = whenDone;
 
     return (
@@ -17,9 +17,9 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete }) => {
             <tbody>
               {songs.map((song, i) =>
                 <tr key={i}>
-                  <td>{/*here a representation of the song*/}</td>
-                  <td>{/*here the genre of the song*/}</td>
-                  <td>{/*here the release date of the song*/}</td>
+                  <td>{displaySong(song)}</td>
+                  <td>{song.track.genre}</td>
+                  <td>{song.track.releaseDate}</td>
                   <td><button onClick={() => onDelete(song)}>Delete from playlist</button></td>
                 </tr>
               )}

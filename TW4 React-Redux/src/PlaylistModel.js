@@ -1,15 +1,29 @@
 import * as apiConfig from './apiConfig.js'
+import RenderPromise from '../renderPromise.js'
+import React from 'react'
+
+  export function displaySongs(songList) {
+    RenderPromise.render(
+      songList,
+      songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
+      document.getElementById('resultsDiv'));
+  }
+
+  export function createSongDisplay(song) {
+    return (
+      <span id={song.track.id} class='song'>
+        {/*here goes the actual representation of a song*/}
+        {song.track.id}<br/>{song.track.title}
+      </span>
+    )
+  }
 
   export function getSongDetails(song_id) {
-    //TODO FILL IN
+    //TODO return acoustic features of song
   }
 
   export function computeAdditionTimestamp(song) {
     //return current time
-  }
-
-  export function getPlaylistSummary(songs) {
-    //get some info about all the songs in the playlist
   }
 
   export function searchPlaylist(name) {
