@@ -7,10 +7,8 @@ const SearchPresentational = ({ songs, whenDone, onResultsClick, onAdd, onLoadPl
   //WHERE DO I USE SONGS PROP?
 
   useEffect(() => {
-    setInterval(() => {
-      onLoadPlaylist('37i9dQZEVXbMDoHDwVN2tF')
-    }, 0);
-  });
+    onLoadPlaylist('37i9dQZEVXbMDoHDwVN2tF')
+  }, []);
 
   return (
     <div id="search" className="mainContent debug">

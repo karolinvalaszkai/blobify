@@ -6,7 +6,7 @@ const currentPlaylist = (state = {}, action) => {
       return action.songs;
     case 'LOAD_PLAYLIST':
       displaySongs(searchPlaylist(action.id));
-      return [...state];
+      return state;
     default:
       return state;
   }

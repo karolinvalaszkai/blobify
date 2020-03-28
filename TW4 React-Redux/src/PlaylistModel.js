@@ -1,5 +1,5 @@
 import * as apiConfig from './apiConfig.js'
-import RenderPromise from '../renderPromise.js'
+import RenderPromise from './renderPromise.js'
 import React from 'react'
 
   export function displaySongs(songList) {
@@ -11,7 +11,7 @@ import React from 'react'
 
   export function createSongDisplay(song) {
     return (
-      <span id={song.track.id} class='song'>
+      <span id={song.track.id} key={song.track.id} className='song'>
         {/*here goes the actual representation of a song*/}
         {song.track.id}<br/>{song.track.title}
       </span>
@@ -34,25 +34,24 @@ import React from 'react'
   }
 
   export function retrieve(query) {
-    const payload = clientID+":"+secretID;
+    const payload = apiConfig.clientID+":"+apiConfig.secretID;
     const encodedPayload = new Buffer(payload).toString("base64");
 
     let access_token = "";
 
-    const controller = new AbortController();
-    const token = fetch(apiConfig.tokenENDPOINT, {
-      method: "POST",
-      headers: {
-        'Authorization': "Basic" + encodedPayload
-      },
-      body: {
-        "grant_type": "client_credentials"
-      },
-      redirect: "follow"
-    })
-    .then(response => response.json())   // from headers to response data
-    .catch(error => console.error(error.message));
-    token.abort = () => controller.abort();
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", "Basic " + encodedPayload);
+    const urlencoded = new URLSearchParams();
+    urlencoded.append("grant_type", "client_credentials");
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: 'follow'
+    };
+    const token = fetch("https://accounts.spotify.com/api/token", requestOptions)
+    .then(response => response.json())
+    .catch(error => console.log('error', error));
 
     async function getSong() {
       let wait = await token.then(result => access_token = result.access_token);
@@ -62,7 +61,7 @@ import React from 'react'
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer' + access_token
+          'Authorization': 'Bearer ' + access_token
         }
       }).then(response => {
         return response.json();

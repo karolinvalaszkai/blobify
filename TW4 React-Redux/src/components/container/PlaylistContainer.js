@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import PlaylistPresentational from '../presentational/PlaylistPresentational'
 import { removeSong } from '../../actions'
-import createSongDisplay from '../../PlaylistModel'
+import { createSongDisplay } from '../../PlaylistModel.js'
 
 const mapStateToProps = (state) => {
   return { songs: state.songs };

@@ -1,6 +1,7 @@
 import SearchPresentational from '../presentational/SearchPresentational'
 import { connect } from 'react-redux'
 import { addSong, setCurrentPlaylist, loadPlaylist } from '../../actions'
+import { getSongDetails } from '../../PlaylistModel'
 
 const mapStateToProps = (state) => {
   return { songs: state.currentPlaylist }
@@ -9,17 +10,21 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   whenDone: [() => ownProps.history.push("/myplaylist"), "Go to My Playlist"],
   onResultsClick: (clickedNode) => {
-        var clickOnSong = clickedNode.parentNode.classList.contains("song");
+        var clickOnSong = clickedNode.classList.contains("song");
         if (clickOnSong) {
-          const song_id = clickedNode.parentNode.id;
-          getSongDetails(song_id).then(song => {
+          const song_id = clickedNode.id;
+          console.log("Song clicked: " + song_id);
+          getSongDetails(song_id);
+          //.then(song => {
             //make options appear: add to playlist, make options disappear, some info maybe
-          })
+          //})
         }
     },
   onAdd: [(song) => dispatch(addSong(song)), "Add to the playlist"],
   onLoadPlaylist: (idPlaylist) => {
-    dispatch(loadPlaylist(idPlaylist)).then(res => dispatch(setCurrentPlaylist(res)));
+    let res = loadPlaylist(idPlaylist);
+    dispatch(res);
+    dispatch(res);
     //searchPlaylist(idPlaylist).then(res => dispatch(setCurrentPlaylist(res)))
   }
 })

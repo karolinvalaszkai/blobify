@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import NavbarPresentational from '../presentational/NavbarPresentational'
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return { songs: state.songs};
 };
 
