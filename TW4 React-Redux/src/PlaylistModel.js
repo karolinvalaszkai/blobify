@@ -13,7 +13,7 @@ import React from 'react'
     return (
       <span id={song.track.id} key={song.track.id} className='song'>
         {/*here goes the actual representation of a song*/}
-        {song.track.id}<br/>{song.track.title}
+        {song.track.id}<br/>{song.track.name}
       </span>
     )
   }
