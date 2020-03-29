@@ -2,20 +2,25 @@ import * as apiConfig from './apiConfig.js'
 import RenderPromise from './renderPromise.js'
 import React from 'react'
 
-  export function displaySongs(songList) {
+  export async function displaySongs(songListPromise) {
     RenderPromise.render(
-      songList,
+      songListPromise,
       songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
       document.getElementById('resultsDiv'));
   }
 
   export function createSongDisplay(song) {
+    let audioFeatures = '';
+    searchAudioFeatures(song.track.id).then(res => audioFeatures = res);
+    console.log(audioFeatures); //works only if you pus await before calling searchAudioFeatures() and async before function
+      
     return (
       <span id={song.track.id} key={song.track.id} className='song'>
         {/*here goes the actual representation of a song*/}
-        {song.track.id}<br/>{song.track.name}
+        {song.track.name}<br/>
+        {audioFeatures.danceability}
       </span>
-    )
+    );
   }
 
   export function getSongDetails(song_id) {
@@ -30,10 +35,17 @@ import React from 'react'
     // Replace variables in case they are falsy (e.g. empty string, null, undefined)
     name = name || "37i9dQZEVXbMDoHDwVN2tF";
 
-    return retrieve(name).then(data => data.items); // leave out the unimportant parts of the response data
+    return retrieve(name, 'playlist').then(data => data.items); // leave out the unimportant parts of the response data
   }
 
-  export function retrieve(query) {
+  export function searchAudioFeatures(id) {
+    // Replace variables in case they are falsy (e.g. empty string, null, undefined)
+    id = id || "";
+
+    return retrieve('?ids='+id, 'audio').then(data => data.audio_features[0]);
+  }
+
+  export function retrieve(query, type) {
     const payload = apiConfig.clientID+":"+apiConfig.secretID;
     const encodedPayload = new Buffer(payload).toString("base64");
 
@@ -53,10 +65,13 @@ import React from 'react'
     .then(response => response.json())
     .catch(error => console.log('error', error));
 
-    async function getSong() {
+    async function getSong(type) {
       let wait = await token.then(result => access_token = result.access_token);
+      let fetchString = (type == 'playlist') ? 
+        apiConfig.playlistENDPOINT + query + '/tracks' : 
+        apiConfig.audioENDPOINT + query;
 
-      let playlist = fetch(apiConfig.playlistENDPOINT + query + '/tracks', {
+      let playlist = fetch(fetchString, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -70,5 +85,5 @@ import React from 'react'
       return playlist;
     }
 
-    return getSong();
+    return getSong(type);
   }

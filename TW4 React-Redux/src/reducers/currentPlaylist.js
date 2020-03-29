@@ -5,7 +5,7 @@ const currentPlaylist = (state = {}, action) => {
     case 'SET_PLAYLIST':
       return action.songs;
     case 'LOAD_PLAYLIST':
-      displaySongs(searchPlaylist(action.id));
+      displaySongs(searchPlaylist(action.id)); //searchPlaylist() is a promise!
       return state;
     default:
       return state;
