@@ -1,34 +1,32 @@
 import SearchPresentational from '../presentational/SearchPresentational'
 import { connect } from 'react-redux'
-import { searchDish, setCurrentDish } from '../../actions'
-import { getDishDetails } from '../../PlaylistModel'
+import { addSong, setCurrentPlaylist, loadPlaylist } from '../../actions'
+import { getSongDetails } from '../../PlaylistModel'
 
-var timerId = 0;  // Timer for search-as-you-type
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-      currentDish: state.currentDish,
-  }
+const mapStateToProps = (state) => {
+  return { songs: state.currentPlaylist }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  whenDone: [() => ownProps.history.push("/summary"), "Summary"],
-  onSearchInput: (dishType, freeText) => {
-    clearTimeout(timerId);
-    timerId = setTimeout(() => dispatch(searchDish(dishType, freeText)), 500);
-  },
-  onSearchClick: [(dishType, freeText) =>
-    dispatch(searchDish(dishType, freeText)), "Search"],
+  whenDone: [() => ownProps.history.push("/myplaylist"), "Go to My Playlist"],
   onResultsClick: (clickedNode) => {
-        var clickOnDish = clickedNode.parentNode.classList.contains("dish");
-        if (clickOnDish) {
-          const dish_id = clickedNode.parentNode.id;
-          getDishDetails(dish_id).then(dish => {
-            dispatch(setCurrentDish(dish));
-            ownProps.history.push("/details");
-          })
+        var clickOnSong = clickedNode.classList.contains("song");
+        if (clickOnSong) {
+          const song_id = clickedNode.id;
+          console.log("Song clicked: " + song_id);
+          getSongDetails(song_id);
+          //.then(song => {
+            //make options appear: add to playlist, make options disappear, some info maybe
+          //})
         }
-    }
+    },
+  onAdd: [(song) => dispatch(addSong(song)), "Add to the playlist"],
+  onLoadPlaylist: (idPlaylist) => {
+    let res = loadPlaylist(idPlaylist);
+    dispatch(res);
+    dispatch(res);
+    //searchPlaylist(idPlaylist).then(res => dispatch(setCurrentPlaylist(res)))
+  }
 })
 
 

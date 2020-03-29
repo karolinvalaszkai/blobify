@@ -1,33 +1,35 @@
 import React from 'react'
 
-const PlaylistPresentational = (
-  { ingredients, numberOfGuests, price, whenDone }) => {
-
+const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong }) => {
     const [doneCallback, doneMessage] = whenDone;
 
     return (
       <div id="summary" className="mainContent debug">
-        <div>Shopping list:
+        <div>Current playlist:
           <table>
             <thead>
-            <tr><th>Ingredients</th><th>Supermarket aisle</th><th>Amount</th></tr>
+              <tr>
+                <th>Song</th>
+                <th>Genre</th>
+                <th>Release date</th>
+              </tr>
             </thead>
             <tbody>
-              {ingredients.map(ing =>
-                <tr key={ing.name}>
-                  <td>{ing.name}</td>
-                  <td>{ing.aisle}</td>
-                  <td>{ing.amount * numberOfGuests}</td>
+              {songs.map((song, i) =>
+                <tr key={i}>
+                  <td>{displaySong(song)}</td>
+                  <td>{song.track.genre}</td>
+                  <td>{song.track.releaseDate}</td>
+                  <td><button onClick={() => onDelete(song)}>Delete from playlist</button></td>
                 </tr>
               )}
             </tbody>
             <tfoot>
-              <tr><td>TOTAL</td><td></td><td>{price * numberOfGuests}</td></tr>
+              <tr><td>TOTAL SONGS</td><td></td><td>{songs.length}</td></tr>
             </tfoot>
           </table>
         </div>
         <div>
-          Dinner for <span>{numberOfGuests}</span> people.
           <button className="nav" onClick={() => doneCallback()}>{doneMessage}</button>
         </div>
       </div>
