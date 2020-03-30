@@ -2,11 +2,11 @@
 
 Peek music lab
 
-An Spotify powered web application for previewing songs visually represented by it's energy, pitch and.
+A multimodal Spotify powered web application for previewing songs by an visual represention of it's energy, pitch and valence.
 
 ## Project status
 
-This project is currently in development. Users can filter tweets by username and keyword and see visual data representation. Functionality to sort by additional parameters is in progress.
+This project is currently in development. Users can interact with visual data representation. Functionality to play audio and save songs to my collection is in progress.
 
 ## Setup
 
@@ -25,35 +25,16 @@ to install the dependencies.
 ```
 $ npm start
 ```
-Open [http://localhost:3000](http://localhost:3000) to view the application in the browser.
-
 4. Build the project once
 ```
 $ npm run build
 ```
-
 
 ## Structure
 The main file is located at src/index.html. Styling can be added in src/styles.css and scripts in src/main.js.
 
 The code is compiled with ? and supports the latest ? features.
 
-```
-my-app/
-  README.md
-  node_modules/
-  package.json
-  public/
-    index.html
-    favicon.ico
-  src/
-    App.css
-    App.js
-    App.test.js
-    index.css
-    index.js
-    logo.svg
-```
 ## Deployment
 The lastest version of the `master` branch on GitHub is auto-deployed to [https://tamargotchi.now.sh](https://tamargotchi.now.sh).
 
