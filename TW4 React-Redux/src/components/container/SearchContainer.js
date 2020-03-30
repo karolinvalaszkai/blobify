@@ -1,7 +1,7 @@
 import SearchPresentational from '../presentational/SearchPresentational'
 import { connect } from 'react-redux'
 import { addSong, setCurrentPlaylist, loadPlaylist } from '../../actions'
-import { getSongDetails } from '../../PlaylistModel'
+import { searchPlaylist } from '../../PlaylistModel'
 
 const mapStateToProps = (state) => {
   return { songs: state.currentPlaylist }
@@ -9,22 +9,32 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   whenDone: [() => ownProps.history.push("/myplaylist"), "Go to My Playlist"],
-  onResultsClick: (clickedNode) => {
+  onResultsClick: (clickedNode, loadedSongs) => {
         var clickOnSong = clickedNode.classList.contains("song");
+        var clickOnAddButton = clickedNode.classList.contains("addButton");
         if (clickOnSong) {
           const song_id = clickedNode.id;
           console.log("Song clicked: " + song_id);
-          getSongDetails(song_id);
-          //.then(song => {
-            //make options appear: add to playlist, make options disappear, some info maybe
-          //})
+          
+          clickedNode.firstChild.classList.remove('buttonInvisible');
+          document.querySelectorAll('.buttonVisible').forEach(button => {
+            button.classList.remove('buttonVisible');
+            button.classList.add('buttonInvisible');
+          });
+          clickedNode.firstChild.classList.add('buttonVisible');
         }
+
+        if (clickOnAddButton) {
+          console.log(clickedNode.parentNode.id);
+          let clickedSongId = clickedNode.parentNode.id;
+        }
+
+        console.log({loadedSongs});
     },
   onAdd: [(song) => dispatch(addSong(song)), "Add to the playlist"],
   onLoadPlaylist: (idPlaylist) => {
-    let res = loadPlaylist(idPlaylist);
-    dispatch(res);
-    //searchPlaylist(idPlaylist).then(res => dispatch(setCurrentPlaylist(res)))
+    searchPlaylist(idPlaylist).then(data => dispatch(setCurrentPlaylist(data)));
+    dispatch(loadPlaylist(idPlaylist));
   }
 })
 
