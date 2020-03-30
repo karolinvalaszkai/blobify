@@ -24,7 +24,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   onLoadPlaylist: (idPlaylist) => {
     let res = loadPlaylist(idPlaylist);
     dispatch(res);
-    dispatch(res);
     //searchPlaylist(idPlaylist).then(res => dispatch(setCurrentPlaylist(res)))
   }
 })

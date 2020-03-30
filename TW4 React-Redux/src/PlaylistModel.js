@@ -2,24 +2,31 @@ import * as apiConfig from './apiConfig.js'
 import RenderPromise from './renderPromise.js'
 import React from 'react'
 
-  export async function displaySongs(songListPromise) {
+  export function displaySongs(songListPromise) {
     RenderPromise.render(
       songListPromise,
       songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
       document.getElementById('resultsDiv'));
+
+    setTimeout(() => {
+      let songs = document.body.querySelectorAll('.song');
+      songs.forEach(song => {
+        let root = document.getElementById(song.id);
+        searchAudioFeatures(song.id).then(features => {
+          console.log({features});
+          root.appendChild(document.createTextNode('Loudness: '+features.loudness+''));
+          root.appendChild(document.createElement('br'));
+          root.appendChild(document.createTextNode('Danceability: '+features.danceability));
+        });
+      });
+    }, 1000);
   }
 
   export function createSongDisplay(song) {
-    let audioFeatures = '';
-    searchAudioFeatures(song.track.id).then(res => audioFeatures = res);
-    console.log(audioFeatures); //works only if you pus await before calling searchAudioFeatures() and async before function
-      
     return (
-      <span id={song.track.id} key={song.track.id} className='song'>
-        {/*here goes the actual representation of a song*/}
+      <div id={song.track.id} key={song.track.id} className='song'>
         {song.track.name}<br/>
-        {audioFeatures.danceability}
-      </span>
+      </div>
     );
   }
 
