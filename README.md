@@ -20,11 +20,11 @@ Follow the steps below to get started.
 $ npm install
 ```
 
-3. Start a development server
+4. Start a development server
 ```
 $ npm start
 ```
-4. Build the project
+5. Build the project
 ```
 $ npm run build
 ```
