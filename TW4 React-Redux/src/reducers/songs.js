@@ -7,7 +7,7 @@ function songs(state = [], action) {
       // Check if song is already in the playlist
       let alreadyPresent = state.some(d => d.track.id === song.track.id);
       if (alreadyPresent) {
-        console.error(`${song.track.title} is already present in the playlist.`);
+        window.alert(`${song.track.name} is already present in the playlist.`);
         return [...state];
       } else {
         // Compute time of addition

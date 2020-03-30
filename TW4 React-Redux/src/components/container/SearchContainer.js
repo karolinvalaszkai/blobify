@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         var clickOnAddButton = clickedNode.classList.contains("addButton");
         if (clickOnSong) {
           const song_id = clickedNode.id;
-          console.log("Song clicked: " + song_id);
+          //console.log("Song clicked: " + song_id);
           
           clickedNode.firstChild.classList.remove('buttonInvisible');
           document.querySelectorAll('.buttonVisible').forEach(button => {
@@ -25,11 +25,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         }
 
         if (clickOnAddButton) {
-          console.log(clickedNode.parentNode.id);
+          //console.log(clickedNode.parentNode.id);
           let clickedSongId = clickedNode.parentNode.id;
+          let song = loadedSongs.find(d => d.track.id == clickedSongId);
+          //console.log({song});
+          dispatch(addSong(song));
         }
-
-        console.log({loadedSongs});
     },
   onAdd: [(song) => dispatch(addSong(song)), "Add to the playlist"],
   onLoadPlaylist: (idPlaylist) => {

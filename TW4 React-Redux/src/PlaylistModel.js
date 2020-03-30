@@ -25,6 +25,7 @@ import React from 'react'
   export function createSongDisplay(song) {
     return (
       <div id={song.track.id} key={song.track.id} className='song'>
+        <button className='addButton buttonInvisible'>Add to playlist</button><br/>
         {song.track.name}<br/>
       </div>
     );
