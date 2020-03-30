@@ -13,10 +13,10 @@ import React from 'react'
       songs.forEach(song => {
         let root = document.getElementById(song.id);
         searchAudioFeatures(song.id).then(features => {
-          console.log({features});
-          root.appendChild(document.createTextNode('Loudness: '+features.loudness+''));
-          root.appendChild(document.createElement('br'));
-          root.appendChild(document.createTextNode('Danceability: '+features.danceability));
+          
+          var svg = window["blobCreator"](features);
+          root.appendChild(svg);
+ 
         });
       });
     }, 1000);
