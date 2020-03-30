@@ -2,18 +2,18 @@
 
 peek music lab
 
-A multimodal Spotify powered web application for previewing songs by an visual represention of it's energy, pitch and valence.
+A spotify powered web application for previewing songs by a visual representation of its energy, pitch and valence.
 
 ## Project status
 
-This project is currently in development. Users can interact with visual data representation. Functionality to play audio and save songs to my collection is in progress.
+This project is currently in development. Users can interact with visual data representation. The functionality to play audio and save songs to my collection is in progress.
 
 ## Setup
 
 Follow the steps below to get started.
 
 1. Clone the repository from GitHub
-2. Navigate to the the my-app folder
+2. Navigate to the my-app folder
 3. Install dependencies
 
 ```
@@ -35,5 +35,5 @@ The main file is located at src/index.html. Styling can be added in src/styles.c
 The code is compiled with ? and supports the latest ? features.
 
 ## Deployment
-The lastest version of the `master` branch on GitHub is auto-deployed to [URL](URL).
+The  latest version of the `master` branch on GitHub is auto-deployed to [URL](URL).
 
