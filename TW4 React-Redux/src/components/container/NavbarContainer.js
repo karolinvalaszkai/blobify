@@ -1,17 +1,13 @@
 import { connect } from 'react-redux'
 import NavbarPresentational from '../presentational/NavbarPresentational'
-import { getMenuPrice } from '../../PlaylistModel.js'
-import { setNoGuests, removeDish } from '../../actions'
 
-const mapStateToProps = state => {
-  return { numberOfGuests: state.numberOfGuests,
-            dishes: state.dishes };
+const mapStateToProps = (state, ownProps) => {
+  return { songs: state.currentPlaylist };
 };
 
-const mapDispatchToProps = dispatch => ({
-  setNoGuests: num => dispatch(setNoGuests(num)),
-  onDelete: dish => dispatch(removeDish(dish)),
-  getMenuPrice: dishes => getMenuPrice(dishes)
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  homepageControl: [() => ownProps.history.push("/trending"), "Back to the trending songs"],
+  playlistControl: [() => ownProps.history.push("/myplaylist"), "My playlist"]
 })
 
 

@@ -4,8 +4,6 @@ import Navbar from './container/NavbarContainer'
 import '../style.css'
 import Search from './container/SearchContainer'
 import Playlist from './container/PlaylistContainer'
-//import Search from './container/SearchContainer'
-//import Details from './container/DetailsContainer'
 
 const App = () => (
     <Router>

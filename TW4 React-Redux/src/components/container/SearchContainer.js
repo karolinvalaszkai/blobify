@@ -1,34 +1,42 @@
 import SearchPresentational from '../presentational/SearchPresentational'
 import { connect } from 'react-redux'
-import { searchDish, setCurrentDish } from '../../actions'
-import { getDishDetails } from '../../PlaylistModel'
+import { addSong, setCurrentPlaylist, loadPlaylist } from '../../actions'
+import { searchPlaylist } from '../../PlaylistModel'
 
-var timerId = 0;  // Timer for search-as-you-type
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-      currentDish: state.currentDish,
-  }
+const mapStateToProps = (state) => {
+  return { songs: state.currentPlaylist }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  whenDone: [() => ownProps.history.push("/summary"), "Summary"],
-  onSearchInput: (dishType, freeText) => {
-    clearTimeout(timerId);
-    timerId = setTimeout(() => dispatch(searchDish(dishType, freeText)), 500);
-  },
-  onSearchClick: [(dishType, freeText) =>
-    dispatch(searchDish(dishType, freeText)), "Search"],
-  onResultsClick: (clickedNode) => {
-        var clickOnDish = clickedNode.parentNode.classList.contains("dish");
-        if (clickOnDish) {
-          const dish_id = clickedNode.parentNode.id;
-          getDishDetails(dish_id).then(dish => {
-            dispatch(setCurrentDish(dish));
-            ownProps.history.push("/details");
-          })
+  whenDone: [() => ownProps.history.push("/myplaylist"), "Go to My Playlist"],
+  onResultsClick: (clickedNode, loadedSongs) => {
+        var clickOnSong = clickedNode.classList.contains("song");
+        var clickOnAddButton = clickedNode.classList.contains("addButton");
+        if (clickOnSong) {
+          const song_id = clickedNode.id;
+          //console.log("Song clicked: " + song_id);
+          
+          clickedNode.firstChild.classList.remove('buttonInvisible');
+          document.querySelectorAll('.buttonVisible').forEach(button => {
+            button.classList.remove('buttonVisible');
+            button.classList.add('buttonInvisible');
+          });
+          clickedNode.firstChild.classList.add('buttonVisible');
         }
-    }
+
+        if (clickOnAddButton) {
+          //console.log(clickedNode.parentNode.id);
+          let clickedSongId = clickedNode.parentNode.id;
+          let song = loadedSongs.find(d => d.track.id == clickedSongId);
+          //console.log({song});
+          dispatch(addSong(song));
+        }
+    },
+  onAdd: [(song) => dispatch(addSong(song)), "Add to the playlist"],
+  onLoadPlaylist: (idPlaylist) => {
+    searchPlaylist(idPlaylist).then(data => dispatch(setCurrentPlaylist(data)));
+    dispatch(loadPlaylist(idPlaylist));
+  }
 })
 
 

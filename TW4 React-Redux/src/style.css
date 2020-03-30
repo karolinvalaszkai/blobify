@@ -20,14 +20,15 @@
   text-align: center;
 }
 
-.dish {
+.song {
   display: inline-block;
-  width: 185px; /* was 200px */
   vertical-align: top;
   text-align: center;
+  margin: 10px;
+  border: 1px dashed green;
 }
 
-.dish > span {
+.song > span {
   display: inline-block;
 }
 
@@ -35,10 +36,15 @@
   float: right;
 }
 
-#details img {
-  float: left;
+#navbar {
+  border-right: 1px solid black;
+  padding-right: 10px;
 }
 
-#details ol {
-  overflow: hidden;
+.buttonInvisible {
+  display: none;
+}
+
+.buttonVisible {
+  display: block;
 }
