@@ -1,6 +1,6 @@
 ## Project 
 
-Peek music lab
+peek music lab
 
 A multimodal Spotify powered web application for previewing songs by an visual represention of it's energy, pitch and valence.
 
@@ -12,29 +12,28 @@ This project is currently in development. Users can interact with visual data re
 
 Follow the steps below to get started.
 
-1. Clone the repository from GitHub.
-
-2. Navigate to the the my-app folder and write 
+1. Clone the repository from GitHub
+2. Navigate to the the my-app folder
+3. Install dependencies
 
 ```
 $ npm install
 ```
-to install the dependencies.
 
 3. Start a development server
 ```
 $ npm start
 ```
-4. Build the project once
+4. Build the project
 ```
 $ npm run build
 ```
 
 ## Structure
-The main file is located at src/index.html. Styling can be added in src/styles.css and scripts in src/main.js.
+The main file is located at src/index.html. Styling can be added in src/styles.css and scripts in ?.
 
 The code is compiled with ? and supports the latest ? features.
 
 ## Deployment
-The lastest version of the `master` branch on GitHub is auto-deployed to [https://tamargotchi.now.sh](https://tamargotchi.now.sh).
+The lastest version of the `master` branch on GitHub is auto-deployed to [URL](URL).
 
