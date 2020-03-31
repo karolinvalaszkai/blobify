@@ -18,8 +18,7 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong }) => {
               {songs.map((song, i) =>
                 <tr key={i}>
                   <td>{displaySong(song)}</td>
-                  <td>{song.track.genre}</td>
-                  <td>{song.track.releaseDate}</td>
+                  <td>{song.track.id}</td>
                   <td><button onClick={() => onDelete(song)}>Delete from playlist</button></td>
                 </tr>
               )}
