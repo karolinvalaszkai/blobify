@@ -141,7 +141,7 @@ var two = new Two({
         })
         $(two.renderer.domElement).mouseleave(function(){
           //console.log("mouse leave",background.id);
-          audioElem.pause()
+          //audioElem.pause()
           two.bind('resize', resize).pause();
         })
   
