@@ -135,13 +135,13 @@ var two = new Two({
   
         $(two.renderer.domElement).mouseenter(function(){
           //console.log("song_id: ",two.renderer.domElement.parentNode.id)
-          console.log(audioElem)
+          //console.log(audioElem)
           audioElem.play()
           two.bind('resize', resize).play();
         })
         $(two.renderer.domElement).mouseleave(function(){
           //console.log("mouse leave",background.id);
-          //audioElem.pause()
+          audioElem.pause()
           two.bind('resize', resize).pause();
         })
   
