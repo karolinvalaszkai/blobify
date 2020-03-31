@@ -37,5 +37,5 @@ The main file is located at src/index.html. Styling can be added in src/styles.c
 The code is compiled with ? and supports the latest ? features.
 
 ## Deployment
-The latest version of the `master` branch on GitHub is auto-deployed to [URL](URL).
+The latest version of the `master` branch on GitHub is auto-deployed to [URL](https://iprog2020.firebaseapp.com/trending).
 
