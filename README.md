@@ -4,6 +4,8 @@ peek music lab
 
 A Spotify powered web application for previewing songs by a visual representation of its energy, pitch and valence.
 
+Hosted on https://iprog2020.firebaseapp.com/trending
+
 ## Project status
 
 This project is currently in development. Users can interact with visual data representation. The functionality to play audio and save songs to my collection is in progress.
