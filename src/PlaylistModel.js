@@ -23,11 +23,10 @@ import React from 'react'
   }
 
   export function createSongDisplay(song) {
-    console.log(song);
     if (song.track.preview_url !== null){
     return (
       <div id={song.track.id} key={song.track.id} className='song'>
-        <audio id={'audio'+song.track.id} src={song.track.preview_url} ></audio>
+        <audio id={'audio'+song.track.id} src={song.track.preview_url} muted></audio>
         <button className='addButton buttonInvisible'>Add to playlist</button><br/>
         {song.track.name}<br/>
       </div>

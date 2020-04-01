@@ -48,3 +48,25 @@
 .buttonVisible {
   display: block;
 }
+
+
+
+.unmute {
+  background-image: url(http://franriavilla.in/images/unmute.png);
+  background-size: cover;
+  width: 35px;
+  height: 30px;
+  cursor: pointer;
+
+  position: fixed;
+}
+
+.mute {
+  background-image: url(http://franriavilla.in/images/mute.png);
+  background-size: cover;
+  width: 42px;
+  height: 35px;
+  cursor: pointer;
+
+  position: fixed;
+}

@@ -6,6 +6,7 @@ function blobCreator(songObj) {
         prop = 0.001;
       }
     }
+
     //console.log("Two script running",songObj)
     song_id = songObj.id;
     //pitches = songObj.pitches;
@@ -104,20 +105,17 @@ var two = new Two({
       physics.update();
     })
     .play();
+    
     var startMotion = true;
     setInterval(function(){
-
       if (startMotion === true){
       two.bind('resize', resize).pause()
       startMotion = false;
-      }
-    
+      } 
     },2000);
-    //two.bind('resize', resize).pause();
 
     var audioElem = document.getElementById("audio"+songObj.id);
     
-
     $(window).keypress(function (e) {
         if (e.key === ' ' || e.key === 'Spacebar') {
           e.preventDefault()
@@ -132,15 +130,21 @@ var two = new Two({
           two.bind('resize', resize).pause();
         }
       })
+
+ 
   
         $(two.renderer.domElement).mouseenter(function(){
-          //console.log("song_id: ",two.renderer.domElement.parentNode.id)
-          //console.log(audioElem)
-          audioElem.play()
-          two.bind('resize', resize).play();
+          if (startMotion === false){
+            two.bind('resize', resize).play();
+
+            //So it doesn't try to play the music without user interaction (which gives error)
+            if(audioElem.muted ===false)
+            {audioElem.play()}
+          }
+          
+          
         })
         $(two.renderer.domElement).mouseleave(function(){
-          //console.log("mouse leave",background.id);
           audioElem.pause()
           two.bind('resize', resize).pause();
         })
