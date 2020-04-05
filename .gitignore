@@ -62,3 +62,7 @@ typings/
 
 # file with the Spotify API keys
 src/apiConfig.js
+
+# MacOS storage files
+.DS_Store
+src/.DS_store
