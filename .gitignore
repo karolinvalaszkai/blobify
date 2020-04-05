@@ -61,4 +61,4 @@ typings/
 .next
 
 # file with the Spotify API keys
-apiConfig.js
+src/apiConfig.js
