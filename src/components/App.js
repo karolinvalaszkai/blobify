@@ -11,7 +11,7 @@ const App = () => (
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/trending" />} />
         </Switch>
-        <Navbar />
+        <Route component={Navbar}></Route>
         <Route path="/trending" component={Search}></Route>
         <Route path="/myplaylist" component={Playlist}></Route>
       </div>
