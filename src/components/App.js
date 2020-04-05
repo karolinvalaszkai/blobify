@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
-import Navbar from './container/NavbarContainer'
+import Navbar from './Navbar/NavbarContainer'
 import '../style.css'
-import Search from './container/SearchContainer'
-import Playlist from './container/PlaylistContainer'
+import Search from './Search/SearchContainer'
+import Playlist from './Playlist/PlaylistContainer'
 
 const App = () => (
     <Router>

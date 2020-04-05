@@ -1,4 +1,4 @@
-import SearchPresentational from '../presentational/SearchPresentational'
+import SearchPresentational from './SearchPresentational'
 import { connect } from 'react-redux'
 import { addSong, setCurrentPlaylist, loadPlaylist } from '../../actions'
 import { searchPlaylist } from '../../PlaylistModel'
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           const song_id = clickedNode.id;
           //console.log("Song clicked: " + song_id);
           
-          clickedNode.firstChild.classList.remove('buttonInvisible');
+          clickedNode.childNodes[1].classList.remove('buttonInvisible');
           document.querySelectorAll('.buttonVisible').forEach(button => {
             button.classList.remove('buttonVisible');
             button.classList.add('buttonInvisible');

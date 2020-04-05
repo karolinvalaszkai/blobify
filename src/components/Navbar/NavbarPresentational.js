@@ -1,7 +1,6 @@
 import React from 'react'
-import MuteAudioToggle from '../container/MuteAudioToggle'
 
-const NavbarPresentational = ({songs, homepageControl, playlistControl}) => {
+const NavbarPresentational = ({songs, muted, homepageControl, playlistControl, handleClick}) => {
   const [homepageAction, homepageMessage] = homepageControl;
   const [playlistAction, playlistMessage] = playlistControl;
   const nSongs = songs.length;
@@ -14,7 +13,7 @@ const NavbarPresentational = ({songs, homepageControl, playlistControl}) => {
         Displaying {nSongs} of the hottest songs!<br/>
         Last update: {/*insert time of last update here*/}
       </span>
-      <MuteAudioToggle/>
+      <div className='muteButton mute' onClick={() => handleClick(muted.audioMuted)}></div>
     </div>
   )
 }

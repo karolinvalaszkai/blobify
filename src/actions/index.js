@@ -18,10 +18,7 @@ export const loadPlaylist = id => ({
   id
 })
 
-export function muteAudio (boolean){
-  let audioElements = document.getElementsByTagName("audio");
-  Object.keys(audioElements).map((i) => 
-  audioElements[i].muted = boolean
-  )
-  
-}
+export const muteAudio = bool =>({
+  type: 'MUTE_AUDIO',
+  bool
+})

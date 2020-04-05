@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import PlaylistPresentational from '../presentational/PlaylistPresentational'
+import PlaylistPresentational from './PlaylistPresentational'
 import { removeSong } from '../../actions'
 import { createSongDisplay } from '../../PlaylistModel.js'
 

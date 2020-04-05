@@ -4,8 +4,6 @@ const SearchPresentational = ({ songs, whenDone, onResultsClick, onAdd, onLoadPl
   const [doneCallback, doneMessage] = whenDone;
   const [addCallback, addMessage] = onAdd;
 
-  //WHERE DO I USE SONGS PROP?
-
   useEffect(() => {
     onLoadPlaylist('37i9dQZEVXbMDoHDwVN2tF')
   }, []);
