@@ -52,21 +52,69 @@
 
 
 .unmute {
-  background-image: url(http://franriavilla.in/images/unmute.png);
+  background-image: url(./icons/unmute.svg);
   background-size: cover;
-  width: 35px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
 
   position: fixed;
 }
 
 .mute {
-  background-image: url(http://franriavilla.in/images/mute.png);
+  background-image: url(./icons/mute.svg);
   background-size: cover;
-  width: 42px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
 
   position: fixed;
 }
+
+
+body {
+  background-color: black;
+  font-family: 'Gilroy-Bold ☞';
+  color: white;
+}
+
+
+
+@font-face {
+  font-family: 'Gilroy-Bold ☞';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gilroy-Bold ☞'), url('./fonts/Gilroy-Bold.woff') format('woff');
+  }
+
+
+  @font-face {
+    font-family: 'Gilroy-Heavy ☞';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Gilroy-Heavy ☞'), url('./fonts/Gilroy-Heavy.woff') format('woff');
+    }
+    
+    
+    @font-face {
+    font-family: 'Gilroy-Light ☞';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Gilroy-Light ☞'), url('./fonts/Gilroy-Light.woff') format('woff');
+    }
+    
+    
+    @font-face {
+    font-family: 'Gilroy-Medium ☞';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Gilroy-Medium ☞'), url('./fonts/Gilroy-Medium.woff') format('woff');
+    }
+    
+    
+    @font-face {
+    font-family: 'Gilroy-Regular ☞';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Gilroy-Regular ☞'), url('./fonts/Gilroy-Regular.woff') format('woff');
+    }
