@@ -1,0 +1,72 @@
+.debug {
+  /* border-style: solid; */
+}
+
+@media (min-width: 250px) {
+  .flexParent {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    height: 90%;
+  }
+}
+
+.mainContent {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.spinnerClass {
+  text-align: center;
+}
+
+.song {
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  margin: 10px;
+  border: 1px dashed green;
+}
+
+.song > span {
+  display: inline-block;
+}
+
+.nav {
+  float: right;
+}
+
+#navbar {
+  border-right: 1px solid black;
+  padding-right: 10px;
+}
+
+.buttonInvisible {
+  display: none;
+}
+
+.buttonVisible {
+  display: block;
+}
+
+
+
+.unmute {
+  background-image: url(http://franriavilla.in/images/unmute.png);
+  background-size: cover;
+  width: 35px;
+  height: 30px;
+  cursor: pointer;
+
+  position: fixed;
+}
+
+.mute {
+  background-image: url(http://franriavilla.in/images/mute.png);
+  background-size: cover;
+  width: 42px;
+  height: 35px;
+  cursor: pointer;
+
+  position: fixed;
+}
