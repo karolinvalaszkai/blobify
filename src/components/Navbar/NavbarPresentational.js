@@ -8,7 +8,7 @@ const NavbarPresentational = ({songs, muted, homepageControl, playlistControl, h
   return (
     <div id="navbar" className="navbar debug">
       <button onClick={() => homepageAction()}>{homepageMessage}</button>
-      <button onClick={() => playlistAction()}>{playlistMessage}</button><br/>
+      <button className='playlistCss' onClick={() => playlistAction()} onDragOver={this.onDragOver} onDrop={this.onDrop}>{playlistMessage}</button><br/>
       <span>
         Displaying {nSongs} of the hottest songs!<br/>
         Last update: {/*insert time of last update here*/}

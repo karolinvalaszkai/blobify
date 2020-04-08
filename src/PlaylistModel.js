@@ -13,15 +13,18 @@ import React from 'react'
       songs.forEach(song => {
         let root = document.getElementById(song.id);
         searchAudioFeatures(song.id).then(features => {
-          
+
           var svg = window["blobCreator"](features);
           root.appendChild(svg);
- 
+
         });
       });
     }, 1000);
   }
 
+  /*
+    Give drag drop element to this.
+  */
   export function createSongDisplay(song) {
     if (song.track.preview_url !== null){
     return (
@@ -78,8 +81,8 @@ import React from 'react'
 
     async function getSong(type) {
       let wait = await token.then(result => access_token = result.access_token);
-      let fetchString = (type == 'playlist') ? 
-        apiConfig.playlistENDPOINT + query + '/tracks' : 
+      let fetchString = (type == 'playlist') ?
+        apiConfig.playlistENDPOINT + query + '/tracks' :
         apiConfig.audioENDPOINT + query;
 
       let playlist = fetch(fetchString, {
