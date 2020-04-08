@@ -13,25 +13,35 @@ import React from 'react'
       songs.forEach(song => {
         let root = document.getElementById(song.id);
         searchAudioFeatures(song.id).then(features => {
-          
+
           var svg = window["blobCreator"](features);
           root.appendChild(svg);
- 
+
         });
       });
     }, 1000);
   }
 
+  /*
+    Give drag drop element to this.
+  */
   export function createSongDisplay(song) {
     if (song.track.preview_url !== null){
     return (
-      <div id={song.track.id} key={song.track.id} className='song'>
+      <div id={song.track.id} key={song.track.id} className='song draggable'
+            onDragStart={(e)=>onDragStart(e, song)} draggable>
         <audio id={'audio'+song.track.id} src={song.track.preview_url} muted></audio>
         <button className='addButton buttonInvisible'>Add to playlist</button><br/>
         <br/>
       </div>
     );
     }
+  }
+
+  const onDragStart = (ev, song) => {
+    console.log("Song " + song.track.name + " is being dragged");
+    ev.dataTransfer.setData("text/plain", JSON.stringify(song));
+    ev.dataTransfer.effectAllowed = "copy";
   }
 
   export function getSongDetails(song_id) {
@@ -78,8 +88,8 @@ import React from 'react'
 
     async function getSong(type) {
       let wait = await token.then(result => access_token = result.access_token);
-      let fetchString = (type == 'playlist') ? 
-        apiConfig.playlistENDPOINT + query + '/tracks' : 
+      let fetchString = (type == 'playlist') ?
+        apiConfig.playlistENDPOINT + query + '/tracks' :
         apiConfig.audioENDPOINT + query;
 
       let playlist = fetch(fetchString, {

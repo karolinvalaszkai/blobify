@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 import NavbarPresentational from './NavbarPresentational'
-import { muteAudio } from '../../actions'
 import { hideNavbar } from '../../actions'
+import { muteAudio, addSong } from '../../actions'
 
 const mapStateToProps = (state, ownProps) => {
-  return { 
+  return {
     songs: state.currentPlaylist,
     muted: state.audioMuted,
     nav: state.navbarHidden
@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     muteButton.classList.add((currentClass == 'mute'? 'unmute' : 'mute'));
 
     let audioElements = document.getElementsByTagName("audio");
-    Object.keys(audioElements).map((i) => 
+    Object.keys(audioElements).map((i) =>
       audioElements[i].muted = muted)
     
   },
@@ -50,8 +50,19 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     //   navbarContent.style.display = "none";
     // }
     
+
+
+  },
+
+  onDrop: (ev) => {
+    console.log("Dropped into playlist");
+    let song = ev.dataTransfer.getData("text/plain");
+    //console.log(JSON.parse(song));
+    dispatch(addSong(JSON.parse(song)));
+  },
+  onDragOver: (ev) => {
+    ev.preventDefault()
   }
 })
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavbarPresentational);

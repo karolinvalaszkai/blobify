@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         if (clickOnSong) {
           const song_id = clickedNode.id;
           //console.log("Song clicked: " + song_id);
-          
+
           clickedNode.childNodes[1].classList.remove('buttonInvisible');
           document.querySelectorAll('.buttonVisible').forEach(button => {
             button.classList.remove('buttonVisible');

@@ -1,9 +1,11 @@
 import React from 'react'
 
-const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistControl, handleClick, openNav}) => {
+const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistControl, handleClick, openNav, onDrop, onDragOver}) => {
   const [homepageAction, homepageMessage] = homepageControl;
   const [playlistAction, playlistMessage] = playlistControl;
   const nSongs = songs.length;
+  const dropEvent = onDrop;
+  const dragOverEvent = onDragOver;
 
 
   return (
@@ -14,6 +16,12 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
       <div id="navbarContent">
       <button onClick={() => homepageAction()}>{homepageMessage}</button>
       
+      <button className="playlistCss droppable"
+              onClick={() => playlistAction()}
+              onDragOver={dragOverEvent}
+              onDrop={dropEvent}>
+              {playlistMessage}
+      </button><br/>
       <span>
         Displaying {nSongs} of the hottest songs!<br/>
         Last update: {/*insert time of last update here*/}
