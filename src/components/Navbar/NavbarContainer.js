@@ -29,29 +29,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   openNav: (nav) => {
     dispatch(hideNavbar(nav));
-    console.log(hideNavbar(nav).bool)
 
     var navbarDiv = document.getElementById("navbar");
     let currentClass = navbarDiv.classList[2];
-    console.log(currentClass)
-
-    //var navbarContent = document.getElementById("navbarContent");
-
 
     navbarDiv.classList.remove(currentClass);
     navbarDiv.classList.add((currentClass == 'hidden'? 'nothidden' : 'hidden'));
-
-    // if (hideNavbar(nav).bool) {
-    //   navbarDiv.style.width = "20%";
-    //   navbarContent.style.display = "block";
-    // }
-    // else {
-    //   navbarDiv.style.width = "2%";
-    //   navbarContent.style.display = "none";
-    // }
-    
-
-
   },
 
   onDrop: (ev) => {

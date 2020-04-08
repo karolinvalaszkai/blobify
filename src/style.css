@@ -84,6 +84,11 @@ body {
   height: 100%;
   right: 0px;
   top: 0px;
+
+  overflow-x: visible;
+
+
+  /* overflow-x: hidden; */
   
   background: url(./icons/sidebar.svg) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -108,6 +113,7 @@ body {
 
 .nothidden {
   width: 20%;
+  /* min-width: 200px; */
 
   transition-property: width;
   transition-timing-function: ease-in-out;
@@ -118,36 +124,35 @@ body {
 
 
 #navbarContent {
-  text-align: right;
-  position:static;
-  margin: 10%;
-  display: none;
-
-  transition-property: display;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.5s;
+  position: relative;
+  top: 5%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 35px;
+  overflow-x: visible;
+  overflow-y: scroll;
 
 }
 
-.nothidden>#navbarContent {
-  display: block;
 
-  transition-property: display;
+
+/* .nothidden>#navbarContent {
+  color: red;
+  opacity:1;
   transition-timing-function: ease-in-out;
+  transition-delay: 2s;
   transition-duration: 0.5s;
 }
+
 .hidden>#navbarContent {
-  display: none;
-
-  transition-property: display;
+  color: blue;
+  opacity:0.5;
   transition-timing-function: ease-in-out;
   transition-duration: 0.5s;
-}
+} */
 
 h1 {
-
-
-
 font-family: 'Gilroy-Bold ☞';
 font-style: normal;
 font-weight: 800;
@@ -157,10 +162,6 @@ font-size: 100px;
 -webkit-text-stroke: 1px #FFFFFF;
 text-align: center;
 letter-spacing: 0.1em;
-
-
-
-
 }
 
 #collection-title {
@@ -186,8 +187,6 @@ color: transparent;
 
 #collection-title:hover {
   color: rgb(0, 0, 0)
-  
-
 }
 
 
@@ -251,7 +250,10 @@ font-size: 12px;
     }
 
 
-.playlistCss {
+
+
+
+/* .playlistCss {
   outline:0;
   border-radius: 10px;
   margin: 20px;
@@ -264,4 +266,23 @@ font-size: 12px;
 }
 .playlistCss:active {
   background-color: #3e8e41;
+} */
+.drophere {
+  width: 200px;
+  height: 500px;
+  padding: 70px 10px;
+  left: 100px;
+  text-align: center;
+  font-family: 'Gilroy-Bold ☞';
+  font-size: 20px;
+  background-color: transparent;
+  color: white;
+  border-style: none;
+
+  transition-property: background-color;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.5s;
+}
+.drophere:hover {
+  background-color: rgba(76, 175, 79, 0.466);
 }

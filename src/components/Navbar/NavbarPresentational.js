@@ -14,20 +14,29 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
       <h1 id="collection-title" onClick={() => openNav(nav.navbarHidden)}>collection</h1>
    
       <div id="navbarContent">
-      <button onClick={() => homepageAction()}>{homepageMessage}</button>
-      
-      <button className="playlistCss droppable"
-              onClick={() => playlistAction()}
-              onDragOver={dragOverEvent}
-              onDrop={dropEvent}>
-              {playlistMessage}
-      </button><br/>
-      <span>
-        Displaying {nSongs} of the hottest songs!<br/>
-        Last update: {/*insert time of last update here*/}
-      </span>
-      <button id="collection-button" onClick={() => playlistAction()}>{playlistMessage}</button><br/>
+        <button onClick={() => homepageAction()}>{homepageMessage}</button>
+        <br/>
+        <span>
+            {/* Displaying {nSongs} of the hottest songs!<br/>
+            Last update: insert time of last update here */}
+        </span>
+        
+        <br/>
+        
+          <button className="drophere playlistCss droppable"
+                  onClick={() => playlistAction()}
+                  onDragOver={dragOverEvent}
+                  onDrop={dropEvent}>Drag and drop <br/>blobs here</button>
+
+          {/* <button className="playlistCss droppable"
+                  onClick={() => playlistAction()}
+                  onDragOver={dragOverEvent}
+                  onDrop={dropEvent}>
+                  {playlistMessage}
+          </button><br/> */}
+          <button id="collection-button" onClick={() => playlistAction()}>{playlistMessage}</button><br/>
       </div>
+
       <div className='muteButton mute' onClick={() => handleClick(muted.audioMuted)}></div>
     </div>
   )
