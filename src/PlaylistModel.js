@@ -28,13 +28,20 @@ import React from 'react'
   export function createSongDisplay(song) {
     if (song.track.preview_url !== null){
     return (
-      <div id={song.track.id} key={song.track.id} className='song'>
+      <div id={song.track.id} key={song.track.id} className='song draggable'
+            onDragStart={(e)=>onDragStart(e, song)} draggable>
         <audio id={'audio'+song.track.id} src={song.track.preview_url} muted></audio>
         <button className='addButton buttonInvisible'>Add to playlist</button><br/>
         {song.track.name}<br/>
       </div>
     );
     }
+  }
+
+  const onDragStart = (ev, song) => {
+    console.log("Song " + song.track.name + " is being dragged");
+    ev.dataTransfer.setData("text/plain", JSON.stringify(song));
+    ev.dataTransfer.effectAllowed = "copy";
   }
 
   export function getSongDetails(song_id) {
