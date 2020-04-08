@@ -249,7 +249,7 @@ font-size: 12px;
     font-weight: normal;
     src: local('Gilroy-Regular ☞'), url('./fonts/Gilroy-Regular.woff') format('woff');
     }
-}
+
 
 .playlistCss {
   outline:0;
