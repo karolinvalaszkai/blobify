@@ -36,7 +36,7 @@ var two = new Two({
   //var strength = 0.0625;
 
   //Sets speed of animation:
-  var strength = energy;
+  var strength = Math.pow(energy,2);
   var drag = 0.0;
 
   var background = two.makeGroup();
@@ -47,7 +47,7 @@ var two = new Two({
   var i = 0;
 
   //Sets number of points
-  Two.Resolution = Math.round(35*energy)+3;
+  Two.Resolution = Math.round(25*Math.sqrt(energy))+3;
 
 
   for (i = 0; i < Two.Resolution; i++) {
@@ -157,23 +157,24 @@ var two = new Two({
   }
 
   function getRandomColor() {
-    if (energy<0.70 && energy>0.65){
+    var blobEnergyColour = Math.pow(energy,1)
+    if (blobEnergyColour<0.70 && blobEnergyColour>0.65){
       r= Math.floor(1 * 255)
       g = Math.floor(1 * 255)
       b = Math.floor((1-energy)* 255)
 
     }
 
-    else if (energy<0.65 && energy>0.55){
+    else if (blobEnergyColour<0.65 && blobEnergyColour>0.55){
       r= Math.floor(0 * 255)
       g = Math.floor(energy * 255)
       b = Math.floor((1-energy)* 255)
 
     }
     else {
-      r = Math.floor(energy * 255)
+      r = Math.floor(blobEnergyColour * 255)
       g = Math.floor(0.3 * 255)
-      b = Math.floor((1-energy) * 255)
+      b = Math.floor((1-blobEnergyColour) * 255)
     }
 
     var color = {
