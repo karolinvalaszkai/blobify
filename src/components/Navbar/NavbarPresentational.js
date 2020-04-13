@@ -11,9 +11,9 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
   return (
     <div id="navbar" className="navbar debug hidden">
 
-      <h1 id="collection-title" onClick={() => openNav(nav.navbarHidden)}>collection</h1>
+      <h1 id="menu-title" onClick={() => openNav(nav.navbarHidden)}>collection</h1>
    
-      <div id="navbarContent">
+      <div className="navbarContent">
         <button onClick={() => homepageAction()}>{homepageMessage}</button>
         <br/>
         <span>

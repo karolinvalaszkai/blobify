@@ -10,11 +10,20 @@
     height: 90%;
   }
 }
+body {
+  background-color: rgb(8, 8, 8);
+  font-family: 'Gilroy-Bold ☞';
+  color: white;
+  height: 100%;
+  display: flex;
+  z-index: 0;
+}
 
+body::-webkit-scrollbar {
+  display: none;
+}
 .mainContent {
   flex: 1;
-  /* overflow-y: scroll; */
-  /* overflow: hidden; */
   background-color: transparent;
   
 }
@@ -40,14 +49,30 @@
 }
 
 
+/* Buttons */
+button {
+  width: 140px;
+  height: 43px;
+  /* left: 819px;*/
+  top: 775px; 
+  box-sizing: border-box;
+  border-radius: 15px;
+  font-family: 'Gilroy-Medium ☞';
+  font-size: 12px;
+  padding: 7px;
+  margin: 10px;
+  }
+  
+  #collection-button {
+    margin: 10px;
+    bottom: 10%;
+  }
 .buttonInvisible {
   display: none;
 }
-
 .buttonVisible {
   display: block;
 }
-
 .unmute {
   background-image: url(./icons/unmute.svg);
   background-size: cover;
@@ -60,7 +85,6 @@
   left: 15px;
   top: 15px;
 }
-
 .mute {
   background-image: url(./icons/mute.svg);
   background-size: cover;
@@ -73,23 +97,51 @@
   top: 15px;
 }
 
+/* Inputs */
 
-body {
-  background-color: rgb(8, 8, 8);
-  font-family: 'Gilroy-Bold ☞';
-  color: white;
+#search-input {
+  width: 30%;
+  height: 43px;
+  left: 819px;
+  top: 775px;
+  padding: 7px;
+  margin: 10px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  border-color: transparent;
+  font-family: 'Gilroy-Regular ☞';
+  font-size: 15px;
+}
 
-  height: 100%;
+/* MENUS */
 
-  display: flex;
-  overflow-x: hidden;
+.navbarContent {
+  position: relative;
+  width: 100%;
+  text-align: center; 
+}
+#menu-title {
+  color: transparent;
+  z-index: 10;
   
-}
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
+  
+          
+    transition-property: color, margin-left, bottom;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.4s;
+    transition-delay: 0.05s;
+  } 
+  #menu-title:hover {
+    color: rgb(0, 0, 0);
+  }
 
-body::-webkit-scrollbar {
-  display: none;
-}
-
+/* COLLECTION MENU SPECIFICS */
 .nav {
   float: right;
 }
@@ -99,23 +151,20 @@ body::-webkit-scrollbar {
   display: flex;
   overflow: visible;
   /* flex-basis: 20%; */
-
   height: 100%;
   /* float: right; */
   /* flex-direction: inherit; */
   right: 0px;
   top: 0px;
-
   background-color: transparent;
   background: url(./icons/sidebar.svg) no-repeat center center fixed; 
-
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-.hidden {
+div[class="navbar debug hidden"]{
   width: 0%;
   min-width: none;
   transition-property: width;
@@ -123,122 +172,107 @@ body::-webkit-scrollbar {
   transition-duration: 0.5s;
 }
 
-.nothidden {
+div[class="navbar debug nothidden"]{
   width: 20%;
-  /* min-width: 200px; */
-
   transition-property: width;
   transition-timing-function: ease-in-out;
   transition-duration: 0.5s;
 }
 
-
-
-
-#navbarContent {
-  position: relative;
+#navbar>.navbarContent {
   top: 5%;
-  width: 100%;
-  text-align: center;
   margin-top: 30px;
   margin-left: 35px;
-  
-
-  
-
 }
 
 #navbarContent::-webkit-scrollbar {
   display: none;
 }
-
-
-
-/* .nothidden>#navbarContent {
-  color: red;
-  opacity:1;
-  transition-timing-function: ease-in-out;
-  transition-delay: 2s;
-  transition-duration: 0.5s;
-}
-
-.hidden>#navbarContent {
-  color: blue;
-  opacity:0.5;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.5s;
-} */
-
-h1 {
-font-family: 'Gilroy-Bold ☞';
-font-style: normal;
-font-weight: 800;
-font-size: 100px;
-
-
--webkit-text-stroke: 1px #FFFFFF;
-text-align: center;
-letter-spacing: 0.1em;
-}
-
-#collection-title {
-position: absolute;
-top: 30%;
-color: transparent;
-
+#navbar>#menu-title {
+  position: absolute;
+  top: 30%;
   transform: rotate(-90deg);
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-   -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-        user-select: none;
-
-        
-
-  transition-property: color, margin-left;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.4s;
-  transition-delay: 0.05s;
 
 }
-
-#collection-title:hover {
-  color: rgb(0, 0, 0);
-}
-
-.nothidden>#collection-title {
+div[class="navbar debug nothidden"]>#menu-title {
   margin-left: -270px;
 }
-
-.hidden>#collection-title {
+div[class="navbar debug hidden"]>#menu-title {
   margin-left: -285px;
 }
-
-
-.hidden>#collection-title:hover {
+div[class="navbar debug hidden"]>#menu-title:hover {
   margin-left: -295px;
 }
 
-
-
-
-button {
-width: 140px;
-height: 43px;
-left: 819px;
-top: 775px;
-box-sizing: border-box;
-border-radius: 66px;
-font-family: 'Gilroy-Medium ☞';
-font-size: 12px;
+/* BLOBIFY MENU SPECIFICS */
+#blobifyMenu{
+  position: fixed;
+  display: flex;
+  overflow: visible;
+  /* flex-basis: 20%; */
+  width: 100%;
+  height: 40%;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: url(./icons/blobifyMenu.svg) no-repeat center center fixed; 
+  background-size: cover;
 }
 
-#collection-button {
-  margin: 10px;
-  bottom: 10%;
+div[class="blobifyMenu debug hidden"]{
+  height: 0% !important;
+  transition-property: height;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.5s;
 }
 
+div[class="blobifyMenu debug nothidden"]{
+  height: 40% !important;
+  transition-property: height;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.9s;
+}
+
+
+#blobifyMenu>.navbarContent{
+  margin: 0px;
+  padding-top: 8%;
+  padding-bottom: 15%;
+}
+#blobifyMenu>#menu-title {
+  position: absolute;
+  left: 38%;
+  margin: 0px;
+  
+}
+
+div[class="blobifyMenu debug nothidden"]>#menu-title {
+  bottom: 60%;
+}
+div[class="blobifyMenu debug hidden"]>#menu-title {
+  /* margin-bottom: 200px; */
+  bottom: -60px !important;
+}
+div[class="blobifyMenu debug hidden"]>#menu-title:hover {
+  /* margin-bottom: -295px; */
+  bottom: -50px !important;
+}
+
+
+/* Fonts */
+h1 {
+  font-family: 'Gilroy-Bold ☞';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 100px;
+  
+  
+  -webkit-text-stroke: 1px #FFFFFF;
+  text-align: center;
+  letter-spacing: 0.1em;
+  }
 
 @font-face {
   font-family: 'Gilroy-Bold ☞';
@@ -278,10 +312,6 @@ font-size: 12px;
     font-weight: normal;
     src: local('Gilroy-Regular ☞'), url('./fonts/Gilroy-Regular.woff') format('woff');
     }
-
-
-
-
 
 /* .playlistCss {
   outline:0;
