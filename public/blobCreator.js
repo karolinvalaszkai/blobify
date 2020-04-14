@@ -7,7 +7,7 @@ function blobCreator(songObj) {
       }
     }
 
-    //console.log("Two script running",songObj)
+    console.log("Two script running",songObj)
     song_id = songObj.id;
     //pitches = songObj.pitches;
     energy = songObj.energy;
@@ -31,12 +31,12 @@ var two = new Two({
     height: 300
   }).appendTo(newDiv);
 
-  var mass = 100*Math.sqrt(energy);
+  var mass = songObj.tempo;
   var radius = two.height / 6;
   //var strength = 0.0625;
 
   //Sets speed of animation:
-  var strength = Math.pow(energy,2);
+  var strength = energy;
   var drag = 0.0;
 
   var background = two.makeGroup();
@@ -78,7 +78,7 @@ var two = new Two({
   }
 
   var outer = new Two.Path(points, true, true);
-  var color = getRandomColor();
+  var color = getColor();
   outer.stroke = color.toString();
   outer.fill = color.toString(0.5);
   outer.scale = 1.75;
@@ -88,7 +88,7 @@ var two = new Two({
 
   var inner = new Two.Path(points, true, true);
   inner.noStroke();
-  inner.fill = getRandomColor().toString();
+  inner.fill = getColor().toString();
   inner.scale = 1.25;
 
   background.add(inner);
@@ -156,43 +156,70 @@ var two = new Two({
     foreground.translation.copy(background.translation);
   }
 
-  function getRandomColor() {
-    var blobEnergyColour = Math.pow(energy,1)
-    if (blobEnergyColour<0.70 && blobEnergyColour>0.65){
-      r= Math.floor(1 * 255)
-      g = Math.floor(1 * 255)
-      b = Math.floor((1-energy)* 255)
 
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+  function getColor() {
+    //OLD
+    // var blobEnergyColour = Math.pow(energy,1)
+    // if (blobEnergyColour<0.70 && blobEnergyColour>0.65){
+    //   r= Math.floor(1 * 255)
+    //   g = Math.floor(1 * 255)
+    //   b = Math.floor((1-energy)* 255)
+    // }
+    // else if (blobEnergyColour<0.65 && blobEnergyColour>0.55){
+    //   r= Math.floor(0 * 255)
+    //   g = Math.floor(energy * 255)
+    //   b = Math.floor((1-energy)* 255)
+    // }
+    // else {
+    //   r = Math.floor(blobEnergyColour * 255)
+    //   g = Math.floor(0.3 * 255)
+    //   b = Math.floor((1-blobEnergyColour) * 255)
+    // }
+    console.log(hexToRgb("6D45BFF"));
+    if (songObj.key == 0 || songObj.key == 1) {
+      hex = '#D173FF'; //violet
     }
-
-    else if (blobEnergyColour<0.65 && blobEnergyColour>0.55){
-      r= Math.floor(0 * 255)
-      g = Math.floor(energy * 255)
-      b = Math.floor((1-energy)* 255)
-
+    else if (songObj.key == 2 || songObj.key == 3) {
+      hex = '#5C00D4'; //indigo
+    }
+    else if (songObj.key == 4) {
+      hex = '#53A9FF'; //azure
+    }
+    else if (songObj.key == 5 || songObj.key == 6) {
+      hex = '#00FF40'; //green
+    }
+    else if (songObj.key == 7 || songObj.key == 8) {
+      hex = '#FFFF00'; //yellow
+    }
+    else if (songObj.key == 9 || songObj.key == 10) {
+      hex = '#FF8040'; //orange
     }
     else {
-      r = Math.floor(blobEnergyColour * 255)
-      g = Math.floor(0.3 * 255)
-      b = Math.floor((1-blobEnergyColour) * 255)
+      hex = '#FF0000'; //red
     }
 
     var color = {
-      r: r,
-      g: g,
-      b: b,
+      hex: hex,
       toString: function(a) {
         if (a) {
-          return 'rgba('
-            + color.r + ','
-            + color.g + ','
-            + color.b + ','
-            + a + ')';
+           return hex+(a*100)//'rgba('
+          //   + color.r + ','
+          //   + color.g + ','
+          //   + color.b + ','
+          //   + a + ')';
         }
-        return 'rgb('
-          + color.r + ','
-          + color.g + ','
-          + color.b + ')';
+        return hex//'rgb('
+          // + color.r + ','
+          // + color.g + ','
+          // + color.b + ')';
       }
     };
     return color;
