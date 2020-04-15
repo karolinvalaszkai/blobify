@@ -1,11 +1,11 @@
 import React from 'react'
 
 const AboutPresentational = ({songs, muted, nav,  homepageControl, playlistControl, handleClick, openNav, onDrop, onDragOver}) => {
-  const [homepageAction, homepageMessage] = homepageControl;
-  const [playlistAction, playlistMessage] = playlistControl;
-  const nSongs = songs.length;
-  const dropEvent = onDrop;
-  const dragOverEvent = onDragOver;
+  // const [homepageAction, homepageMessage] = homepageControl;
+  // const [playlistAction, playlistMessage] = playlistControl;
+  // const nSongs = songs.length;
+  // const dropEvent = onDrop;
+  // const dragOverEvent = onDragOver;
 
 
   return (
