@@ -47,8 +47,8 @@ var two = new Two({
   var i = 0;
 
   //Sets number of points
-  Two.Resolution = Math.round(25*Math.sqrt(energy))+3;
-
+  Two.Resolution = songObj.energy*50+3
+  //var tempoArray = [...Array(parseInt(songObj.tempo)).keys()]
 
   for (i = 0; i < Two.Resolution; i++) {
     //console.log(Two.Resolution)
@@ -58,7 +58,7 @@ var two = new Two({
     var ax = radius * Math.cos(theta);
     var ay = radius * Math.sin(theta);
 
-    var variance = Math.random() * (1-energy) + 0.6;
+    var variance = Math.pow(1-energy,0.2);
     var bx = variance * ax;
     var by = variance * ay;
 
@@ -80,7 +80,8 @@ var two = new Two({
   var outer = new Two.Path(points, true, true);
   var color = getColor();
   outer.stroke = color.toString();
-  outer.fill = color.toString(0.5);
+  outer.noStroke()
+  outer.fill = color.toString(0.9);
   outer.scale = 1.75;
   outer.linewidth = 1;
 
@@ -115,7 +116,12 @@ var two = new Two({
     },2000);
 
     var audioElem = document.getElementById("audio"+songObj.id);
-    
+
+    $(two.renderer.domElement).contextmenu(function(e) {
+      //e.preventDefault()
+      console.log( "Handler for .contextmenu() called." );
+    });
+      
     $(window).keypress(function (e) {
         if (e.key === ' ' || e.key === 'Spacebar') {
           e.preventDefault()
@@ -156,70 +162,37 @@ var two = new Two({
     foreground.translation.copy(background.translation);
   }
 
-
-  function hexToRgb(hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
-    } : null;
-  }
   function getColor() {
-    //OLD
-    // var blobEnergyColour = Math.pow(energy,1)
-    // if (blobEnergyColour<0.70 && blobEnergyColour>0.65){
-    //   r= Math.floor(1 * 255)
-    //   g = Math.floor(1 * 255)
-    //   b = Math.floor((1-energy)* 255)
-    // }
-    // else if (blobEnergyColour<0.65 && blobEnergyColour>0.55){
-    //   r= Math.floor(0 * 255)
-    //   g = Math.floor(energy * 255)
-    //   b = Math.floor((1-energy)* 255)
-    // }
-    // else {
-    //   r = Math.floor(blobEnergyColour * 255)
-    //   g = Math.floor(0.3 * 255)
-    //   b = Math.floor((1-blobEnergyColour) * 255)
-    // }
-    console.log(hexToRgb("6D45BFF"));
     if (songObj.key == 0 || songObj.key == 1) {
-      hex = '#D173FF'; //violet
+      hex = '#c24cf6'; //violet
     }
     else if (songObj.key == 2 || songObj.key == 3) {
-      hex = '#5C00D4'; //indigo
+      hex = '#7122fa'; //indigo
     }
     else if (songObj.key == 4) {
-      hex = '#53A9FF'; //azure
+      hex = '#03dddc'; //azure
     }
     else if (songObj.key == 5 || songObj.key == 6) {
-      hex = '#00FF40'; //green
+      hex = '#7fff00'; //green
     }
     else if (songObj.key == 7 || songObj.key == 8) {
-      hex = '#FFFF00'; //yellow
+      hex = '#fef900'; //yellow
     }
     else if (songObj.key == 9 || songObj.key == 10) {
-      hex = '#FF8040'; //orange
+      hex = '#ff5f01'; //orange
     }
     else {
-      hex = '#FF0000'; //red
+      hex = '#f21a1d'; //red
     }
 
     var color = {
       hex: hex,
       toString: function(a) {
         if (a) {
-           return hex+(a*100)//'rgba('
-          //   + color.r + ','
-          //   + color.g + ','
-          //   + color.b + ','
-          //   + a + ')';
+           return hex+(a*100)
         }
-        return hex//'rgb('
-          // + color.r + ','
-          // + color.g + ','
-          // + color.b + ')';
+        return hex
+ 
       }
     };
     return color;
