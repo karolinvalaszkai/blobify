@@ -261,59 +261,74 @@ div[class="blobifyMenu debug hidden"]>#menu-title:hover {
 
 
 /* ABOUT MENU SPECIFICS */
-#aboutMenu{
+#aboutMenu {
   position: fixed;
   display: flex;
   overflow: visible;
   /* flex-basis: 20%; */
-  width: 100%;
-  height: 40%;
-  bottom: 0px;
+  height: 100%;
+  /* float: right; */
+  /* flex-direction: inherit; */
   left: 0px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+  top: 0px;
+  background-color: transparent;
   background: url(./graphics/aboutMenu.svg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 
 div[class="aboutMenu debug hidden"]{
-  height: 0% !important;
-  transition-property: height;
+  width: 0%;
+  min-width: none;
+  transition-property: width;
   transition-timing-function: ease-in-out;
   transition-duration: 0.5s;
 }
 
 div[class="aboutMenu debug nothidden"]{
-  height: 40% !important;
-  transition-property: height;
+  width: 20%;
+  transition-property: width;
   transition-timing-function: ease-in-out;
-  transition-duration: 0.9s;
+  transition-duration: 0.5s;
 }
 
+#aboutMenu>.navbarContent {
+  /* top: 5%;
+ */
 
-#aboutMenu>.navbarContent{
-  margin: 0px;
-  padding-top: 8%;
-  padding-bottom: 15%;
+  margin-top: 15%;
+  margin-bottom: 15%;
+  padding-left: 53%;
+  
+  /* margin: 15%; */
+  text-align: left! important;
+  left: -115px;
+  /* margin-right: 50%;
+  padding-left: 15%; */
 }
+
 #aboutMenu>#menu-title {
   position: absolute;
-  left: 38%;
-  margin: 0px;
+  top: 30%;
   transform: rotate(90deg);
+
+}
+div[class="aboutMenu debug nothidden"]>#menu-title {
+  /* margin-right: -270px; */
+  left: 35% !important;
 }
 
-div[class="aboutMenu debug nothidden"]>#menu-title {
-  bottom: 60%;
-}
 div[class="aboutMenu debug hidden"]>#menu-title {
-  /* margin-bottom: 200px; */
-  bottom: -60px !important;
+  /* margin-right: -285px; */
+  left: -160px !important;
 }
+
 div[class="aboutMenu debug hidden"]>#menu-title:hover {
-  /* margin-bottom: -295px; */
-  bottom: -50px !important;
+  /* margin-right: -295px; */
+  left: -150px !important;
+
 }
 
 /* Fonts */
