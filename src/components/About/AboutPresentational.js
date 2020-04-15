@@ -16,9 +16,15 @@ const AboutPresentational = ({songs, muted, nav,  homepageControl, playlistContr
    
       <div className="navbarContent">
         <span>
-        A Spotify powered web application for exploring songs through a visual representation of its energy, pitch and valence.
+        A Spotify powered web application for displaying playlist songs through a visual representation of its energy, pitch and valence.
 
-<br/> created by Alessandro Iop Daniel Parhizgar Sabina Nordell Karolin Valaszkai        </span>
+
+<br/>
+<br/> created by 
+<br/>Alessandro Iop 
+<br/>Daniel Parhizgar 
+<br/>Sabina Nordell 
+<br/>Karolin Valaszkai        </span>
         <br/>
           
       </div>
