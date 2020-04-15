@@ -16,11 +16,15 @@ const AboutPresentational = ({songs, muted, nav,  homepageControl, playlistContr
    
       <div className="navbarContent">
         <span>
+        blobify
+        <br/>
+        <br/>
+
         A Spotify powered web application for displaying playlist songs through a visual representation of its energy, pitch and valence.
 
 
 <br/>
-<br/> created by 
+<br/>created by 
 <br/>Alessandro Iop 
 <br/>Daniel Parhizgar 
 <br/>Sabina Nordell 
