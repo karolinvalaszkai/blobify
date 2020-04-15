@@ -30,7 +30,7 @@ import React from 'react'
     return (
       <div id={song.track.id} key={song.track.id} className='song draggable'
             onDragStart={(e)=>onDragStart(e, song)} draggable>
-        <audio id={'audio'+song.track.id} src={song.track.preview_url} muted></audio>
+        <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
         {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
         <br/>
       </div>
