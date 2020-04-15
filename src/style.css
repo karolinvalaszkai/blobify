@@ -244,8 +244,7 @@ div[class="blobifyMenu debug nothidden"]{
 #blobifyMenu>#menu-title {
   position: absolute;
   left: 38%;
-  margin: 0px;
-  
+  margin: 0px;  
 }
 
 div[class="blobifyMenu debug nothidden"]>#menu-title {
@@ -302,7 +301,7 @@ div[class="aboutMenu debug nothidden"]{
   position: absolute;
   left: 38%;
   margin: 0px;
-  
+  transform: rotate(90deg);
 }
 
 div[class="aboutMenu debug nothidden"]>#menu-title {
