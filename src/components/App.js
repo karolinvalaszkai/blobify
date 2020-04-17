@@ -17,8 +17,8 @@ const App = () => (
         <Route path="/trending" component={Search}></Route>
         <Route path="/myplaylist" component={Playlist}></Route>
         <Route component={Navbar}></Route>
-        <Route component={BlobifyMenu}></Route>
-        <Route component={About}></Route>
+        {/* <Route component={BlobifyMenu}></Route>
+        <Route component={About}></Route> */}
       </div>
   </Router>
 )
