@@ -10,8 +10,6 @@ function songs(state = [], action) {
         window.alert(`${song.track.name} is already present in the playlist.`);
         return [...state];
       } else {
-        // Compute time of addition
-        song.addTime = computeAdditionTimestamp(song);
         return [...state, song];
       }
     case 'REMOVE_SONG':

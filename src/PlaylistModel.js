@@ -2,6 +2,25 @@ import * as apiConfig from './apiConfig.js'
 import RenderPromise from './renderPromise.js'
 import React from 'react'
 
+const firebase = require("firebase");
+// Required for side-effects
+require("firebase/firestore");
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyAPO4fSzO6KUyphdBvNLHr0UMr7ArpPVK4",
+  authDomain: "iprog2020.firebaseapp.com",
+  databaseURL: "https://iprog2020.firebaseio.com",
+  projectId: "iprog2020",
+  storageBucket: "iprog2020.appspot.com",
+  messagingSenderId: "667835768822",
+  appId: "1:667835768822:web:407e0382496fd8a7f731d7"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
+
   export function displaySongs(songListPromise) {
     RenderPromise.render(
       songListPromise,
@@ -32,14 +51,6 @@ import React from 'react'
       </div>
     );
     }
-  }
-
-  export function getSongDetails(song_id) {
-    //TODO return acoustic features of song
-  }
-
-  export function computeAdditionTimestamp(song) {
-    //return current time
   }
 
   export function searchPlaylist(name) {
@@ -97,4 +108,46 @@ import React from 'react'
     }
 
     return getSong(type);
+  }
+
+  // Saves a new song to your Cloud Firestore database.
+  export function saveSong(song) {
+    // Add a new song object to the database.
+    db.collection('playlist').doc(song.track.id).set({
+      id: song.track.id,
+      title: song.track.name,
+      preview: song.track.preview_url,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .catch(function(error) {
+      console.error('Error writing new message to database', error);
+    });
+    
+  }
+
+  export function loadSong(song) {
+    db.collection('playlist').doc(song.track.id).get().then(function(doc) {
+      console.log(`${doc.id} => ${doc.data().title}`);
+    });
+  }
+
+  export function deleteSong(id) {
+    db.collection("playlist").doc(id).delete().then(function() {
+      console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+  }
+
+  export function loadCollection() {
+    return db.collection("playlist").get().then((querySnapshot) => {
+      let collection = [];
+      querySnapshot.forEach((doc, i) => {
+        let data = doc.data();  
+          console.log(`${doc.id} => ${doc.data()}`);
+          collection.push(doc.data());
+      });
+      console.log({collection});
+      return collection;
+    });
   }
