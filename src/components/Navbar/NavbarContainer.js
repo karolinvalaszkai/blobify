@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   homepageControl: [() => ownProps.history.push("/trending"), "Back to the trending songs"],
-  playlistControl: [() => ownProps.history.push("/myplaylist"), "My playlist"],
+  playlistControl: [() => ownProps.history.push("/myplaylist"), "View more"],
   handleClick: (muted) => {
     dispatch(muteAudio(muted));
 
