@@ -9,34 +9,44 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
 
 
   return (
-    <div id="navbar" className="navbar debug hidden">
+    <div id="navbar" className="navbar debug nothidden">
 
-      <h1 id="menu-title" onClick={() => openNav(nav.navbarHidden)}>blobify</h1>
-   
+      {/* <h1 id="menu-title" onClick={() => openNav(nav.navbarHidden)}>blobify</h1> */}
+      <h1 id="menu-title">blobify.</h1>
+
       <div className="navbarContent">
-        {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
-        <br/>
-        <span>
-            {/* Displaying {nSongs} of the hottest songs!<br/>
-            Last update: insert time of last update here */}
-        </span>
-        
-        <br/>
-        
-          <button className="drophere playlistCss droppable"
-                  onClick={() => playlistAction()}
-                  onDragOver={dragOverEvent}
-                  onDrop={dropEvent}>Drag and drop <br/>blobs here <br/> to add them to your collection </button>
 
-          {/* <button className="playlistCss droppable"
-                  onClick={() => playlistAction()}
-                  onDragOver={dragOverEvent}
-                  onDrop={dropEvent}>
-                  {playlistMessage}
-          </button><br/> */}
-          {/* <button id="collection-button" onClick={() => playlistAction()}>{playlistMessage}</button><br/> */}
-          <button id="collection-button" onClick={() => playlistAction()}>{playlistMessage}</button><br/>
+        <div className="navbarContent-playlist">
+          {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
+          <br/>
+          <h2 id="content-title">Pick playlist</h2>
+          <h3 id="content-title">Switch playlist to blobify songs</h3>
+          <div className="playlist"></div>
+          <h4 id="content-title">Fetched from Spotify</h4>
 
+        </div>
+
+        <div className="navbarContent-save">
+          <h2 id="content-title">Save songs</h2>
+          <h3 id="content-title">Drag and drop blob here to add or remove song</h3>
+
+          {/* <div className="playlist"></div> */}
+          <div className="collection">
+            <button className="drophere playlistCss droppable"
+                    onClick={() => playlistAction()}
+                    onDragOver={dragOverEvent}
+                    onDrop={dropEvent}><br/> </button>
+
+            {/* <button className="playlistCss droppable"
+                    onClick={() => playlistAction()}
+                    onDragOver={dragOverEvent}
+                    onDrop={dropEvent}>
+                    {playlistMessage}
+            </button><br/> */}
+            
+            <button id="collection-button" onClick={() => playlistAction()}>{playlistMessage}</button>
+          </div>
+        </div>
       </div>
 
       <div className='muteButton mute' onClick={() => handleClick(muted.audioMuted)}></div>
