@@ -47,20 +47,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     console.log(root);
 
     //Change the svg/blob dimensions.
-    //root.getElementsByTagName('g')[0].style.transform = "scale(0.2)";
     root.getElementsByTagName('g')[0].setAttribute("transform", "matrix(1 0 0 1 0 -10) scale(0.2)");
     root.getElementsByTagName('svg')[0].setAttribute("height", "50");
     root.getElementsByTagName('svg')[0].setAttribute("width", "50");
-    //root.getElementsByTagName('svg')[0].style.position="relative";
-    //root.getElementsByTagName('svg')[0].style.top= "0";
-    //root.style.transform = "scale(0.5)";
-    //root.style.textAlign = "left";
+
     root.style.height = "70px";
     root.style.width = "60px";
 
     document.getElementById("miniPreview").appendChild(root);
-    //ev.target.getElementById("miniPreview").appendChild(root);
-    // console.log("source: " + source);
   },
   onDragOver: (ev) => {
     ev.preventDefault()
