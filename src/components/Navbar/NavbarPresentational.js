@@ -20,7 +20,15 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
           {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
           <br/>
           <h2 id="content-title">Pick playlist</h2>
-          <h3 id="content-title">Switch playlist to blobify songs</h3>
+          <h3 id="content-title">Switch playlist to <h3 class="tooltip">blobify songs
+          <span class="tooltiptext">What you see here is not random colors and shapes. <br/><br/>
+                                    Each song contains data. <br/> <br/>
+                                    A blob is a visual representation of that song and it's data. <br/><br/>
+                                    The level of energy determines it's shape, key for color and the dots... - we call it blobify. </span>
+          </h3></h3>
+
+          
+
           <div className="playlist"></div>
           <h4 id="content-title">Fetched from Spotify</h4>
 
