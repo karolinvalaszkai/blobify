@@ -8,6 +8,10 @@ import React from 'react'
       songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
       document.getElementById('resultsDiv'));
 
+      getBlobs();
+  }
+
+  export function getBlobs() {
     setTimeout(() => {
       let songs = document.body.querySelectorAll('.song');
       songs.forEach(song => {
@@ -16,7 +20,6 @@ import React from 'react'
 
           var svg = window["blobCreator"](features);
           root.appendChild(svg);
-
         });
       });
     }, 1000);

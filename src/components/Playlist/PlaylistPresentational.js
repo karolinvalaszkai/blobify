@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong }) => {
+const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlobs}) => {
     const [doneCallback, doneMessage] = whenDone;
 
     return (

@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     let audioElements = document.getElementsByTagName("audio");
     Object.keys(audioElements).map((i) =>
       audioElements[i].muted = muted)
-    
+
   },
   openNav: (nav) => {
     dispatch(hideNavbar(nav));
@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   onDrop: (ev) => {
     console.log("Dropped into playlist");
     let song = ev.dataTransfer.getData("text/plain");
-    //console.log(JSON.parse(song));
+    console.log(JSON.parse(song));
     dispatch(addSong(JSON.parse(song)));
   },
   onDragOver: (ev) => {
