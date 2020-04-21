@@ -1,8 +1,7 @@
 import React from 'react'
 
-const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlobs}) => {
+const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlob}) => {
     const [doneCallback, doneMessage] = whenDone;
-
     return (
       <div id="summary" className="mainContent debug">
         <div>Current playlist:
@@ -17,8 +16,9 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
             <tbody>
               {songs.map((song, i) =>
                 <tr key={i}>
+                  <td id="blob">{getBlob(song.track.id)}</td>
                   <td>{displaySong(song)}</td>
-                  <td>{song.track.id}</td>
+                  <td>{song.track.name}</td>
                   <td><button onClick={() => onDelete(song)}>Delete from playlist</button></td>
                 </tr>
               )}

@@ -42,6 +42,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     let song = ev.dataTransfer.getData("text/plain");
     console.log(JSON.parse(song));
     dispatch(addSong(JSON.parse(song)));
+    let source = ev.dataTransfer.getData("source");
+    console.log(source);
   },
   onDragOver: (ev) => {
     ev.preventDefault()

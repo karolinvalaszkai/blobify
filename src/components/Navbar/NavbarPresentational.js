@@ -37,13 +37,14 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
                     onDragOver={dragOverEvent}
                     onDrop={dropEvent}><br/> </button>
 
-            {/* <button className="playlistCss droppable"
+            {
+              /* <button className="playlistCss droppable"
                     onClick={() => playlistAction()}
                     onDragOver={dragOverEvent}
                     onDrop={dropEvent}>
                     {playlistMessage}
             </button><br/> */}
-            
+
             <button id="collection-button" onClick={() => playlistAction()}>{playlistMessage}</button>
           </div>
         </div>

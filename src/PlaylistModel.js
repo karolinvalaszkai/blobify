@@ -8,19 +8,29 @@ import React from 'react'
       songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
       document.getElementById('resultsDiv'));
 
-      getBlobs();
+      setTimeout(() => {
+        let songs = document.body.querySelectorAll('.song');
+        songs.forEach(song => {
+          let root = document.getElementById(song.id);
+          searchAudioFeatures(song.id).then(features => {
+
+            var svg = window["blobCreator"](features);
+            root.appendChild(svg);
+          });
+        });
+      }, 1000);
   }
 
-  export function getBlobs() {
+  export function getBlob(id, root) {
     setTimeout(() => {
-      let songs = document.body.querySelectorAll('.song');
-      songs.forEach(song => {
-        let root = document.getElementById(song.id);
-        searchAudioFeatures(song.id).then(features => {
-
-          var svg = window["blobCreator"](features);
-          root.appendChild(svg);
-        });
+      let root = document.getElementById(id);
+      if (root.getElementsByTagName('svg').length) {
+        console.log('test1 has svg');
+        return;
+      }
+      searchAudioFeatures(id).then(features => {
+        var svg = window["blobCreator"](features);
+        root.appendChild(svg);
       });
     }, 1000);
   }
@@ -44,6 +54,7 @@ import React from 'react'
   const onDragStart = (ev, song) => {
     console.log("Song " + song.track.name + " is being dragged");
     ev.dataTransfer.setData("text/plain", JSON.stringify(song));
+    ev.dataTransfer.setData("source", this);
     ev.dataTransfer.effectAllowed = "copy";
   }
 
