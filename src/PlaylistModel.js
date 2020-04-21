@@ -13,7 +13,6 @@ import React from 'react'
         songs.forEach(song => {
           let root = document.getElementById(song.id);
           searchAudioFeatures(song.id).then(features => {
-
             var svg = window["blobCreator"](features);
             root.appendChild(svg);
           });
@@ -24,8 +23,7 @@ import React from 'react'
   export function getBlob(id, root) {
     setTimeout(() => {
       let root = document.getElementById(id);
-      if (root.getElementsByTagName('svg').length) {
-        console.log('test1 has svg');
+      if (root == null || root.getElementsByTagName('svg').length) {
         return;
       }
       searchAudioFeatures(id).then(features => {
@@ -54,7 +52,12 @@ import React from 'react'
   const onDragStart = (ev, song) => {
     console.log("Song " + song.track.name + " is being dragged");
     ev.dataTransfer.setData("text/plain", JSON.stringify(song));
-    ev.dataTransfer.setData("source", this);
+    //Want to transfer the html element being dragged
+    //let root = document.getElementById(song.track.id);
+    //If the element has an svg child => the blob
+    // if(root.getElementsByTagName('svg').length) {
+    //   ev.dataTransfer.setData("source", root);
+    // }
     ev.dataTransfer.effectAllowed = "copy";
   }
 
@@ -76,7 +79,7 @@ import React from 'react'
   export function searchAudioFeatures(id) {
     // Replace variables in case they are falsy (e.g. empty string, null, undefined)
     id = id || "";
-
+    
     return retrieve('?ids='+id, 'audio').then(data => data.audio_features[0]);
   }
 
