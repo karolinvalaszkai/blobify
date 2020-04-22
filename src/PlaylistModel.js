@@ -70,12 +70,18 @@ import Settings from './components/Settings/SettingsContainer'
   const openTooltip = (id) => {
     console.log("open toolkit")
     var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
+    
+      // for (var i = 0, len = visibleTooltips.length; i < len; i++) {
+      //   console.log(visibleTooltips[i])
+      //   visibleTooltips[i].classList.add('hidden');
+      //   visibleTooltips[i].classList.remove('visible');
+      //   }
+    
 
-    for (var i = 0, len = visibleTooltips.length; i < len; i++) {
-      visibleTooltips[i].classList.add('hidden');
-      visibleTooltips[i].classList.remove('visible');
-      }
-
+    // var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
+    // visibleTooltips.classList.add('hidden');
+    // visibleTooltips.classList.remove('visible');
+    
     var tooltip = document.getElementById("tooltip-"+id);
     let currentClass = tooltip.classList[1];
     tooltip.classList.remove(currentClass);
