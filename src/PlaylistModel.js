@@ -1,6 +1,9 @@
 import * as apiConfig from './apiConfig.js'
 import RenderPromise from './renderPromise.js'
 import React from 'react'
+import Settings from './components/Settings/SettingsContainer'
+
+
 
   export function displaySongs(songListPromise) {
     RenderPromise.render(
@@ -28,22 +31,39 @@ import React from 'react'
   export function createSongDisplay(song) {
     if (song.track.preview_url !== null){
     return (
-      <div id={song.track.id} key={song.track.id} className='song draggable'
-            onDragStart={(e)=>onDragStart(e, song)} draggable>
+      <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
+            onDragStart={(e)=>onDragStart(e, song)} draggable onMouseDown={(e)=>openTooltip(song.track.id)}>
         <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
+        <div id={"tooltip-"+song.track.id} className="tooltiptext hidden"><h3>{song.track.name}</h3><br/>
+        <a href={song.track.external_urls.spotify}>Open in spotify</a>
+        
+        </div>
+      
         {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
         <br/>
       </div>
     );
     }
   }
-
   const onDragStart = (ev, song) => {
     console.log("Song " + song.track.name + " is being dragged");
     ev.dataTransfer.setData("text/plain", JSON.stringify(song));
     ev.dataTransfer.effectAllowed = "copy";
   }
+  const openTooltip = (id) => {
+    console.log("open toolkit")
+    var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
 
+    for (var i = 0, len = visibleTooltips.length; i < len; i++) {
+      visibleTooltips[i].classList.add('hidden');
+      visibleTooltips[i].classList.remove('visible');
+      }
+
+    var tooltip = document.getElementById("tooltip-"+id);
+    let currentClass = tooltip.classList[1];
+    tooltip.classList.remove(currentClass);
+    tooltip.classList.add((currentClass == 'hidden'? 'visible' : 'hidden'));
+  }
   export function getSongDetails(song_id) {
     //TODO return acoustic features of song
   }
