@@ -56,7 +56,7 @@ import React from 'react'
     //let root = document.getElementById(song.track.id);
     //If the element has an svg child => the blob
     // if(root.getElementsByTagName('svg').length) {
-    //   ev.dataTransfer.setData("source", root);
+    //   ev.dataTransfer.setData("text/html", root);
     // }
     ev.dataTransfer.effectAllowed = "copy";
   }
@@ -79,7 +79,7 @@ import React from 'react'
   export function searchAudioFeatures(id) {
     // Replace variables in case they are falsy (e.g. empty string, null, undefined)
     id = id || "";
-    
+
     return retrieve('?ids='+id, 'audio').then(data => data.audio_features[0]);
   }
 

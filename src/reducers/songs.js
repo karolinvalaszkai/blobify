@@ -5,6 +5,7 @@ function songs(state = [], action) {
   switch (action.type) {
     case 'ADD_SONG':
       // Check if song is already in the playlist
+      console.log(state);
       let alreadyPresent = state.some(d => d.track.id === song.track.id);
       if (alreadyPresent) {
         window.alert(`${song.track.name} is already present in the playlist.`);
