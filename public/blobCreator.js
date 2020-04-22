@@ -1,5 +1,3 @@
-
-//let blobCreator = window.blobCreator
 function blobCreator(songObj) {
     for (prop in songObj){
       if (prop == 0.0){
@@ -7,28 +5,22 @@ function blobCreator(songObj) {
       }
     }
 
-    console.log("Two script running",songObj)
+  //  console.log("Two script running",songObj)
     song_id = songObj.id;
-    //pitches = songObj.pitches;
     energy = songObj.energy;
     valence = songObj.valence;
-    //pitches.push.apply(pitches,pitches);
-    //pitches.push.apply(pitches,pitches);
-
-
-
 
   //Creates the div where the blob will be placed
-    //var elem = document.getElementById(songObj.id)
     var newDiv = document.createElement("div");
 
-    //elem.appendChild(newDiv);
 
 var two = new Two({
     type: Two.Types.svg,
     fullscreen: false,
     width: 300, 
-    height: 300
+    height: 300,
+    id: "two-"+songObj.id,
+    frameCount: 32
   }).appendTo(newDiv);
 
   var mass = songObj.tempo;
@@ -51,7 +43,6 @@ var two = new Two({
   //var tempoArray = [...Array(parseInt(songObj.tempo)).keys()]
 
   for (i = 0; i < Two.Resolution; i++) {
-    //console.log(Two.Resolution)
     var pct = i / Two.Resolution;
     var theta = pct * Math.PI * 2;
 
@@ -93,7 +84,8 @@ var two = new Two({
   inner.scale = 1.25;
 
   background.add(inner);
-
+  // newDiv.id = songObj.key;
+  // console.log(two,two.id)
   //two.renderer.domElement.style.background = 'url(' + generateGrid() + ') center center';
 
   resize();
@@ -113,13 +105,13 @@ var two = new Two({
       two.bind('resize', resize).pause()
       startMotion = false;
       } 
-    },2000);
+    },3000);
 
     var audioElem = document.getElementById("audio"+songObj.id);
 
     $(two.renderer.domElement).contextmenu(function(e) {
-      //e.preventDefault()
-      console.log( "Handler for .contextmenu() called." );
+     // e.preventDefault()
+      console.log( "Handler for .contextmenu() called.", songObj);
     });
       
     $(window).keypress(function (e) {
