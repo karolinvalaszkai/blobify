@@ -32,24 +32,28 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
 
         </div>
 
-        <div className="navbarContent-save">
+        <div className="navbarContent-save droppable drophere"
+          onDragOver={dragOverEvent}
+          onDrop={dropEvent}>
           <h2 id="content-title">Save songs</h2>
           <h4 id="content-title">Drag and drop blob here to add or remove song</h4>
 
           {/* <div className="playlist"></div> */}
           <div className="collection">
-            <button className="drophere playlistCss droppable"
-                    onClick={() => playlistAction()}
-                    onDragOver={dragOverEvent}
-                    onDrop={dropEvent}><br/> </button>
+            <div id="miniPreview" className="miniPreviewScroll"></div>
 
-            {/* <button className="playlistCss droppable"
+            {/*<div className="drophere playlistCss droppable"
+                    onDragOver={dragOverEvent}
+                    onDrop={dropEvent}><br/></div>*/}
+
+            {
+              /* <button className="playlistCss droppable"
                     onClick={() => playlistAction()}
                     onDragOver={dragOverEvent}
                     onDrop={dropEvent}>
                     {playlistMessage}
             </button><br/> */}
-            
+
             <button id="collection-button" onClick={() => playlistAction()}>{playlistMessage}</button>
           </div>
         </div>

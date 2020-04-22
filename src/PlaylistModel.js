@@ -11,16 +11,27 @@ import Settings from './components/Settings/SettingsContainer'
       songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
       document.getElementById('resultsDiv'));
 
-    setTimeout(() => {
-      let songs = document.body.querySelectorAll('.song');
-      songs.forEach(song => {
-        let root = document.getElementById(song.id);
-        searchAudioFeatures(song.id).then(features => {
-
-          var svg = window["blobCreator"](features);
-          root.appendChild(svg);
-
+      setTimeout(() => {
+        let songs = document.body.querySelectorAll('.song');
+        songs.forEach(song => {
+          let root = document.getElementById(song.id);
+          searchAudioFeatures(song.id).then(features => {
+            var svg = window["blobCreator"](features);
+            root.appendChild(svg);
+          });
         });
+      }, 1000);
+  }
+
+  export function getBlob(id, root) {
+    setTimeout(() => {
+      let root = document.getElementById(id);
+      if (root == null || root.getElementsByTagName('svg').length) {
+        return;
+      }
+      searchAudioFeatures(id).then(features => {
+        var svg = window["blobCreator"](features);
+        root.appendChild(svg);
       });
     }, 1000);
   }
@@ -48,6 +59,12 @@ import Settings from './components/Settings/SettingsContainer'
   const onDragStart = (ev, song) => {
     console.log("Song " + song.track.name + " is being dragged");
     ev.dataTransfer.setData("text/plain", JSON.stringify(song));
+    //Want to transfer the html element being dragged
+    //let root = document.getElementById(song.track.id);
+    //If the element has an svg child => the blob
+    // if(root.getElementsByTagName('svg').length) {
+    //   ev.dataTransfer.setData("text/html", root);
+    // }
     ev.dataTransfer.effectAllowed = "copy";
   }
   const openTooltip = (id) => {
