@@ -333,6 +333,7 @@ h2 {
     color: #fdfdfd;
     
     text-align: left;
+    margin-bottom: 0px;
     /* letter-spacing: 0.1em; */
     }
     h4 {
@@ -344,6 +345,7 @@ h2 {
       
       text-align: left;
       /* letter-spacing: 0.1em; */
+      margin-top: 0px;
       }
     
   
