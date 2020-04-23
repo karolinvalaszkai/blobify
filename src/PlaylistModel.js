@@ -1,7 +1,6 @@
 import * as apiConfig from './apiConfig.js'
 import RenderPromise from './renderPromise.js'
 import React from 'react'
-import Settings from './components/Settings/SettingsContainer'
 
 
 
