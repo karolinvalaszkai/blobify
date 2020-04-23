@@ -36,7 +36,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
           onDragOver={dragOverEvent}
           onDrop={dropEvent}>
           <h2 id="content-title">Save songs</h2>
-          <h4 id="content-title">Drag and drop blob here to add or remove song</h4>
+          <h4 id="content-title">Drag and drop blobs here to add songs to your collection.</h4>
 
           {/* <div className="playlist"></div> */}
           <div className="collection">

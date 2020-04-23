@@ -25,6 +25,7 @@ body::-webkit-scrollbar {
 .mainContent {
   flex: 1;
   background-color: transparent;
+  margin-left: 15%;
 
 }
 
