@@ -267,13 +267,14 @@ div[class="navbar debug hidden"]>#menu-title:hover {
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: solid 1px  #b3b3b3;
+  border-bottom: solid 1px  #ff9c7e;
+  color: #ff9c7e
 }
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 400px;
+  width: 500px;
   background-color: #191919;
-  color: #fff;
+  color: #ffffff;
   text-align: left;
   padding: 15px;
   position: absolute;
@@ -301,6 +302,56 @@ div[class="navbar debug hidden"]>#menu-title:hover {
   opacity: 1;
 }
 
+.songtooltip {
+  position: relative;
+  display: inline-block;
+  /* border-bottom: dotted 1px  #b3b3b3; */
+}
+.songtooltip .tooltiptext {
+  visibility: visible;
+  width: 200px;
+  background-color: #191919;
+  color: #fff;
+  text-align: left;
+  padding: 15px;
+  position: absolute;
+  z-index: 1;
+  bottom: 60%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.songtooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 30%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.songtooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 0;
+}
+
+
+div[class="tooltiptext hidden"] {
+  color: blue;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+div[class="tooltiptext visible"]{
+  color: red;
+  visibility: visible !important;
+  opacity: 1 !important;
+} 
+
 /* Fonts */
 h1 {
   font-family: 'Gilroy-Bold ☞';
@@ -309,7 +360,7 @@ h1 {
   font-size: 25px;
 
 
-  -webkit-text-stroke: 0.05px #FFFFFF;
+  -webkit-text-stroke: 2px #FFFFFF;
   text-align: center;
   letter-spacing: 0.1em;
   }
@@ -480,52 +531,4 @@ h2 {
 
 /* Tooltip */
 
-.songtooltip {
-  position: relative;
-  display: inline-block;
-  /* border-bottom: dotted 1px  #b3b3b3; */
-}
-.songtooltip .tooltiptext {
-  visibility: visible;
-  width: 200px;
-  background-color: #191919;
-  color: #fff;
-  text-align: left;
-  padding: 15px;
-  position: absolute;
-  z-index: 1;
-  bottom: 60%;
-  left: 50%;
-  margin-left: -60px;
-  opacity: 1;
-  transition: opacity 0.3s;
-}
 
-.songtooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 30%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-}
-
-.songtooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 0;
-}
-
-
-div[class="tooltiptext hidden"] {
-  color: blue;
-  visibility: hidden !important;
-  opacity: 0 !important;
-}
-
-div[class="tooltiptext visible"]{
-  color: red;
-  visibility: visible !important;
-  opacity: 1 !important;
-} 
