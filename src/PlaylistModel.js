@@ -1,9 +1,6 @@
 import * as apiConfig from './apiConfig.js'
 import RenderPromise from './renderPromise.js'
 import React from 'react'
-import Settings from './components/Settings/SettingsContainer'
-
-
 
   export function displaySongs(songListPromise) {
     RenderPromise.render(
@@ -46,6 +43,7 @@ import Settings from './components/Settings/SettingsContainer'
             onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(song.track.id)}>
         <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
         <div id={"tooltip-"+song.track.id} className="tooltiptext hidden"><h3>{song.track.name}</h3><br/>
+        <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
         <a href={song.track.external_urls.spotify}>Open in spotify</a>
         
         </div>
@@ -76,8 +74,7 @@ import Settings from './components/Settings/SettingsContainer'
       //   visibleTooltips[i].classList.add('hidden');
       //   visibleTooltips[i].classList.remove('visible');
       //   }
-    
-
+  
     // var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
     // visibleTooltips.classList.add('hidden');
     // visibleTooltips.classList.remove('visible');
