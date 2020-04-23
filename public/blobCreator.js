@@ -110,8 +110,8 @@ var two = new Two({
     var audioElem = document.getElementById("audio"+songObj.id);
 
     $(two.renderer.domElement).contextmenu(function(e) {
-     // e.preventDefault()
-      console.log( "Handler for .contextmenu() called.", songObj);
+      e.preventDefault()
+     // console.log( "Handler for .contextmenu() called.", songObj);
     });
       
     $(window).keypress(function (e) {

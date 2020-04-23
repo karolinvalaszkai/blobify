@@ -43,7 +43,7 @@ import Settings from './components/Settings/SettingsContainer'
     if (song.track.preview_url !== null){
     return (
       <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
-            onDragStart={(e)=>onDragStart(e, song)} draggable onMouseDown={(e)=>openTooltip(song.track.id)}>
+            onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(song.track.id)}>
         <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
         <div id={"tooltip-"+song.track.id} className="tooltiptext hidden"><h3>{song.track.name}</h3><br/>
         <a href={song.track.external_urls.spotify}>Open in spotify</a>
