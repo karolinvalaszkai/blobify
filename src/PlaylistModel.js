@@ -67,7 +67,7 @@ export function getBlob(id, root) {
   Give drag drop element to this.
 */
 export function createSongDisplay(song) {
-  searchAudioFeatures(song.id).then(features => {
+  searchAudioFeatures(song.track.id).then(features => {
     console.log('Song features', {features}); //you should be able to see all the song's features
 
     //change the content of the (initially empty) h4's
@@ -76,27 +76,27 @@ export function createSongDisplay(song) {
   });
 
   if (song.track.preview_url !== null){
-  return (
-    <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
-          onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(song.track.id)}>
-      <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
-      <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
-        <h3>{song.track.name}</h3>
-        <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
-        <br/>
+    return (
+      <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
+            onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(song.track.id)}>
+        <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
+        <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
+          <h3>{song.track.name}</h3>
+          <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
+          <br/>
 
-        <h4 id='energyH'></h4>
-        <h4>Key: {feature.key} - thereby color </h4>
+          <h4 id='energyH'></h4>
+          <h4>Key:  - thereby color </h4>
 
+          <br/>
+          <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
+          
+        </div>
+      
+        {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
         <br/>
-        <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
-        
       </div>
-    
-      {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
-      <br/>
-    </div>
-  );
+    );
   }
 }
 const onDragStart = (ev, song) => {
