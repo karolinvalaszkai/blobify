@@ -23,8 +23,9 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
           <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs
           <span className="tooltiptext">What you see here is not random colors and shapes. <br/><br/>
                                     Songs contain data. <br/> <br/>
-                                    A blob is a visual representation of a songs data, more so its energy and key. <br/><br/>
-                                    The level of energy determines its shape, key its color and the dots... - we call it blobify. </span>
+                                    A blob is a visual representation of a songs data. <br/> <br/>
+                                    The songs energy gives its shape and the key its color - we call it to blobify songs. <br/><br/>
+                                    Click on the blobs to see more.</span>
           </span></h4>
      
           <div className="playlist">
