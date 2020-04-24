@@ -27,8 +27,8 @@ export function displaySongs(songListPromise) {
     songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
     document.getElementById('resultsDiv'),
 
-    features=> React.createElement(React.Fragment, {}, features.map(feature => createSongDisplay(feature))),
-    document.getElementById('tooltip-"+id'));
+    //features=> React.createElement(React.Fragment, {}, features.map(feature => createSongDisplay(feature))),
+    //document.getElementById('tooltip-"+id'));
 
     setTimeout(() => {
       let songs = document.body.querySelectorAll('.song');
@@ -70,8 +70,14 @@ export function getBlob(id, root) {
 /*
   Give drag drop element to this.
 */
-export function createSongDisplay(song, feature) {
+export function createSongDisplay(song) {
+  searchAudioFeatures(song.id).then(features => {
+    console.log('Song features', {features}); //you should be able to see all the song's features
 
+    //change the content of the (initially empty) h4's
+    document.querySelector('#energyH').innerHTML = 'Energy: ' + features.energy + '- thereby dots, shape';
+    //TODO: continue
+  });
 
   if (song.track.preview_url !== null){
   return (
@@ -83,7 +89,7 @@ export function createSongDisplay(song, feature) {
         <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
         <br/>
 
-        <h4>Energy: {feature.energy} - thereby dots, shape </h4>
+        <h4 id='energyH'></h4>
         <h4>Key: {feature.key} - thereby color </h4>
 
         <br/>
