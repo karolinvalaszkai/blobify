@@ -66,8 +66,8 @@ margin: 15px;
 
 /* Buttons */
 button {
-  width: 140px;
-  height: 43px;
+  /* width: 140px;
+  height: 43px; */
   /* left: 819px;*/
   top: 775px;
   box-sizing: border-box;
@@ -123,7 +123,9 @@ button {
 }
 
 .selected-playlist {
-  background-color: greenyellow;
+  border-color: #ff9c7e;
+  background-color: #ff9c7e;
+
 }
 
 /* Inputs */
@@ -476,7 +478,7 @@ h2 {
   outline:0;
   /* border-radius: 10px; */
   /* margin: 20px; */
-  padding: 50px;
+  /* padding: 50px; */
   transition-duration: 0.4s;
   background-color: #191919;
 }
