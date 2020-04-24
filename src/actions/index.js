@@ -22,3 +22,8 @@ export const muteAudio = bool =>({
   type: 'MUTE_AUDIO',
   bool
 })
+
+export const hideNavbar = bool =>({
+  type: 'HIDE_NAVBAR',
+  bool
+})

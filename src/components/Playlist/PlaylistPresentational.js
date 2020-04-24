@@ -1,23 +1,7 @@
 import React from 'react'
 
-const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, displaySong }) => {
+const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlob}) => {
     const [doneCallback, doneMessage] = whenDone;
-    let collection = getSongCollection();
-    //console.log({collection});
-    
-    collection.then(coll => {
-      coll.map((song, i) => {
-        console.log({song});
-        let title = document.createTextNode(song.title);
-        let row = document.createElement('tr');
-        let column = document.createElement('td');
-
-        column.appendChild(title);
-        row.appendChild(column);
-        document.querySelector('tbody').appendChild(row);
-      });
-    })
-
     return (
       <div id="summary" className="mainContent debug">
         <div>Current playlist:
@@ -25,11 +9,20 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
             <thead>
               <tr>
                 <th>Song</th>
-                <th>Title</th>
-                <th>Time of addition</th>
+                <th>Genre</th>
+                <th>Release date</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+              {songs.map((song, i) =>
+                <tr key={i}>
+                  <td id="blob">{getBlob(song.track.id)}</td>
+                  <td>{displaySong(song)}</td>
+                  <td>{song.track.name}</td>
+                  <td><button onClick={() => onDelete(song)}>Delete from playlist</button></td>
+                </tr>
+              )}
+            </tbody>
             <tfoot>
               <tr><td>TOTAL SONGS</td><td></td><td>{songs.length}</td></tr>
             </tfoot>

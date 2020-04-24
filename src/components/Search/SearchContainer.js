@@ -1,7 +1,7 @@
 import SearchPresentational from './SearchPresentational'
 import { connect } from 'react-redux'
 import { addSong, setCurrentPlaylist, loadPlaylist } from '../../actions'
-import { searchPlaylist, saveSong } from '../../PlaylistModel'
+import { searchPlaylist } from '../../PlaylistModel'
 
 const mapStateToProps = (state) => {
   return { songs: state.currentPlaylist }
@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         if (clickOnSong) {
           const song_id = clickedNode.id;
           //console.log("Song clicked: " + song_id);
-          
+
           clickedNode.childNodes[1].classList.remove('buttonInvisible');
           document.querySelectorAll('.buttonVisible').forEach(button => {
             button.classList.remove('buttonVisible');
@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           //console.log(clickedNode.parentNode.id);
           let clickedSongId = clickedNode.parentNode.id;
           let song = loadedSongs.find(d => d.track.id == clickedSongId);
-          saveSong(song);
+          //console.log({song});
           dispatch(addSong(song));
         }
     },
