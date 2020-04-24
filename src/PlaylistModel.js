@@ -34,37 +34,53 @@ export function displaySongs(songListPromise) {
         searchAudioFeatures(song.id).then(features => {
           var svg = window["blobCreator"](features);
           root.appendChild(svg);
+         
         });
       });
     }, 1000);
 }
 
+// console.log(songObj)
+
 export function getBlob(id, root) {
   setTimeout(() => {
     let root = document.getElementById(id);
-    if (root == null || root.getElementsByTagName('svg').length) {
+    if (root === null || root.getElementsByTagName('svg').length) {
       return;
     }
     searchAudioFeatures(id).then(features => {
       var svg = window["blobCreator"](features);
       root.appendChild(svg);
     });
+
   }, 1000);
+
 }
+
 
 /*
   Give drag drop element to this.
 */
 export function createSongDisplay(song) {
+
+
   if (song.track.preview_url !== null){
   return (
     <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
           onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(song.track.id)}>
       <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
-      <div id={"tooltip-"+song.track.id} className="tooltiptext hidden"><h3>{song.track.name}</h3><br/>
-      <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
-      <a href={song.track.external_urls.spotify} target="_blank">Open in spotify</a>
-      
+      <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
+        <h3>{song.track.name}</h3>
+        <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
+        <br/>
+        <h4>Dots, shape: Energy - {}</h4>
+
+        <h4>Color: Key - {song.key}</h4>
+        
+        {/* <h4>Dots, shape: Energy - {song.track.id.map(data => {return data.audio_features[0]})}</h4> */}
+        <br/>
+        <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
+        
       </div>
     
       {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
@@ -85,7 +101,7 @@ const onDragStart = (ev, song) => {
   ev.dataTransfer.effectAllowed = "copy";
 }
 const openTooltip = (id) => {
-  console.log("open toolkit")
+  console.log("open tooltip")
   var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
   
     // for (var i = 0, len = visibleTooltips.length; i < len; i++) {
@@ -101,7 +117,7 @@ const openTooltip = (id) => {
   var tooltip = document.getElementById("tooltip-"+id);
   let currentClass = tooltip.classList[1];
   tooltip.classList.remove(currentClass);
-  tooltip.classList.add((currentClass == 'hidden'? 'visible' : 'hidden'));
+  tooltip.classList.add((currentClass === 'hidden'? 'visible' : 'hidden'));
 }
 
 export function searchPlaylist(name) {
@@ -114,9 +130,10 @@ export function searchPlaylist(name) {
 export function searchAudioFeatures(id) {
   // Replace variables in case they are falsy (e.g. empty string, null, undefined)
   id = id || "";
-
   return retrieve('?ids='+id, 'audio').then(data => data.audio_features[0]);
+
 }
+
 
 export function retrieve(query, type) {
   const payload = apiConfig.clientID+":"+apiConfig.secretID;
@@ -140,7 +157,7 @@ export function retrieve(query, type) {
 
   async function getSong(type) {
     let wait = await token.then(result => access_token = result.access_token);
-    let fetchString = (type == 'playlist') ?
+    let fetchString = (type === 'playlist') ?
       apiConfig.playlistENDPOINT + query + '/tracks' :
       apiConfig.audioENDPOINT + query;
 
