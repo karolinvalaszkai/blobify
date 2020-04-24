@@ -28,7 +28,7 @@ export function displaySongs(songListPromise) {
     document.getElementById('resultsDiv'),
 
     //features=> React.createElement(React.Fragment, {}, features.map(feature => createSongDisplay(feature))),
-    //document.getElementById('tooltip-"+id'));
+    document.getElementById('tooltip-"+id'));
 
     setTimeout(() => {
       let songs = document.body.querySelectorAll('.song');
@@ -39,10 +39,6 @@ export function displaySongs(songListPromise) {
           root.appendChild(svg);
           var key = features.key;
           var energy = features.energy;
-
-          console.log(key)
-          console.log(energy)
-
         });
       });
     }, 1000);
