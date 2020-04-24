@@ -63,7 +63,7 @@ export function createSongDisplay(song) {
       <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
       <div id={"tooltip-"+song.track.id} className="tooltiptext hidden"><h3>{song.track.name}</h3><br/>
       <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
-      <a href={song.track.external_urls.spotify}>Open in spotify</a>
+      <a href={song.track.external_urls.spotify} target="_blank">Open in spotify</a>
       
       </div>
     
