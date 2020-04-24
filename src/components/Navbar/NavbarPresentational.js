@@ -28,10 +28,10 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
           </span></h4>
      
           <div className="playlist">
-            <button onClick={() => selectPlaylist('37i9dQZEVXbMDoHDwVN2tF')}>Global Top 50</button>
-            <button onClick={() => selectPlaylist('37i9dQZEVXbLiRSasKsNU9')}>Global Viral 50</button>
-            <button onClick={() => selectPlaylist('37i9dQZEVXbeATsTOiMcX0')}>Release Radar</button>
-            <button onClick={() => selectPlaylist('37i9dQZF1DXbHhDw60mrNa')}>Viral Hits</button>
+            <button id='playlist37i9dQZEVXbMDoHDwVN2tF' onClick={() => selectPlaylist('37i9dQZEVXbMDoHDwVN2tF')}>Global Top 50</button>
+            <button id='playlist37i9dQZEVXbLiRSasKsNU9' onClick={() => selectPlaylist('37i9dQZEVXbLiRSasKsNU9')}>Global Viral 50</button>
+            <button id='playlist37i9dQZEVXbeATsTOiMcX0' onClick={() => selectPlaylist('37i9dQZEVXbeATsTOiMcX0')}>Release Radar</button>
+            <button id='playlist37i9dQZF1DXbHhDw60mrNa' onClick={() => selectPlaylist('37i9dQZF1DXbHhDw60mrNa')}>Viral Hits</button>
           </div>
           <h5 id="content-title">Fetched from Spotify</h5>
 

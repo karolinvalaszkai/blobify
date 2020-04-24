@@ -81,6 +81,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     ev.preventDefault()
   },
   selectPlaylist: (playlistID) => {
+    document.querySelectorAll('.selected-playlist')
+      .forEach(button => button.classList.remove('selected-playlist'));
+
+    let selectedButton = document.body.querySelector('#playlist'+playlistID);
+    selectedButton.classList.add('selected-playlist');
+
     searchPlaylist(playlistID).then(data => dispatch(setCurrentPlaylist(data)));
     dispatch(loadPlaylist(playlistID));
   }

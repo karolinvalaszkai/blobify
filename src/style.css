@@ -122,6 +122,10 @@ button {
   top: 15px;
 }
 
+.selected-playlist {
+  background-color: greenyellow;
+}
+
 /* Inputs */
 
 #search-input {
