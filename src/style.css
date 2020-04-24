@@ -212,7 +212,7 @@ div[class="navbar debug nothidden"]{
 
   margin-top: 15%;
   margin-bottom: 15%;
-  padding-left: 12%;
+  padding-left: 10%;
 
   /* margin: 15%; */
   text-align: left! important;
@@ -224,6 +224,7 @@ div[class="navbar debug nothidden"]{
 #navbar>#menu-title {
   position: absolute;
   margin: 25px;
+  padding-left: 12%;
 }
 
 div[class="navbar debug nothidden"]>#menu-title {
@@ -244,7 +245,7 @@ div[class="navbar debug hidden"]>#menu-title:hover {
 
 .navbarContent-playlist{
   background: #171717;
-  margin-top: 12%;
+  margin-top: 10%;
   margin-bottom: 10%;
   padding: 10%;
 
