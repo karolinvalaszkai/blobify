@@ -25,10 +25,10 @@ export function displaySongs(songListPromise) {
   RenderPromise.render(
     songListPromise,
     songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
-    document.getElementById('resultsDiv'),
+    document.getElementById('resultsDiv'));
 
     //features=> React.createElement(React.Fragment, {}, features.map(feature => createSongDisplay(feature))),
-    document.getElementById('tooltip-"+id'));
+    //document.getElementById('tooltip-"+id'));
 
     setTimeout(() => {
       let songs = document.body.querySelectorAll('.song');
