@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     let muteButton = document.body.querySelector('.muteButton');
     let currentClass = muteButton.classList[1];
     muteButton.classList.remove(currentClass);
-    muteButton.classList.add((currentClass == 'mute'? 'unmute' : 'mute'));
+    muteButton.classList.add((currentClass === 'mute'? 'unmute' : 'mute'));
 
     let audioElements = document.getElementsByTagName("audio");
     Object.keys(audioElements).map((i) =>
@@ -37,7 +37,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     let currentClass = navbarDiv.classList[2];
 
     navbarDiv.classList.remove(currentClass);
-    navbarDiv.classList.add((currentClass == 'hidden'? 'nothidden' : 'hidden'));
+    navbarDiv.classList.add((currentClass === 'hidden'? 'nothidden' : 'hidden'));
   },
 
   onDrop: (ev) => {
@@ -62,7 +62,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       var children = miniPreview.children;
       for(var i = 0; i < children.length; i++) {
         var currChild = children[i];
-        if(currChild.getAttribute("id") == JSON.parse(song).track.id) {
+        if(currChild.getAttribute("id") === JSON.parse(song).track.id) {
           miniPreview.removeChild(currChild);
           break;
         }
