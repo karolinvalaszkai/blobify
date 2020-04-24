@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistControl, handleClick, openNav, onDrop, onDragOver}) => {
+const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistControl, handleClick, openNav, onDrop, onDragOver, selectPlaylist}) => {
   const [homepageAction, homepageMessage] = homepageControl;
   const [playlistAction, playlistMessage] = playlistControl;
   const nSongs = songs.length;
@@ -27,7 +27,12 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
                                     The level of energy determines its shape, key its color and the dots... - we call it blobify. </span>
           </span></h4>
      
-          <div className="playlist"></div>
+          <div className="playlist">
+            <button onClick={() => selectPlaylist('37i9dQZEVXbMDoHDwVN2tF')}>Global Top 50</button>
+            <button onClick={() => selectPlaylist('37i9dQZEVXbLiRSasKsNU9')}>Global Viral 50</button>
+            <button onClick={() => selectPlaylist('37i9dQZEVXbeATsTOiMcX0')}>Release Radar</button>
+            <button onClick={() => selectPlaylist('37i9dQZF1DXbHhDw60mrNa')}>Viral Hits</button>
+          </div>
           <h5 id="content-title">Fetched from Spotify</h5>
 
         </div>

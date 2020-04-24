@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import NavbarPresentational from './NavbarPresentational'
-import { hideNavbar } from '../../actions'
-import { muteAudio, addSong, removeSong } from '../../actions'
+import { muteAudio, addSong, removeSong, loadPlaylist, setCurrentPlaylist, hideNavbar } from '../../actions'
+import { searchPlaylist } from '../../PlaylistModel'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -79,6 +79,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   onDragOver: (ev) => {
     ev.preventDefault()
+  },
+  selectPlaylist: (playlistID) => {
+    searchPlaylist(playlistID).then(data => dispatch(setCurrentPlaylist(data)));
+    dispatch(loadPlaylist(playlistID));
   }
 })
 
