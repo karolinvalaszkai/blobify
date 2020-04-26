@@ -35,6 +35,7 @@ export function displaySongs(songListPromise) {
       songs.forEach(song => {
         let root = document.getElementById(song.id);
         searchAudioFeatures(song.id).then(features => {
+          root.childNodes[2].remove(root.childNodes['img']);
           var svg = window["blobCreator"](features);
           root.appendChild(svg);
           var key = features.key;
@@ -53,6 +54,7 @@ export function getBlob(id, root) {
       return;
     }
     searchAudioFeatures(id).then(features => {
+      root.childNodes[2].remove(root.childNodes['img']);
       var svg = window["blobCreator"](features);
       root.appendChild(svg);
       
@@ -92,8 +94,8 @@ export function createSongDisplay(song) {
           <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
           
         </div>
-      
         {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
+        <img className='loadingBlobs' src="blurryblobBW.svg"  alt="blobyfied song" height='300' width='300'/>
         <br/>
       </div>
     );
