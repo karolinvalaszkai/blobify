@@ -35,6 +35,10 @@ body::-webkit-scrollbar {
 
 .spinnerClass {
   text-align: center;
+  position: fixed;
+  vertical-align: center;
+  margin-left: 55%;
+  margin-top: 20%;
 }
 
 a {
