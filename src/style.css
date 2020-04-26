@@ -542,13 +542,26 @@ h2 {
 
 /* Tooltip */
 
-@keyframes loadingBlob {
-  from {opacity: 0;}
-  to {opacity: 1;}
+@keyframes loadingBlurryBlob {
+  0%   {opacity: 0;}
+  50%  {opacity: 0.6;}
+  100% {opacity:1;}
 }
 .loadingBlobs {
+  animation-name: loadingBlurryBlob;
+  animation-duration: 2s !important;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+
+}
+@keyframes loadingBlob {
+  from {filter: grayscale(10%);
+        opacity: 0;}
+  to {filter: grayscale(0%);opacity: 1;}
+}
+.two {
   animation-name: loadingBlob;
-  animation-duration: 0.7s;
+  animation-duration: 2s;
   animation-timing-function: ease-in;
 
 }
