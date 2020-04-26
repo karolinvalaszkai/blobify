@@ -542,4 +542,13 @@ h2 {
 
 /* Tooltip */
 
+@keyframes loadingBlob {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.loadingBlobs {
+  animation-name: loadingBlob;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in;
 
+}
