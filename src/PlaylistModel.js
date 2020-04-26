@@ -36,7 +36,7 @@ export function displaySongs(songListPromise) {
         let root = document.getElementById(song.id);
         searchAudioFeatures(song.id).then(features => {
           root.childNodes[2].remove(root.childNodes['img']);
-          var svg = window["blobCreator"](features);
+          var svg = window["blobCreator"](features,1);
           root.appendChild(svg);
           var key = features.key;
           var energy = features.energy;
@@ -47,7 +47,7 @@ export function displaySongs(songListPromise) {
 
 // console.log(songObj)
 
-export function getBlob(id, root) {
+export function getBlob(id, scale, root) {
   setTimeout(() => {
     let root = document.getElementById(id);
     if (root === null || root.getElementsByTagName('svg').length) {
@@ -55,7 +55,7 @@ export function getBlob(id, root) {
     }
     searchAudioFeatures(id).then(features => {
       root.childNodes[2].remove(root.childNodes['img']);
-      var svg = window["blobCreator"](features);
+      var svg = window["blobCreator"](features, scale);
       root.appendChild(svg);
       
     });

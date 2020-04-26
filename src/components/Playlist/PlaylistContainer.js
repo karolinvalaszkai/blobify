@@ -11,7 +11,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   whenDone: [() => ownProps.history.push("/trending"), "Back to the trending songs"],
   onDelete: song => dispatch(removeSong(song)),
   displaySong: song => createSongDisplay(song),
-  getBlob: (id) => getBlob(id)
+  getBlob: (id,scale) => getBlob(id,scale)
   /*call: getBlobs()*/
 })
 

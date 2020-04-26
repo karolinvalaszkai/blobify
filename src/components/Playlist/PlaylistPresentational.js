@@ -16,7 +16,7 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
             <tbody>
               {songs.map((song, i) =>
                 <tr key={i}>
-                  <td id="blob">{getBlob(song.track.id)}</td>
+                  <td id="blob">{getBlob(song.track.id,0.8)}</td>
                   <td>{displaySong(song)}</td>
                   <td>{song.track.name}</td>
                   <td><button onClick={() => onDelete(song)}>Delete from playlist</button></td>
