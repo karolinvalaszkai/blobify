@@ -24,7 +24,7 @@ class RenderPromise {
 
   static createSpinner() {
   	return React.createElement("div", {className: "spinnerClass"},
-            React.createElement("img", {height: 100,  alt: "", src: "http://cdn.lowgif.com/full/d9675675623d5f27-loading-gif-transparent-background-loading-gif.gif"}));
+            React.createElement("img", {height: 100,  alt: "", src: "spinner.svg"}));
   }
 
 }
