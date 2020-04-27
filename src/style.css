@@ -35,6 +35,10 @@ body::-webkit-scrollbar {
 
 .spinnerClass {
   text-align: center;
+  position: fixed;
+  vertical-align: center;
+  margin-left: 55%;
+  margin-top: 20%;
 }
 
 a {
@@ -48,16 +52,16 @@ a {
 margin: 15px;
 }
 
+
 .song {
   display: inline-block;
   vertical-align: top;
   float: right;
   margin: 0.5%;
   margin-bottom: -4%;
-
-
   /* border: 1px dashed green; */
 }
+
 
 .song > span {
   display: inline-block;
@@ -480,7 +484,7 @@ h2 {
   /* margin: 20px; */
   /* padding: 50px; */
   transition-duration: 0.4s;
-  background-color: #191919;
+  /* background-color: #191919; */
 }
 /* .playlist:hover {
   background-color: #4CAF50;
@@ -518,6 +522,9 @@ h2 {
   height: 90px;
   overflow-x: hidden;
   overflow-y: visible;
+  border: dotted;
+  border-width: 0.05rem;
+  border-color: rgb(8,8,8);
 }
 
 .drophere::-webkit-scrollbar {
@@ -538,4 +545,106 @@ h2 {
 
 /* Tooltip */
 
+@keyframes loadingBlurryBlob {
+  0%   {opacity: 0;}
+  50%  {opacity: 0.6;}
+  100% {opacity:1;}
+}
+.loadingBlobs {
+  animation-name: loadingBlurryBlob;
+  animation-duration: 2s !important;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
 
+}
+@keyframes loadingBlob {
+  from {filter: grayscale(10%);
+        opacity: 0;}
+  to {filter: grayscale(0%);opacity: 1;}
+}
+.two {
+  animation-name: loadingBlob;
+  animation-duration: 2s;
+  animation-timing-function: ease-in;
+  
+}
+#summary {
+  z-index: 2;
+  background: rgb(8,8,8,0.6);
+  position: fixed;
+  bottom: 0;
+  right: 0rem;
+  left: 0;
+  top: 0;
+  flex: 1;
+}
+
+#summaryContent{
+  margin: 4rem;
+  margin-left: 30rem;
+  padding: 3rem;
+  overflow: visible;
+  background-color: #191919;
+  height: 80%;
+  overflow: hidden;
+}
+
+table {
+  display: flex;
+  flex-flow: column;
+  margin: 1rem;
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+}
+table thead {
+  /* head takes the height it requires, 
+  and it's not scaled when table is resized */
+  flex: 0 0 auto;
+  width: calc(100% - 0.9em);
+}
+table tbody {
+  /* body takes all the remaining available space */
+  flex: 1 1 auto;
+  display: block;
+  overflow-y: scroll;
+}
+table tbody tr {
+  width: 100%;
+}
+table thead, table tbody tr {
+  display: table;
+  table-layout: fixed;
+}
+
+
+
+
+/* CLOSE BUTTON */
+
+.close {
+  position: absolute;
+  right: 5rem;
+  top: 5rem;
+  width: 3rem;
+  height: 3rem;
+  opacity: 1;
+}
+.close:hover {
+  opacity: 0.5;
+}
+
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: rgb(138, 138, 138);
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}

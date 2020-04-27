@@ -35,7 +35,8 @@ export function displaySongs(songListPromise) {
       songs.forEach(song => {
         let root = document.getElementById(song.id);
         searchAudioFeatures(song.id).then(features => {
-          var svg = window["blobCreator"](features);
+          root.childNodes[2].remove(root.childNodes['img']);
+          var svg = window["blobCreator"](features,1);
           root.appendChild(svg);
           var key = features.key;
           var energy = features.energy;
@@ -46,14 +47,15 @@ export function displaySongs(songListPromise) {
 
 // console.log(songObj)
 
-export function getBlob(id, root) {
+export function getBlob(id, scale, root) {
   setTimeout(() => {
     let root = document.getElementById(id);
     if (root === null || root.getElementsByTagName('svg').length) {
       return;
     }
     searchAudioFeatures(id).then(features => {
-      var svg = window["blobCreator"](features);
+      root.childNodes[2].remove(root.childNodes['img']);
+      var svg = window["blobCreator"](features, scale);
       root.appendChild(svg);
       
     });
@@ -97,8 +99,8 @@ export function createSongDisplay(song) {
           <br/>
           
         </div>
-      
         {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
+        <img className='loadingBlobs' src="blurryblobBW.svg"  alt="blobyfied song" height='300' width='300'/>
         <br/>
       </div>
     );

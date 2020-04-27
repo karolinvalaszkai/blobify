@@ -3,8 +3,12 @@ import React from 'react'
 const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlob}) => {
     const [doneCallback, doneMessage] = whenDone;
     return (
-      <div id="summary" className="mainContent debug">
-        <div>Current playlist:
+      <div id="summary" className="">
+        
+        <div id="summaryContent"><h2>Current playlist</h2>
+        <div>
+        <div className="close" onClick={() => doneCallback()}></div>
+        </div>
           <table>
             <thead>
               <tr>
@@ -13,12 +17,12 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
                 <th>Release date</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="tableBody">
               {songs.map((song, i) =>
                 <tr key={i}>
-                  <td id="blob">{getBlob(song.track.id)}</td>
+                  <td id="blob">{getBlob(song.track.id,0.8)}</td>
                   <td>{displaySong(song)}</td>
-                  <td>{song.track.name}</td>
+                  <td><h4>{song.track.name}</h4></td>
                   <td><button onClick={() => onDelete(song)}>Delete from playlist</button></td>
                 </tr>
               )}
@@ -28,9 +32,7 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
             </tfoot>
           </table>
         </div>
-        <div>
-          <button className="nav" onClick={() => doneCallback()}>{doneMessage}</button>
-        </div>
+        
       </div>
     )
 
