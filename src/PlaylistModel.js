@@ -72,6 +72,8 @@ export function createSongDisplay(song) {
 
     //change the content of the (initially empty) h4's
     document.querySelector('#energyH').innerHTML = 'Energy: ' + features.energy + '- thereby dots, shape';
+    document.querySelector('#keyH').innerHTML = 'Key: ' + features.key + '- thereby color';
+
     //TODO: continue
   });
 
@@ -81,15 +83,18 @@ export function createSongDisplay(song) {
             onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(song.track.id)}>
         <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
         <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
+
+
           <h3>{song.track.name}</h3>
           <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
           <br/>
 
-          <h4 id='energyH'></h4>
-          <h4>Key:  - thereby color </h4>
+          <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a> <br/>
+
+          <h4 id="energyH"></h4>
+          <h4 id="keyH"></h4>
 
           <br/>
-          <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
           
         </div>
       
