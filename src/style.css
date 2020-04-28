@@ -554,7 +554,7 @@ h2 {
   animation-name: loadingBlurryBlob;
   animation-duration: 2s !important;
   animation-timing-function: ease-in;
-  animation-iteration-count: infinite;
+  /* animation-iteration-count: infinite; */
 
 }
 @keyframes loadingBlob {
@@ -562,7 +562,7 @@ h2 {
         opacity: 0;}
   to {filter: grayscale(0%);opacity: 1;}
 }
-.two {
+#resultsDiv>.two {
   animation-name: loadingBlob;
   animation-duration: 2s;
   animation-timing-function: ease-in;

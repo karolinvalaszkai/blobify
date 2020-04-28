@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   playlistControl: [
     () => {let root = document.getElementById("miniPreview");
           while(root.firstChild) {root.removeChild(root.firstChild)};
-          ownProps.history.push("/myplaylist")},"Export to Spotify"],
+          ownProps.history.push("/myplaylist")},"View collection"],
   handleClick: (muted) => {
     dispatch(muteAudio(muted));
 

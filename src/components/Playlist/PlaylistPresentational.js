@@ -5,7 +5,7 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
     return (
       <div id="summary" className="">
         
-        <div id="summaryContent"><h2>Current playlist</h2>
+        <div id="summaryContent"><h2>Your collection</h2>
         <div>
         <div className="close" onClick={() => doneCallback()}></div>
         </div>
@@ -28,7 +28,11 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
               )}
             </tbody>
             <tfoot>
-              <tr><td>TOTAL SONGS</td><td></td><td>{songs.length}</td></tr>
+              <tr>
+                <td>TOTAL SONGS</td><td></td><td>{songs.length}</td>
+                <td><button onClick={() => console.log("Export to spotify")}>Export to spotify</button></td>
+              </tr>
+              
             </tfoot>
           </table>
         </div>
