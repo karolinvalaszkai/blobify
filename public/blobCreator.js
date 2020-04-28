@@ -31,7 +31,7 @@ var two = new Two({
   //var strength = 0.0625;
 
   //Sets speed of animation:
-  var strength = songObj.tempo/100//energy;
+  var strength =Math.pow(songObj.tempo,0.1)
  // console.log(strength);
   var drag = 0.0;
 
@@ -42,11 +42,39 @@ var two = new Two({
   var points = [];
   var i = 0;
 
+  var n = 0;
+  var peak = 0;
+  var reverse = false;
+
   //Sets number of points
   Two.Resolution = songObj.energy*50+3
-  //var tempoArray = [...Array(parseInt(songObj.tempo)).keys()]
 
   for (i = 0; i < Two.Resolution; i++) {
+
+    //To create the values for the peaks of the animation. for example -> 0   0.25   0.5   0.75   1   0.75   0.5 ...
+    if (reverse === false){
+      if (n+1/songObj.time_signature>1) {
+        reverse = true;
+        n=0;
+      }
+      else {
+        n+=1/songObj.time_signature;
+        peak = n;
+      }
+    }
+    else {
+      if (n+1/songObj.time_signature>1) {
+        reverse = false;
+        n=0;
+      }
+      else {
+        n+=1/songObj.time_signature;
+        peak = 1-n;
+      }
+    }
+    //Changes the difference between the peaks
+    peak = peak * 0.3 
+
     var pct = i / Two.Resolution;
     var theta = pct * Math.PI * 2;
 
@@ -56,9 +84,9 @@ var two = new Two({
     var variance = Math.pow(1-energy,0.2);
     var bx = variance * ax;
     var by = variance * ay;
-
+    //console.log(beatsArray[i]);
     var origin = physics.makeParticle(mass, ax, ay)
-    var particle = physics.makeParticle(Math.random() * mass * 0.66 + mass * 0.33, bx, by);
+    var particle = physics.makeParticle(peak * mass * 0.66 + mass * 0.33, bx, by);
     var spring = physics.makeSpring(particle, origin, strength, drag, 0);
 
     origin.makeFixed();
