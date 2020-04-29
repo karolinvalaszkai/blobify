@@ -22,13 +22,26 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
     let muteButton = document.body.querySelector('.muteButton');
     let currentClass = muteButton.classList[1];
-    muteButton.classList.remove(currentClass);
-    muteButton.classList.add((currentClass == 'mute'? 'unmute' : 'mute'));
+    //muteButton.classList.remove(currentClass);
+    //muteButton.classList.add((currentClass == 'mute'? 'unmute' : 'mute'));
 
     let audioElements = document.getElementsByTagName("audio");
+    
+    //sound on 
+    if (muted===false){
+      console.log('mute');
+      muteButton.classList.remove('mute');
+      muteButton.classList.add('unmute');
+    
+    }
+    else if (muted===true){
+      console.log('unmute');
+      muteButton.classList.remove('unmute');
+      muteButton.classList.add('mute');
+    }
     Object.keys(audioElements).map((i) =>
       audioElements[i].muted = muted)
-
+    
   },
   openNav: (nav) => {
     dispatch(hideNavbar(nav));
