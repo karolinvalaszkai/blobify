@@ -4,7 +4,6 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
     const [doneCallback, doneMessage] = whenDone;
     return (
       <div id="summary" className="">
-        
         <div id="summaryContent"><h2>Your collection</h2>
         <div>
         <div className="close" onClick={() => doneCallback()}></div>
@@ -36,7 +35,7 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
             </tfoot>
           </table>
         </div>
-        
+        <div id="backgroundSummary" onClick={() => doneCallback()}></div>
       </div>
     )
 

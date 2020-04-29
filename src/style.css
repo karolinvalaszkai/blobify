@@ -571,22 +571,28 @@ h2 {
 #summary {
   z-index: 2;
   background: rgb(8,8,8,0.6);
+#backgroundSummary {
   position: fixed;
+  background: rgb(8,8,8,0.6);
   bottom: 0;
   right: 0rem;
   left: 0;
   top: 0;
   flex: 1;
+  z-index: 2;
 }
 
 #summaryContent{
+  position: fixed;
   margin: 4rem;
   margin-left: 30rem;
+  margin-bottom: 30rem;
   padding: 3rem;
   overflow: visible;
   background-color: #191919;
   height: 80%;
   overflow: hidden;
+  z-index: 5;
 }
 
 table {
