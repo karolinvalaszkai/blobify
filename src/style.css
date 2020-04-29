@@ -46,7 +46,7 @@ a {
   font-family: 'OpenSans-regular';
   font-style: normal;
   font-weight: 800;
-  font-size: 10px;
+  font-size: 14px;
 }
 .resultsDiv{
 margin: 15px;
@@ -288,17 +288,19 @@ div[class="navbar debug hidden"]>#menu-title:hover {
 }
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 500px;
-  background-color: #191919;
+  width: 50em;
+  height: 18em;
+  background-color: #171717;
   color: #ffffff;
   text-align: left;
-  padding: 15px;
+  padding: 2.5em;
   position: absolute;
   z-index: 1;
+  top: 100%;
   bottom: 125%;
   left: 50%;
   margin-left: -60px;
-  opacity: 0;
+  opacity: 1!important;
   transition: opacity 0.3s;
 }
 
@@ -310,13 +312,19 @@ div[class="navbar debug hidden"]>#menu-title:hover {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
+  border-color: #777 transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
-  opacity: 1;
+  /* opacity: 1; */
 }
+
+/* .energy_explain{
+  white-space: nowrap; */
+  /* display: inline block; */
+  /* overflow-wrap: break-word;
+}  */
 
 .songtooltip {
   position: relative;
@@ -426,6 +434,18 @@ h2 {
       text-align: right;
       /* letter-spacing: 0.1em; */
       }
+
+      h6 {
+        font-family: 'OpenSans-regular';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 14px;
+        color: #ffffff;
+        
+        text-align: left;
+        /* letter-spacing: 0.1em; */
+        margin-top: 0px;
+        }
   
   
       @font-face {
@@ -548,7 +568,7 @@ h2 {
 
 
 
-/* Tooltip */
+/* Loading blobs */
 
 @keyframes loadingBlurryBlob {
   0%   {opacity: 0;}

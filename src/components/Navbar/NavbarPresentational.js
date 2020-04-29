@@ -21,10 +21,28 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
           <br/>
           <h2 id="content-title">Pick playlist</h2>
           <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs
-          <span className="tooltiptext">What you see here is not random colors and shapes. <br/><br/>
-                                    Songs contain data. <br/> <br/>
-                                    A blob is a visual representation of a songs data, more so its energy and key. <br/><br/>
-                                    The level of energy determines its shape, key its color and the dots... - we call it blobify. </span>
+          <span className="tooltiptext">
+          What you see here is not random colors and shapes.<br/><br/>
+
+A blob is a visual representation of a tracks <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features</a> - data on its energy, tempo and key.<br/><br/><br/>
+{/* 
+<div className="energy_explain">
+  <h4>the<h6>energy</h6>of the track</h4>
+</div> */}
+
+The ENERGY of the track is mapped to the number of dots in the blobs which determines its shape.<br/><br/> 
+{/* <h4>The higher the energy, the more aggressive blob.</h4><br/> */}
+
+The TEMPO of the track is mapped to the speed of the blob.<br/><br/>
+
+                                    
+The KEY of the track is mapped to the color of the blob based on <a className="link" href="http://www.harmonics.com/lucy/lsd/colors.html" target="_blank">Charles Fourier's theory.</a><br/><br/><br/>
+
+{/* - We call it to blobify songs. <br/><br/> */}
+
+
+Click on the blobs for more.
+</span>
           </span></h4>
      
           <div className="playlist">
