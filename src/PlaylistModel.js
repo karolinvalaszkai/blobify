@@ -70,13 +70,11 @@ export function getBlob(id, scale, root) {
 */
 export function createSongDisplay(song) {
   searchAudioFeatures(song.track.id).then(features => {
-    console.log('Song features', {features}); //you should be able to see all the song's features
+    //console.log('Song features', {features}); //you should be able to see all the song's features
 
     //change the content of the (initially empty) h4's
-    document.querySelector('#energyH').innerHTML = 'Energy: ' + features.energy + '- thereby dots, shape';
-    document.querySelector('#keyH').innerHTML = 'Key: ' + features.key + '- thereby color';
-
-    //TODO: continue
+    //document.querySelector('.energyH').innerHTML = 'Energy: ' + features.energy + '- thereby dots, shape';
+    //document.querySelector('.keyH').innerHTML = 'Key: ' + features.key + '- thereby color';
   });
 
   if (song.track.preview_url !== null){
@@ -93,8 +91,8 @@ export function createSongDisplay(song) {
 
           <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a> <br/>
 
-          <h4 id="energyH"></h4>
-          <h4 id="keyH"></h4>
+          <h4 className={"energyH"}></h4>
+          <h4 className={"keyH"}></h4>
 
           <br/>
           
