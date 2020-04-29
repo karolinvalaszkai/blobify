@@ -31,7 +31,7 @@ var two = new Two({
   //var strength = 0.0625;
 
   //Sets speed of animation:
-  var strength =Math.pow(songObj.tempo,0.1)
+  var strength = songObj.tempo/150//Math.pow(songObj.tempo,0.01)
  // console.log(strength);
   var drag = 0.0;
 
