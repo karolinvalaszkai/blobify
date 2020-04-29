@@ -75,13 +75,18 @@ button {
   /* left: 819px;*/
   top: 775px;
   box-sizing: border-box;
-  /* border-radius: 15px; */
-  font-family: 'Gilroy-Medium ☞';
-  font-size: 12px;
+  border-radius:0.15em;
+  font-family: 'OpenSans-regular';
+      font-style: normal;
+      font-weight: 800;
+      font-size: 12px;
   padding: 7px;
   margin: 10px;
   }
 
+  button:hover {
+    transform: scale(1.05);
+  }
   #collection-button {
     /* margin: 10px; */
     bottom: 10%;
