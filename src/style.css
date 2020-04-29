@@ -568,9 +568,7 @@ h2 {
   animation-timing-function: ease-in;
   
 }
-#summary {
-  z-index: 2;
-  background: rgb(8,8,8,0.6);
+
 #backgroundSummary {
   position: fixed;
   background: rgb(8,8,8,0.6);
