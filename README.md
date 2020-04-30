@@ -1,14 +1,14 @@
 ## Project 
 
-peek music lab
+blobify
 
-A Spotify powered web application for previewing songs by a visual representation of its energy, pitch and valence.
+A Spotify powered web application for exploring a music playlist through a visual representation of the tracks energy, tempo and key.
 
 Hosted on https://iprog2020.firebaseapp.com/trending
 
 ## Project status
 
-This project is currently in development. Users can interact with visual data representation. The functionality to play audio and save songs to my collection is in progress.
+This project is currently in development. Users can interact with visual data representation, play audio and save songs to my collection. Some bugs are under development.
 
 ## Setup
 
