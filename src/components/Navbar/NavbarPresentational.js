@@ -20,7 +20,9 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
           {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
           <br/>
           <h2 id="content-title">Pick playlist</h2>
-          <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs
+          <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs  
+          {/* <div className='question' onClick={() => handleClick()}></div> */}
+
           <span className="tooltiptext">
           What you see here is not random colors and shapes.<br/><br/>
 
@@ -29,7 +31,7 @@ A blob is a visual representation of a tracks <a className="link" href="https://
 <div className="energy_explain">
   <h4>the<h6>energy</h6>of the track</h4>
 </div> */}
-
+{/* <h4> */}
 The ENERGY of the track is mapped to the number of dots in the blobs which determines its shape.<br/><br/> 
 {/* <h4>The higher the energy, the more aggressive blob.</h4><br/> */}
 
@@ -40,19 +42,25 @@ The KEY of the track is mapped to the color of the blob based on <a className="l
 
 {/* - We call it to blobify songs. <br/><br/> */}
 
-
+{/* </h4> */}
 Click on the blobs for more.
 </span>
           </span></h4>
      
           <div className="playlist">
-            <button id='playlist37i9dQZEVXbMDoHDwVN2tF' className="selected-playlist" onClick={() => selectPlaylist('37i9dQZEVXbMDoHDwVN2tF')}>Global Top 50</button>
+          <button id='playlist37i9dQZF1DXcBWIGoYBM5M' className="selected-playlist" onClick={() => selectPlaylist('37i9dQZF1DXcBWIGoYBM5M')}>Today's Top Hits</button>
+
+            {/* <button id='playlist37i9dQZEVXbMDoHDwVN2tF' className="selected-playlist" onClick={() => selectPlaylist('37i9dQZEVXbMDoHDwVN2tF')}>Global Top 50</button> */}
+            {/* <button id='playlist37i9dQZEVXbeATsTOiMcX0' onClick={() => selectPlaylist('37i9dQZEVXbeATsTOiMcX0')}>Release Radar</button> */}
+            {/* <button id='playlist37i9dQZF1DWWBHeXOYZf74' onClick={() => selectPlaylist('37i9dQZF1DWWBHeXOYZf74')}>Pollen</button> */}
+
             <button id='playlist37i9dQZEVXbLiRSasKsNU9' onClick={() => selectPlaylist('37i9dQZEVXbLiRSasKsNU9')}>Global Viral 50</button>
-            <button id='playlist37i9dQZEVXbeATsTOiMcX0' onClick={() => selectPlaylist('37i9dQZEVXbeATsTOiMcX0')}>Release Radar</button>
-            <button id='playlist37i9dQZF1DXbHhDw60mrNa' onClick={() => selectPlaylist('37i9dQZF1DXbHhDw60mrNa')}>Viral Hits</button>
+            {/* <button id='playlist65hCGG0JopRfj06rs1ilmJ' onClick={() => selectPlaylist('65hCGG0JopRfj06rs1ilmJ')}>Swedish Radio P3</button> */}
+            <button id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music Friday</button>
+            <button id='playlist37i9dQZF1DX2Wvd8VINtcF' onClick={() => selectPlaylist('37i9dQZF1DX2Wvd8VINtcF')}>Oyster</button>
+
           </div>
           <h5 id="content-title">Fetched from Spotify</h5>
-
         </div>
 
         <div className="navbarContent-save droppable drophere"
