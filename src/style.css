@@ -70,38 +70,45 @@ margin: 15px;
 
 /* Buttons */
 button {
-  /* width: 140px;
-  height: 43px; */
-  /* left: 819px;*/
-  top: 775px;
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
   box-sizing: border-box;
-  border-radius:0.15em;
+  text-decoration:none;
   font-family: 'OpenSans-regular';
-      font-style: normal;
-      font-weight: 800;
-      font-size: 12px;
+  font-style: normal;
+
+  font-size: 13px;
+  color: rgb(8, 8, 8);
+  background-color: white;
+  text-align:center;
+  transition: all 0.2s;
+
+
+  border-radius:0.3em;
   padding: 7px;
-  margin: 10px;
+  margin:0.2em 0.5em 0.5em 0.2em;
   cursor: pointer;
+  
+  /* margin-right: 1rem;
+  margin-left: 0rem; */
+  }
+  .playlistButton {
+    font-size: 11px;
+    width: 10em;
   }
 
+/* 
   button:hover {
     transform: scale(1.05);
-  }
-  #collection-button {
-    /* margin: 10px; */
-    bottom: 10%;
-        /* background-color: #54d46a;
-    color: white; */
-
-
-  }
-
-  /* #collection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
   } */
+
+    button:hover{
+    color:#000000;
+    /* background-color:rgb(206, 206, 206); */
+    transform: scale(1.03);
+    }
+    
 .buttonInvisible {
   display: none;
 }
@@ -114,11 +121,9 @@ button {
   width: 50px;
   height: 50px;
   cursor: pointer;
-  position: static;
-
   position: fixed;
-  right: 15px;
-  top: 15px;
+  right: 2em;
+  top: 2em;
 }
 .mute {
   background-image: url(./graphics/mute.svg);
@@ -128,8 +133,8 @@ button {
   cursor: pointer;
 
   position: fixed;
-  right: 15px;
-  top: 15px;
+  right: 2em;
+  top: 2em;
 }
 
 .question {
@@ -147,7 +152,7 @@ button {
 
 .selected-playlist {
   border-color: #ff9c7e;
-  background-color: #ff9c7e;
+  background-color: #ff9c7e !important;
 
 }
 
@@ -176,6 +181,8 @@ button {
 }
 #menu-title {
   color: transparent;
+  text-align: left;
+  padding-left: 8%;
   z-index: 10;
 
     -webkit-touch-callout: none; /* iOS Safari */
@@ -192,11 +199,8 @@ button {
     transition-delay: 0.05s;
     cursor: pointer;
   }
-  #menu-title:hover {
-    color: rgb(0, 0, 0);
-  }
 
-/* NAVBAR SPECIFICS */
+/* NAVBAR */
 .nav {
   float: left;
 }
@@ -205,98 +209,53 @@ button {
   position: fixed;
   display: flex;
   overflow: visible;
-  /* flex-basis: 20%; */
-  height: 80%;
-  /* float: right; */
-  /* flex-direction: inherit; */
+  height: 100%;
   left: 0px;
   top: 0px;
-  /* background-color: transparent;
-  background: #171717 */
-
-  /* background: url(./graphics/aboutMenu.svg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; */
 }
-
-div[class="navbar debug hidden"]{
-  width: 0%;
-  min-width: none;
-  transition-property: width;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.5s;
-}
-
-div[class="navbar debug nothidden"]{
-  width: 25%;
-  transition-property: width;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.5s;
-}
-
 #navbar>.navbarContent {
-  /* top: 5%;
- */
-
-  margin-top: 15%;
+  margin-top: 1rem;
   margin-bottom: 15%;
   padding-left: 10%;
-
-  /* margin: 15%; */
   text-align: left! important;
-  /* left: -115px; */
-  /* margin-right: 50%;
-  padding-left: 15%; */
+
 }
 
 #navbar>#menu-title {
-  position: absolute;
-  margin: 25px;
-  padding-left: 12%;
-}
-
-div[class="navbar debug nothidden"]>#menu-title {
-  /* margin-right: -270px; */
-  /* left: 35% !important; */
-}
-
-div[class="navbar debug hidden"]>#menu-title {
-  /* margin-right: -285px; */
-  /* left: -160px !important; */
-}
-
-div[class="navbar debug hidden"]>#menu-title:hover {
-  /* margin-right: -295px; */
-  /* left: -150px !important; */
-
+  position: relative;
+  margin: 0rem;
+  margin-left: 0rem;
 }
 
 .navbarContent-playlist{
+  position: relative;
   background: #171717;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-bottom: 10%;
-  padding: 10%;
 
   /* set width - remove for original width */
   width: 16em;
-
+  
+  padding: 8%;
+  border-radius: 0.3rem;
   /* margin: 15%; */
   text-align: left! important;
 }
 
 .navbarContent-save{
+  position: relative;
   background: #171717;
   margin-bottom: 15%;
-  padding: 10%;
 
-    /* set width - remove for original width */
+  /* set width - remove for original width */
 
   width: 16em;
 
+  padding: 8%;
+  border-radius: 0.3em;
   /* margin: 15%; */
   text-align: left! important;
+
 
 }
 
@@ -396,13 +355,11 @@ g {
 }
 
 div[class="tooltiptext hidden"] {
-  color: blue;
   visibility: hidden !important;
   opacity: 0 !important;
 }
 
 div[class="tooltiptext visible"]{
-  color: red;
   visibility: visible !important;
   opacity: 1 !important;
 } 
@@ -412,7 +369,7 @@ h1 {
   font-family: 'Gilroy-Bold ☞';
   font-style: normal;
   font-weight: 800;
-  font-size: 25px;
+  font-size: 34px;
 
 
   -webkit-text-stroke: 0.03em #FFFFFF;
@@ -576,11 +533,16 @@ h2 {
 
 .miniPreviewScroll {
   height: 90px;
+  margin: 0.5em;
+  margin-left: 0em;
+  margin-bottom: 1.4em;
+  border-radius: 0.3em;
+  /* border-color: #ff9c7e;
+  border-width: 0.05rem;
+  border-style: inset; */
   overflow-x: hidden;
   overflow-y: visible;
-  border: dotted;
-  border-width: 0.05rem;
-  border-color: rgb(8,8,8);
+  background-color: rgb(14, 14, 14)
 }
 
 .drophere::-webkit-scrollbar {
@@ -638,15 +600,16 @@ h2 {
 
 #summaryContent{
   position: fixed;
-  margin: 4rem;
-  margin-left: 30rem;
-  margin-bottom: 30rem;
+  margin: 4rem 6rem 4rem 25rem;
+
+  margin-bottom: 10%;
   padding: 3rem;
   overflow: visible;
   background-color: #191919;
-  height: 80%;
+  height: 70%;
   overflow: hidden;
   z-index: 5;
+  border-radius:0.3em;
 }
 
 table {
@@ -656,6 +619,8 @@ table {
   padding: 1rem;
   height: 100%;
   width: 100%;
+  
+  
 }
 table thead {
   /* head takes the height it requires, 
@@ -668,6 +633,9 @@ table tbody {
   flex: 1 1 auto;
   display: block;
   overflow-y: scroll;
+  background-color: rgb(14, 14, 14);
+  border-radius:0.3em;
+  margin: 2rem 1rem 3rem 0rem;
 }
 table tbody tr {
   width: 100%;
@@ -675,26 +643,20 @@ table tbody tr {
 table thead, table tbody tr {
   display: table;
   table-layout: fixed;
+  
 }
-
-
 
 
 /* CLOSE BUTTON */
 
-.close {
-  position: absolute;
-  right: 5rem;
-  top: 5rem;
-  width: 3rem;
-  height: 3rem;
+.cross {
   opacity: 1;
 }
-.close:hover {
+.cross:hover {
   opacity: 0.5;
 }
 
-.close:before, .close:after {
+.cross:before, .cross:after {
   position: absolute;
   left: 15px;
   content: ' ';
@@ -702,9 +664,45 @@ table thead, table tbody tr {
   width: 2px;
   background-color: rgb(138, 138, 138);
 }
-.close:before {
+.cross:before {
   transform: rotate(45deg);
 }
-.close:after {
+.cross:after {
   transform: rotate(-45deg);
+}
+
+.close-summary{
+  position: absolute;
+  right: 2rem;
+  top: 2.2rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.delete-song{
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+}
+
+.delete-song:before, .delete-song:after {
+  height: 1.5rem;
+  width: 2px;
+}
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(8, 8, 8);
+  border-radius: 0.3em;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2c2c2c;
+  border-radius: 0.3em;
 }

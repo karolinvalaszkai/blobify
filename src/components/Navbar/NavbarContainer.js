@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   playlistControl: [
     () => {let root = document.getElementById("miniPreview");
           while(root.firstChild) {root.removeChild(root.firstChild)};
-          ownProps.history.push("/myplaylist")},"Export to Spotify"],
+          ownProps.history.push("/myplaylist")},"View Collection"],
   handleClick: (muted) => {
     dispatch(muteAudio(muted));
 
@@ -95,10 +95,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   selectPlaylist: (playlistID) => {
     document.querySelectorAll('.selected-playlist')
-      .forEach(button => button.classList.remove('selected-playlist'));
+      .forEach(button => {
+        button.classList.remove('selected-playlist');
+        button.disabled = false;
+      });
 
     let selectedButton = document.body.querySelector('#playlist'+playlistID);
     selectedButton.classList.add('selected-playlist');
+    selectedButton.disabled = true;
 
     searchPlaylist(playlistID).then(data => dispatch(setCurrentPlaylist(data)));
     dispatch(loadPlaylist(playlistID));

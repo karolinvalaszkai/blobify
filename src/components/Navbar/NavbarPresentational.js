@@ -10,16 +10,16 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
 
   return (
     <div id="navbar" className="navbar debug nothidden">
-
+      {/* <h1 id="menu-title" onClick={() => openNav(nav.navbarHidden)}>blobify</h1> */}
+      <div className="navbarContent">
       <h1 id="menu-title">
         <span href="/trending">blobify.</span>
        </h1>
 
-      <div className="navbarContent">
-
         <div className="navbarContent-playlist">
+          {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
           <h2 id="content-title">Pick playlist</h2>
-          <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs  
+          <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs <img className='' src="info.svg"  alt="info" height='15' width='15'/>  
           {/* <div className='question' onClick={() => handleClick()}></div> */}
 
           <span className="tooltiptext">
@@ -47,16 +47,16 @@ Click on the blobs for more.
           </span></h4>
      
           <div className="playlist">
-          <button id='playlist37i9dQZF1DXcBWIGoYBM5M' className="selected-playlist" onClick={() => selectPlaylist('37i9dQZF1DXcBWIGoYBM5M')}>Today's Top Hits</button>
+          <button className='playlistButton selected-playlist' id='playlist37i9dQZF1DXcBWIGoYBM5M' onClick={() => selectPlaylist('37i9dQZF1DXcBWIGoYBM5M')}>Today's Top Hits</button>
 
             {/* <button id='playlist37i9dQZEVXbMDoHDwVN2tF' className="selected-playlist" onClick={() => selectPlaylist('37i9dQZEVXbMDoHDwVN2tF')}>Global Top 50</button> */}
             {/* <button id='playlist37i9dQZEVXbeATsTOiMcX0' onClick={() => selectPlaylist('37i9dQZEVXbeATsTOiMcX0')}>Release Radar</button> */}
             {/* <button id='playlist37i9dQZF1DWWBHeXOYZf74' onClick={() => selectPlaylist('37i9dQZF1DWWBHeXOYZf74')}>Pollen</button> */}
 
-            <button id='playlist37i9dQZEVXbLiRSasKsNU9' onClick={() => selectPlaylist('37i9dQZEVXbLiRSasKsNU9')}>Global Viral 50</button>
+            <button className='playlistButton' id='playlist37i9dQZEVXbLiRSasKsNU9' onClick={() => selectPlaylist('37i9dQZEVXbLiRSasKsNU9')}>Global Viral 50</button>
             {/* <button id='playlist65hCGG0JopRfj06rs1ilmJ' onClick={() => selectPlaylist('65hCGG0JopRfj06rs1ilmJ')}>Swedish Radio P3</button> */}
-            <button id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music Friday</button>
-            <button id='playlist37i9dQZF1DX2Wvd8VINtcF' onClick={() => selectPlaylist('37i9dQZF1DX2Wvd8VINtcF')}>Oyster</button>
+            <button className='playlistButton' id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music Friday</button>
+            <button className='playlistButton' id='playlist37i9dQZF1DX2Wvd8VINtcF' onClick={() => selectPlaylist('37i9dQZF1DX2Wvd8VINtcF')}>Oyster</button>
 
           </div>
           <h5 id="content-title">Fetched from Spotify</h5>
