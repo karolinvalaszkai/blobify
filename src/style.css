@@ -190,6 +190,7 @@ button {
     transition-timing-function: ease-in-out;
     transition-duration: 0.4s;
     transition-delay: 0.05s;
+    cursor: pointer;
   }
   #menu-title:hover {
     color: rgb(0, 0, 0);
