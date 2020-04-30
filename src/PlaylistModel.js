@@ -73,8 +73,8 @@ export function createSongDisplay(song) {
     //console.log('Song features', {features}); //you should be able to see all the song's features
 
     //change the content of the (initially empty) h4's
-    //document.querySelector('.energyH').innerHTML = 'Energy: ' + features.energy + '- thereby dots, shape';
-    //document.querySelector('.keyH').innerHTML = 'Key: ' + features.key + '- thereby color';
+    // document.querySelector('.energyH').innerHTML = 'Energy: ' + features.energy;
+    // document.querySelector('.keyH').innerHTML = 'Key: ' + features.key ;
   });
 
   if (song.track.preview_url !== null){
