@@ -278,6 +278,9 @@ div[class="navbar debug hidden"]>#menu-title:hover {
   margin-bottom: 10%;
   padding: 10%;
 
+  /* set width - remove for original width */
+  width: 16em;
+
   /* margin: 15%; */
   text-align: left! important;
 }
@@ -286,6 +289,10 @@ div[class="navbar debug hidden"]>#menu-title:hover {
   background: #171717;
   margin-bottom: 15%;
   padding: 10%;
+
+    /* set width - remove for original width */
+
+  width: 16em;
 
   /* margin: 15%; */
   text-align: left! important;
@@ -345,9 +352,6 @@ div[class="navbar debug hidden"]>#menu-title:hover {
 .songtooltip {
   position: relative;
   display: inline-block;
-  cursor: pointer;
-
-  /* border-bottom: dotted 1px  #b3b3b3; */
 }
 .songtooltip .tooltiptext {
   visibility: visible;
@@ -381,8 +385,14 @@ div[class="navbar debug hidden"]>#menu-title:hover {
 .songtooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 0;
+
 }
 
+/* blobs pointer */
+g {
+  cursor: pointer;
+
+}
 
 div[class="tooltiptext hidden"] {
   color: blue;
