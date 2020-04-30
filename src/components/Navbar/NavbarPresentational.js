@@ -11,13 +11,13 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
   return (
     <div id="navbar" className="navbar debug nothidden">
 
-      {/* <h1 id="menu-title" onClick={() => openNav(nav.navbarHidden)}>blobify</h1> */}
-      <h1 id="menu-title">blobify.</h1>
+      <h1 id="menu-title">
+        <span href="/trending">blobify.</span>
+       </h1>
 
       <div className="navbarContent">
 
         <div className="navbarContent-playlist">
-          {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
           <br/>
           <h2 id="content-title">Pick playlist</h2>
           <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs  
