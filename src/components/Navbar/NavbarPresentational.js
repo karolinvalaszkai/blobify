@@ -18,7 +18,6 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
       <div className="navbarContent">
 
         <div className="navbarContent-playlist">
-          <br/>
           <h2 id="content-title">Pick playlist</h2>
           <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs  
           {/* <div className='question' onClick={() => handleClick()}></div> */}
