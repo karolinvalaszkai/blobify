@@ -20,7 +20,6 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
             <tbody id="tableBody">
               {songs.map((song, i) =>
                 <tr key={i}>
-                  {console.log(song)}
                   {getBlob(song.track.id,0.8)}
                   <td id="blob">{displaySong(song)}</td>
                   <td>

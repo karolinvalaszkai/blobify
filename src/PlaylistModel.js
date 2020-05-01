@@ -33,6 +33,7 @@ export function displaySongs(songListPromise) {
       songs.forEach(song => {
         let root = document.getElementById(song.id);
         searchAudioFeatures(song.id).then(features => {
+          
           //Add svg blobs to the placeholder divs
           root.childNodes[2].remove(root.childNodes['img']);
           var svg = window["blobCreator"](features,1);
@@ -42,18 +43,15 @@ export function displaySongs(songListPromise) {
           var energyElement = document.getElementById("energyH-"+song.id);
           var keyElement = document.getElementById("keyH-"+song.id);
           var tempoElement = document.getElementById("tempoH-"+song.id);
-
-          energyElement.innerHTML = 'Energy: ' + features.energy;
-          keyElement.innerHTML = 'Key: ' + features.key;
-          tempoElement.innerHTML = 'Tempo: ' + features.tempo + ' BPM';
-
-
+          if (energyElement !== null){
+            energyElement.innerHTML = 'Energy: ' + features.energy;
+            keyElement.innerHTML = 'Key: ' + features.key;
+            tempoElement.innerHTML = 'Tempo: ' + features.tempo + ' BPM';
+          };
         });
       });
     }, 1000);
 }
-
-// console.log(songObj)
 
 export function getBlob(id, scale, root) {
   setTimeout(() => {
