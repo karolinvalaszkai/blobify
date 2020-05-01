@@ -19,32 +19,32 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
         <div className="navbarContent-playlist">
           {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
           <h2 id="content-title">Pick playlist</h2>
-          <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs <img className='' src="info.svg"  alt="info" height='15' width='15'/>  
-          {/* <div className='question' onClick={() => handleClick()}></div> */}
+            <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs <img className='' src="info.svg"  alt="info" height='15' width='15'/>  
 
-          <span className="tooltiptext">
-          What you see here is not random colors and shapes.<br/><br/>
+                <span className="tooltiptext">
+                What you see here is not random colors and shapes.<br/><br/>
 
-A blob is a visual representation of a tracks <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features</a> - data on its energy, tempo and key.<br/><br/><br/>
-{/* 
-<div className="energy_explain">
-  <h4>the<h6>energy</h6>of the track</h4>
-</div> */}
-{/* <h4> */}
-The ENERGY of the track is mapped to the number of dots in the blobs which determines its shape.<br/><br/> 
-{/* <h4>The higher the energy, the more aggressive blob.</h4><br/> */}
+                A blob is a visual representation of a tracks <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features</a> - data on its energy, tempo and key.<br/><br/><br/>
+                {/* 
+                <div className="energy_explain">
+                  <h4>the<h6>energy</h6>of the track</h4>
+                </div> */}
+                {/* <h4> */}
+                The ENERGY of the track is mapped to the number of dots in the blobs which determines its shape.<br/><br/> 
+                {/* <h4>The higher the energy, the more aggressive blob.</h4><br/> */}
 
-The TEMPO of the track is mapped to the speed of the blob.<br/><br/>
+                The TEMPO of the track is mapped to the speed of the blob.<br/><br/>
 
-                                    
-The KEY of the track is mapped to the color of the blob based on <a className="link" href="http://www.harmonics.com/lucy/lsd/colors.html" target="_blank">Charles Fourier's theory.</a><br/><br/><br/>
+                                                    
+                The KEY of the track is mapped to the color of the blob based on <a className="link" href="http://www.harmonics.com/lucy/lsd/colors.html" target="_blank">Charles Fourier's theory.</a><br/><br/><br/>
 
-{/* - We call it to blobify songs. <br/><br/> */}
+                {/* - We call it to blobify songs. <br/><br/> */}
 
-{/* </h4> */}
-Click on the blobs for more.
-</span>
-          </span></h4>
+                {/* </h4> */}
+                Click on the blobs for more.
+                </span>
+              </span>
+            </h4>
      
           <div className="playlist">
           <button className='playlistButton selected-playlist' id='playlist37i9dQZF1DXcBWIGoYBM5M' onClick={() => selectPlaylist('37i9dQZF1DXcBWIGoYBM5M')}>Today's Top Hits</button>
@@ -58,8 +58,9 @@ Click on the blobs for more.
             <button className='playlistButton' id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music Friday</button>
             <button className='playlistButton' id='playlist37i9dQZF1DX2Wvd8VINtcF' onClick={() => selectPlaylist('37i9dQZF1DX2Wvd8VINtcF')}>Oyster</button>
 
+            <h5 id="fetched">Fetched from Spotify</h5>
+
           </div>
-          <h5 id="content-title">Fetched from Spotify</h5>
         </div>
 
         <div className="navbarContent-save droppable drophere"
