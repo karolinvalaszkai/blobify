@@ -27,8 +27,6 @@ export function displaySongs(songListPromise) {
     songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
     document.getElementById('resultsDiv'));
 
-    //features=> React.createElement(React.Fragment, {}, features.map(feature => createSongDisplay(feature))),
-    //document.getElementById('tooltip-"+id'));
 
     setTimeout(() => {
       let songs = document.body.querySelectorAll('.song');
@@ -43,8 +41,12 @@ export function displaySongs(songListPromise) {
           //Add features info into the tooltips
           var energyElement = document.getElementById("energyH-"+song.id);
           var keyElement = document.getElementById("keyH-"+song.id);
+          var tempoElement = document.getElementById("tempoH-"+song.id);
+
           energyElement.innerHTML = 'Energy: ' + features.energy;
           keyElement.innerHTML = 'Key: ' + features.key;
+          tempoElement.innerHTML = 'Tempo: ' + features.tempo + ' BPM';
+
 
         });
       });
@@ -86,14 +88,15 @@ export function createSongDisplay(song) {
 
           <h3>{song.track.name}</h3>
           <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
-          <br/>
 
-          <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a> <br/>
+          <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
+          <br/>
+          <br/>
+          <br/>
 
           <h4 id={"energyH-"+song.track.id}></h4>
+          <h4 id={"tempoH-"+song.track.id}></h4>
           <h4 id={"keyH-"+song.track.id}></h4>
-
-          <br/>
           
         </div>
         {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
