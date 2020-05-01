@@ -137,18 +137,6 @@ button {
   top: 2em;
 }
 
-.question {
-  background-image: url(./graphics/question.svg);
-  background-size: cover;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  position: static;
-
-  position: fixed;
-  right: 15px;
-  top: 15px;
-}
 
 .selected-playlist {
   border-color: #ff9c7e;
@@ -240,6 +228,10 @@ button {
   border-radius: 0.3rem;
   /* margin: 15%; */
   text-align: left! important;
+}
+
+.fetched{
+  /*  */
 }
 
 .navbarContent-save{
