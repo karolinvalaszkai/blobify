@@ -316,11 +316,11 @@ button {
 .songtooltip .tooltiptext {
   visibility: visible;
   width: 10em;
-  height: 10em;
+  /* height: 10em; */
   background-color: #191919;
   color: #fff;
   text-align: left;
-  padding: 15px;
+  padding: 1em;
   position: absolute;
   z-index: 1;
   bottom: -15%;

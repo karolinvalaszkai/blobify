@@ -35,11 +35,17 @@ export function displaySongs(songListPromise) {
       songs.forEach(song => {
         let root = document.getElementById(song.id);
         searchAudioFeatures(song.id).then(features => {
+          //Add svg blobs to the placeholder divs
           root.childNodes[2].remove(root.childNodes['img']);
           var svg = window["blobCreator"](features,1);
           root.appendChild(svg);
-          var key = features.key;
-          var energy = features.energy;
+          
+          //Add features info into the tooltips
+          var energyElement = document.getElementById("energyH-"+song.id);
+          var keyElement = document.getElementById("keyH-"+song.id);
+          energyElement.innerHTML = 'Energy: ' + features.energy;
+          keyElement.innerHTML = 'Key: ' + features.key;
+
         });
       });
     }, 1000);
@@ -69,13 +75,6 @@ export function getBlob(id, scale, root) {
   Give drag drop element to this.
 */
 export function createSongDisplay(song) {
-  searchAudioFeatures(song.track.id).then(features => {
-    //console.log('Song features', {features}); //you should be able to see all the song's features
-
-    //change the content of the (initially empty) h4's
-    // document.querySelector('.energyH').innerHTML = 'Energy: ' + features.energy;
-    // document.querySelector('.keyH').innerHTML = 'Key: ' + features.key ;
-  });
 
   if (song.track.preview_url !== null){
     return (
@@ -91,8 +90,8 @@ export function createSongDisplay(song) {
 
           <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a> <br/>
 
-          <h4 className={"energyH"}></h4>
-          <h4 className={"keyH"}></h4>
+          <h4 id={"energyH-"+song.track.id}></h4>
+          <h4 id={"keyH-"+song.track.id}></h4>
 
           <br/>
           
