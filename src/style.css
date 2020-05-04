@@ -9,7 +9,14 @@
     flex-direction: row;
     height: 90%;
   }
-}
+  .navbarContent {
+    size: 1em;
+  }
+
+  }
+
+
+
 body {
   background-color: rgb(8, 8, 8);
   font-family: 'Gilroy-Bold ☞';
@@ -42,7 +49,7 @@ body::-webkit-scrollbar {
 }
 
 a {
-  color: rgb(255, 156, 126);
+  color: #ff9c7e;
   font-family: 'OpenSans-regular';
   font-style: normal;
   font-weight: 800;
@@ -97,6 +104,13 @@ button {
     font-size: 11px;
     width: 10em;
   }
+
+  .collection-button {
+    /* font-size: 11px; */
+    /* width: 10em; */
+    background-color: #ff9c7e!important;
+  }
+
 
 /* 
   button:hover {
@@ -256,8 +270,8 @@ button {
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: solid 1px  #ff9c7e;
-  color: #ff9c7e;
+  /* border-bottom: solid 1px  #ff9c7e;
+  color: #ff9c7e; */
   cursor: pointer;
 
 }
@@ -265,13 +279,17 @@ button {
   visibility: hidden;
   width: 50em;
   height: 18em;
-  background-color: #171717;
+  background-color: #333333;
+  /* background-color: #BFB29E; */
+  /* background-color: #fff; */
+
+
   color: #ffffff;
   text-align: left;
   padding: 2.5em;
   position: absolute;
   z-index: 1;
-  top: 100%;
+  top: 145%;
   bottom: 125%;
   left: 50%;
   margin-left: -60px;
@@ -282,12 +300,15 @@ button {
 .tooltip .tooltiptext::after {
   content: "";
   position: absolute;
-  top: 100%;
-  left: 50%;
+  top: -3%;
+  left: 8%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #777 transparent transparent transparent;
+  border-color: #333 transparent transparent transparent;
+  transform: rotate(-180deg);
+
+
 }
 
 .tooltip:hover .tooltiptext {
@@ -315,7 +336,7 @@ button {
   padding: 1em;
   position: absolute;
   z-index: 1;
-  bottom: -15%;
+  bottom: -40%;
   left: 50%;
   margin-left: -60px;
   opacity: 1;
@@ -325,12 +346,12 @@ button {
 .songtooltip .tooltiptext::after {
   content: "";
   position: absolute;
-  top: -5%;
+  top: -3%;
   left: 30%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
+  border-color: #191919 transparent transparent transparent;
   transform: rotate(-180deg);
 }
 
@@ -391,41 +412,52 @@ h2 {
     margin-bottom: 0px;
     /* letter-spacing: 0.1em; */
     }
-    h4 {
-      font-family: 'OpenSans-regular';
-      font-style: normal;
-      font-weight: 800;
-      font-size: 14px;
-      color: #b3b3b3;
-      
-      text-align: left;
-      /* letter-spacing: 0.1em; */
-      margin-top: 0px;
-      }
-    
-  
-    h5 {
-      font-family: 'OpenSans-regular';
-      font-style: normal;
-      font-weight: 800;
-      font-size: 10px;
-      color: #b1b1b1;
-      
-      text-align: right;
-      /* letter-spacing: 0.1em; */
-      }
 
-      h6 {
-        font-family: 'OpenSans-regular';
-        font-style: normal;
-        font-weight: 800;
-        font-size: 14px;
-        color: #ffffff;
+  .h3_black{
+      color: #000000
+    }
+
+  h4 {
+    font-family: 'OpenSans-regular';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    color: #b3b3b3;
+    
+    text-align: left;
+    /* letter-spacing: 0.1em; */
+    margin-top: 0px;
+    }
+
+    .h4_black{
+      color: #000000
+    }
+
+  h5 {
+    font-family: 'OpenSans-regular';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 10px;
+    color: #b1b1b1;
+    
+    text-align: right;
+    /* letter-spacing: 0.1em; */
+    }
+
+  h6 {
+    font-family: 'OpenSans-regular';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    color: #ffffff;
+    
+    text-align: left;
+    /* letter-spacing: 0.1em; */
+    margin-top: 0px;
+    }
+
+    
         
-        text-align: left;
-        /* letter-spacing: 0.1em; */
-        margin-top: 0px;
-        }
   
   
       @font-face {
@@ -534,7 +566,10 @@ h2 {
   border-style: inset; */
   overflow-x: hidden;
   overflow-y: visible;
-  background-color: rgb(14, 14, 14)
+  /* background-color: rgb(14, 14, 14) */
+  background-color: #fff;
+  /* background-color: #BFB29E; */
+
 }
 
 .drophere::-webkit-scrollbar {
@@ -625,9 +660,11 @@ table tbody {
   flex: 1 1 auto;
   display: block;
   overflow-y: scroll;
-  background-color: rgb(14, 14, 14);
+  /* background-color: rgb(14, 14, 14); */
+  background-color: #fff;
   border-radius:0.3em;
   margin: 2rem 1rem 3rem 0rem;
+  padding-left: 10em;
 }
 table tbody tr {
   width: 100%;
