@@ -10,6 +10,7 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
         </div>
           <table>
             <thead>
+            <h2>Your collection</h2>
               <tr>
                 {/* <th>Track</th> */}
                 {/* <th>Release date</th> */}
@@ -20,8 +21,8 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
             <tbody id="tableBody">
               {songs.map((song, i) =>
                 <tr key={i}>
-                  {getBlob(song.track.id,0.8)}
-                  <td id="blob">{displaySong(song)}</td>
+                  {getBlob(song.track.id,0.6)}
+                  <td className="blob">{displaySong(song)}</td>
                   <td>
                     <h3 className="h3_black">{song.track.name}</h3><br/>
                     <h4 className="h4_black">{song.track.artists.map(artist => {return artist.name})}</h4>
@@ -35,12 +36,14 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
             </tbody>
             <tfoot>
               <tr>
-                <td>TOTAL SONGS</td><td></td><td>{songs.length}</td>
+                <td>TOTAL SONGS {songs.length}</td>
                 <td></td>
+                <td></td>
+                <td><h4>Delete all</h4></td>
               </tr>
               <button onClick={() => console.log("Export to spotify")}>Export to Spotify</button>
             </tfoot>
-            
+            <button id="export-button" onClick={() => console.log("Export to spotify")}>Export to Spotify</button>
           </table>
         </div>
         <div id="backgroundSummary" onClick={() => doneCallback()}></div>

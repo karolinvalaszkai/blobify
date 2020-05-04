@@ -20,14 +20,14 @@ function blobCreator(songObj,scale) {
 var two = new Two({
     type: Two.Types.svg,
     fullscreen: false,
-    width: 300*scale, 
-    height: 300*scale,
+    width: 100*scale, 
+    height: 100*scale,
     id: "two-"+songObj.id,
     frameCount: 30
   }).appendTo(newDiv);
   newDiv.classList = "two";
   var mass = songObj.tempo;
-  var radius = (two.height / 6)*scale;
+  var radius = (two.height / 2)*scale;
   //var strength = 0.0625;
 
   //Sets speed of animation:
