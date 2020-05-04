@@ -4,17 +4,22 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
     const [doneCallback, doneMessage] = whenDone;
     return (
       <div id="summary" className="">
-        <div id="summaryContent"><h2>My collection</h2>
+        <div id="summaryContent"><h2>My blobify collection</h2>
         <div>
         <div className="cross close-summary" onClick={() => doneCallback()}></div>
         </div>
           <table>
             <thead>
-            <h2>Your collection</h2>
               <tr>
                 {/* <th>Track</th> */}
                 {/* <th>Release date</th> */}
                 <th> </th>
+
+                
+                <td>TOTAL SONGS {songs.length}</td>
+                <td></td>
+                <td></td>
+                <td><h4>Delete all</h4></td>
                 
               </tr>
             </thead>
@@ -35,13 +40,8 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
               )}
             </tbody>
             <tfoot>
-              <tr>
-                <td>TOTAL SONGS {songs.length}</td>
-                <td></td>
-                <td></td>
-                <td><h4>Delete all</h4></td>
-              </tr>
-              <button onClick={() => console.log("Export to spotify")}>Export to Spotify</button>
+            
+              {/* <button onClick={() => console.log("Export to spotify")}>Export to Spotify</button> */}
             </tfoot>
             <button id="export-button" onClick={() => console.log("Export to spotify")}>Export to Spotify</button>
           </table>
