@@ -4,13 +4,15 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
     const [doneCallback, doneMessage] = whenDone;
     return (
       <div id="summary" className="">
-        <div id="summaryContent"><h2>Your collection</h2>
+        <div id="summaryContent">
         <div>
         <div className="cross close-summary" onClick={() => doneCallback()}></div>
         </div>
           <table>
             <thead>
+            <h2>Your collection</h2>
               <tr>
+                <th></th>
                 <th>Song</th>
                 <th>Release date</th>
                 <th> </th>
@@ -20,8 +22,8 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
             <tbody id="tableBody">
               {songs.map((song, i) =>
                 <tr key={i}>
-                  {getBlob(song.track.id,0.8)}
-                  <td id="blob">{displaySong(song)}</td>
+                  {getBlob(song.track.id,0.6)}
+                  <td className="blob">{displaySong(song)}</td>
                   <td>
                     <h3>{song.track.name}</h3><br/>
                     <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
@@ -35,12 +37,14 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
             </tbody>
             <tfoot>
               <tr>
-                <td>TOTAL SONGS</td><td></td><td>{songs.length}</td>
+                <td>TOTAL SONGS {songs.length}</td>
                 <td></td>
+                <td></td>
+                <td><h4>Delete all</h4></td>
               </tr>
-              <button onClick={() => console.log("Export to spotify")}>Export to spotify</button>
+             
             </tfoot>
-            
+            <button id="export-button" onClick={() => console.log("Export to spotify")}>Export to spotify</button>
           </table>
         </div>
         <div id="backgroundSummary" onClick={() => doneCallback()}></div>

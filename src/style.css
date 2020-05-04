@@ -25,7 +25,8 @@ body::-webkit-scrollbar {
 .mainContent {
   flex: 1;
   background-color: transparent;
-  margin-left: 15%;
+  margin-left: 20em;
+  margin-top: 2em;
 
 }
 
@@ -37,8 +38,8 @@ body::-webkit-scrollbar {
   text-align: center;
   position: fixed;
   vertical-align: center;
-  margin-left: 55%;
-  margin-top: 20%;
+  margin-left: 35%;
+  margin-top: 15%;
 }
 
 a {
@@ -48,22 +49,33 @@ a {
   font-weight: 800;
   font-size: 14px;
 }
-.resultsDiv{
-margin: 15px;
+
+#search {
+  text-align: center;
+}
+#resultsDiv{
+  margin: 1em;
+  margin-top: 7em;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  
+  width: 100%;
 }
 
 
-.song {
+#resultsDiv>.song {
+  width: 20em;
+  height: 20em;
   display: inline-block;
   vertical-align: top;
-  float: right;
-  margin: 0.5%;
-  margin-bottom: -4%;
+  /* float: right; */
+  /* margin: 7em; */
+  /* margin-bottom: -4%; */
   /* border: 1px dashed green; */
 }
 
-
-.song > span {
+#resultsDiv>.song > span {
   display: inline-block;
 }
 
@@ -525,7 +537,7 @@ h2 {
 
 .miniPreviewScroll {
   height: 90px;
-  margin: 0.5em;
+  margin: 0em;
   margin-left: 0em;
   margin-bottom: 1.4em;
   border-radius: 0.3em;
@@ -534,7 +546,12 @@ h2 {
   border-style: inset; */
   overflow-x: hidden;
   overflow-y: visible;
-  background-color: rgb(14, 14, 14)
+  background-color: rgb(14, 14, 14);
+  padding: 1em;
+}
+
+.miniPreviewScroll>.song {
+  margin: 0em;
 }
 
 .drophere::-webkit-scrollbar {
@@ -591,9 +608,9 @@ h2 {
 }
 
 #summaryContent{
+  /* Position of collection summary menu */
   position: fixed;
   margin: 4rem 6rem 4rem 25rem;
-
   margin-bottom: 10%;
   padding: 3rem;
   overflow: visible;
@@ -609,8 +626,11 @@ table {
   flex-flow: column;
   margin: 1rem;
   padding: 1rem;
+  padding-bottom: 2em;
   height: 100%;
   width: 100%;
+
+  text-align: left;
   
   
 }
@@ -619,6 +639,8 @@ table thead {
   and it's not scaled when table is resized */
   flex: 0 0 auto;
   width: calc(100% - 0.9em);
+  
+  
 }
 table tbody {
   /* body takes all the remaining available space */
@@ -627,18 +649,30 @@ table tbody {
   overflow-y: scroll;
   background-color: rgb(14, 14, 14);
   border-radius:0.3em;
-  margin: 2rem 1rem 3rem 0rem;
+  margin: 1rem 0em 0.8em 0em;
 }
 table tbody tr {
   width: 100%;
 }
-table thead, table tbody tr {
+table thead, table tbody tr, table tfoot tr  {
   display: table;
   table-layout: fixed;
+  margin: 0em;
   
 }
+table tbody tr, table tfoot tr  {
+  width: 100%;
+}
+ #export-button {
+   width: 30%;
+ }
 
-
+.blob {
+  text-align: center;
+}
+.song {
+  overflow: visible !important;
+}
 /* CLOSE BUTTON */
 
 .cross {
@@ -697,4 +731,12 @@ table thead, table tbody tr {
 ::-webkit-scrollbar-thumb {
   background: #2c2c2c;
   border-radius: 0.3em;
+}
+
+svg {
+  overflow: visible !important;
+}
+
+#tableBody>.song {
+  height: 10em;
 }
