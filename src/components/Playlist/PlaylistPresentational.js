@@ -4,15 +4,15 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
     const [doneCallback, doneMessage] = whenDone;
     return (
       <div id="summary" className="">
-        <div id="summaryContent"><h2>Your collection</h2>
+        <div id="summaryContent"><h2>My collection</h2>
         <div>
         <div className="cross close-summary" onClick={() => doneCallback()}></div>
         </div>
           <table>
             <thead>
               <tr>
-                <th>Song</th>
-                <th>Release date</th>
+                {/* <th>Track</th> */}
+                {/* <th>Release date</th> */}
                 <th> </th>
                 
               </tr>
@@ -23,11 +23,11 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
                   {getBlob(song.track.id,0.8)}
                   <td id="blob">{displaySong(song)}</td>
                   <td>
-                    <h3>{song.track.name}</h3><br/>
-                    <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
+                    <h3 className="h3_black">{song.track.name}</h3><br/>
+                    <h4 className="h4_black">{song.track.artists.map(artist => {return artist.name})}</h4>
                   </td>
                   <td>
-                    <h4>{song.track.album.release_date}</h4>
+                    {/* <h4 className="h4_black">{song.track.album.release_date}</h4> */}
                   </td>
                   <td><div className="cross delete-song" onClick={() => onDelete(song)}></div></td>
                 </tr>
@@ -38,7 +38,7 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
                 <td>TOTAL SONGS</td><td></td><td>{songs.length}</td>
                 <td></td>
               </tr>
-              <button onClick={() => console.log("Export to spotify")}>Export to spotify</button>
+              <button onClick={() => console.log("Export to spotify")}>Export to Spotify</button>
             </tfoot>
             
           </table>
