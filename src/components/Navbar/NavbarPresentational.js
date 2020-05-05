@@ -19,7 +19,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
         <div className="navbarContent-playlist">
           {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
           <h2 id="content-title">Pick playlist</h2>
-            <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs <img className='' src="info.svg"  alt="info" height='15' width='15'/>  
+            <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs <img className='question' src="info.svg"  alt="info" height='18' width='18'/>  
 
                 <span className="tooltiptext">
                 What you see here is not random colors and shapes.<br/><br/>
@@ -47,20 +47,27 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
             </h4>
      
           <div className="playlist">
-          <button className='playlistButton selected-playlist' id='playlist37i9dQZF1DXcBWIGoYBM5M' onClick={() => selectPlaylist('37i9dQZF1DXcBWIGoYBM5M')}>Today's Top Hits</button>
+ 
+        
+          <select>
 
-            {/* <button id='playlist37i9dQZEVXbMDoHDwVN2tF' className="selected-playlist" onClick={() => selectPlaylist('37i9dQZEVXbMDoHDwVN2tF')}>Global Top 50</button> */}
-            {/* <button id='playlist37i9dQZEVXbeATsTOiMcX0' onClick={() => selectPlaylist('37i9dQZEVXbeATsTOiMcX0')}>Release Radar</button> */}
-            {/* <button id='playlist37i9dQZF1DWWBHeXOYZf74' onClick={() => selectPlaylist('37i9dQZF1DWWBHeXOYZf74')}>Pollen</button> */}
 
-            <button className='playlistButton' id='playlist37i9dQZEVXbLiRSasKsNU9' onClick={() => selectPlaylist('37i9dQZEVXbLiRSasKsNU9')}>Global Viral 50</button>
-            {/* <button id='playlist65hCGG0JopRfj06rs1ilmJ' onClick={() => selectPlaylist('65hCGG0JopRfj06rs1ilmJ')}>Swedish Radio P3</button> */}
-            <button className='playlistButton' id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music Friday</button>
-            <button className='playlistButton' id='playlist37i9dQZF1DX2Wvd8VINtcF' onClick={() => selectPlaylist('37i9dQZF1DX2Wvd8VINtcF')}>Oyster</button>
+            <option value="1" className='playlistButton selected-playlist' id='playlist37i9dQZF1DXcBWIGoYBM5M' onClick={() => selectPlaylist('37i9dQZF1DXcBWIGoYBM5M')}>Today's Top Hits</option>
+
+              {/* <button id='playlist37i9dQZEVXbMDoHDwVN2tF' className="selected-playlist" onClick={() => selectPlaylist('37i9dQZEVXbMDoHDwVN2tF')}>Global Top 50</button> */}
+              {/* <button id='playlist37i9dQZEVXbeATsTOiMcX0' onClick={() => selectPlaylist('37i9dQZEVXbeATsTOiMcX0')}>Release Radar</button> */}
+              {/* <button id='playlist37i9dQZF1DWWBHeXOYZf74' onClick={() => selectPlaylist('37i9dQZF1DWWBHeXOYZf74')}>Pollen</button> */}
+
+              <option value="2" className='playlistButton' id='playlist37i9dQZEVXbLiRSasKsNU9' onClick={() => selectPlaylist('37i9dQZEVXbLiRSasKsNU9')}>Global Viral 50</option>
+              <option value="3" className='playlistButton' id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music Friday</option>
+              <option value="4" className='playlistButton' id='playlist37i9dQZF1DX2Wvd8VINtcF' onClick={() => selectPlaylist('37i9dQZF1DX2Wvd8VINtcF')}>Oyster</option>
+              <option value="5" className='playlistButton' id='playlist65hCGG0JopRfj06rs1ilmJ' onClick={() => selectPlaylist('65hCGG0JopRfj06rs1ilmJ')}>Musikguiden i P3: Bäst just nu</option>
+
+            </select>
+            </div>
 
             <h5 id="fetched">Fetched from Spotify</h5>
 
-          </div>
         </div>
 
         <div className="navbarContent-save droppable drophere"
