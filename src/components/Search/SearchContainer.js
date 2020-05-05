@@ -1,7 +1,7 @@
 import SearchPresentational from './SearchPresentational'
 import { connect } from 'react-redux'
 import { addSong, setCurrentPlaylist, loadPlaylist } from '../../actions'
-import { searchPlaylist } from '../../PlaylistModel'
+import { searchPlaylist, saveSong } from '../../PlaylistModel'
 
 const mapStateToProps = (state) => {
   return { songs: state.currentPlaylist }
@@ -29,6 +29,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           let clickedSongId = clickedNode.parentNode.id;
           let song = loadedSongs.find(d => d.track.id == clickedSongId);
           //console.log({song});
+
+          saveSong(song);
           dispatch(addSong(song));
         }
     },
