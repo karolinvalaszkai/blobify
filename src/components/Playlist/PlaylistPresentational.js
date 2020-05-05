@@ -29,8 +29,8 @@ const PlaylistPresentational = ({ songs, whenDone, onDelete, displaySong, getBlo
                   {getBlob(song.track.id,0.6)}
                   <td className="blob">{displaySong(song)}</td>
                   <td>
-                    <h3 className="h3_black">{song.track.name}</h3><br/>
-                    <h4 className="h4_black">{song.track.artists.map(artist => {return artist.name})}</h4>
+                    <h3>{song.track.name}</h3><br/>
+                    <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
                   </td>
                   <td>
                     {/* <h4 className="h4_black">{song.track.album.release_date}</h4> */}
