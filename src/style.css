@@ -104,7 +104,7 @@ button {
   font-family: 'OpenSans-regular';
   font-style: normal;
 
-  font-size: 16px;
+  font-size: 14px;
   color: rgb(8, 8, 8);
   background-color: white;
   text-align:center;
@@ -423,7 +423,7 @@ h2 {
     font-family: 'Gilroy-Bold ☞';
     font-style: normal;
     font-weight: 800;
-    font-size: 16px;
+    font-size: 14px;
     /* color: #fdfdfd; */
     color: #E0E0E0;
 
@@ -463,8 +463,8 @@ h2 {
     /* color: #b1b1b1; */
     color: #777777;
     
-    text-align: right;
-    padding-right: 3%;
+    /* text-align: right;
+    padding-right: 3%; */
     /* letter-spacing: 0.1em; */
     }
 
