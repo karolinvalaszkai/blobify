@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistControl, handleClick, openNav, onDrop, onDragOver, selectPlaylist}) => {
+const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistControl, handleClick, openNav, onDrop, onDragOver, selectPlaylist, openTooltip}) => {
   const [homepageAction, homepageMessage] = homepageControl;
   const [playlistAction, playlistMessage] = playlistControl;
   const nSongs = songs.length;
@@ -19,12 +19,12 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
         <div className="navbarContent-playlist">
           {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
           <h2 id="content-title">Pick playlist</h2>
-            <h4 id="content-title">Switch playlist to <span className="tooltip">blobify songs <img className='question' src="info.svg"  alt="info" height='18' width='18'/>  
+            <h4 id="content-title">Switch playlist to <span className="tooltip" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}>blobify songs <img className='question' src="info.svg"  alt="info" height='18' width='18'/>  
 
-                <span className="tooltiptext">
-                What you see here is not random colors and shapes.<br/><br/>
+                <div id={"tooltip-"+'info'} className="tooltiptext hidden">
+                <h3>What you see here is not random colors and shapes.</h3><br/>
 
-                A blob is a visual representation of a tracks <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features</a> - data on its energy, tempo and key.<br/><br/><br/>
+                <h4>A blob is a visual representation of a tracks <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features</a> - data on its energy, tempo and key.<br/><br/><br/>
                 {/* 
                 <div className="energy_explain">
                   <h4>the<h6>energy</h6>of the track</h4>
@@ -42,7 +42,8 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
 
                 {/* </h4> */}
                 Click on the blobs for more.
-                </span>
+                </h4>
+                </div>
               </span>
             </h4>
      

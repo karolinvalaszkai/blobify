@@ -79,7 +79,7 @@ export function createSongDisplay(song) {
   if (song.track.preview_url !== null){
     return (
       <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
-            onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(song.track.id)}>
+            onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(e, song.track.id)}>
         <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
         <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
 
@@ -125,8 +125,9 @@ const onDragStart = (ev, song) => {
   // }
   ev.dataTransfer.effectAllowed = "copy";
 }
-const openTooltip = (id) => {
-  console.log("open tooltip")
+export function openTooltip(e, id) {
+  e.preventDefault();
+  console.log("open tooltip", id)
   var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
   
     // for (var i = 0, len = visibleTooltips.length; i < len; i++) {

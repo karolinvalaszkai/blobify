@@ -52,10 +52,10 @@ body::-webkit-scrollbar {
 
 a {
   color: #ffab91;
-  font-family: 'OpenSans-regular';
+  /* font-family: 'OpenSans-regular';
   font-style: normal;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 16px; */
 }
 
 #search {
@@ -63,7 +63,7 @@ a {
 }
 #resultsDiv{
   margin: 1em;
-  margin-top: 7em;
+  margin-top: 1em;
   display: flex;
   flex-wrap: wrap;
   align-content: space-evenly;
@@ -74,7 +74,9 @@ a {
 
 #resultsDiv>.song {
   width: 19em;
-  height: 19em;
+  height: 14em;
+  padding-top: 5em;
+
   display: inline-block;
   vertical-align: top;
   /* float: right; */
@@ -156,7 +158,7 @@ button {
   color:#fff!important;
   background-color: #000000!important;
   border:0.1em solid #000000;
-  transform: scale(1.03);
+  /* transform: scale(1.03); */
   }
 
 
@@ -310,70 +312,33 @@ button {
 .tooltip {
   position: relative;
   display: inline-block;
-  /* border-bottom: solid 1px  #ff9c7e;
-  color: #ff9c7e; */
   cursor: pointer;
-
 }
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 50em;
-  height: 18em;
-  /* background-color: #333333; */
-  /* background-color: #fff; */
-  /* background-color: #b3b3b3; */
-  background-color: #252525;
-
-  color: #ffffff;
-  text-align: left;
-  padding: 3.125rem;
-  position: absolute;
-  z-index: 1;
-  top: 145%;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -60px;
-  opacity: 1!important;
-  transition: opacity 0.3s;
-  border-radius: 1em;
-}
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: -3%;
-  left: 8%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #333333 transparent transparent transparent;
-  transform: rotate(-180deg);
-
-
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  /* opacity: 1; */
-}
-
-/* .energy_explain{
-  white-space: nowrap; */
-  /* display: inline block; */
-  /* overflow-wrap: break-word;
-}  */
-
 .songtooltip {
   position: relative;
   display: inline-block;
 }
+
+/* .tooltip => blobify info box in Pick playlist */
+.tooltip .tooltiptext {
+  visibility: visible;
+  width: 30em;
+  background-color: #252525;
+  color: #ffffff;
+  text-align: left;
+  padding: 3.125rem;
+  position: fixed;
+  z-index: 1;
+  top: 22%;
+  left: 24em;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+/* .songtooltip => blobs info box */
 .songtooltip .tooltiptext {
   visibility: visible;
   width: 10em;
-  /* height: 10em; */
-  /* background-color: #191919; */
   background: #1e1e1e;
-
   color: #fff;
   text-align: left;
   padding: 1em;
@@ -384,11 +349,21 @@ button {
   margin-left: -60px;
   opacity: 1;
   transition: opacity 0.3s;
-
-  /* border-radius: 1em; */
-
 }
 
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 8%;
+  left: -3%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333333 transparent transparent transparent;
+  transform: rotate(90deg);
+
+
+}
 .songtooltip .tooltiptext::after {
   content: "";
   position: absolute;
@@ -401,18 +376,6 @@ button {
   transform: rotate(-180deg);
 }
 
-.songtooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 0;
-
-}
-
-/* blobs pointer */
-g {
-  cursor: pointer;
-
-}
-
 div[class="tooltiptext hidden"] {
   visibility: hidden !important;
   opacity: 0 !important;
@@ -423,7 +386,10 @@ div[class="tooltiptext visible"]{
   opacity: 1 !important;
 } 
 
-
+/* blobs pointer */
+g {
+  cursor: pointer;
+}
 
 
 /* Fonts */
@@ -476,7 +442,7 @@ h2 {
     font-family: 'OpenSans-regular';
     font-style: normal;
     font-weight: 800;
-    font-size: 16px;
+    font-size: 15px;
     /* color: #b3b3b3; */
     color: #A0A0A0;
     

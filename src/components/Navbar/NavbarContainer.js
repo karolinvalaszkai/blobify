@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import NavbarPresentational from './NavbarPresentational'
 import { muteAudio, addSong, removeSong, loadPlaylist, setCurrentPlaylist, hideNavbar } from '../../actions'
-import { saveSong, searchPlaylist } from '../../PlaylistModel'
+import { saveSong, searchPlaylist, openTooltip} from '../../PlaylistModel'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -17,6 +17,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     () => {let root = document.getElementById("miniPreview");
           while(root.firstChild) {root.removeChild(root.firstChild)};
           ownProps.history.push("/myplaylist")},"View Collection"],
+  openTooltip: (e, id) => openTooltip(e, id),
+
   handleClick: (muted) => {
     dispatch(muteAudio(muted));
 
