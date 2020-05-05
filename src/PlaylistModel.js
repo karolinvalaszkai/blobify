@@ -87,6 +87,16 @@ export function createSongDisplay(song) {
           <h3>{song.track.name}</h3>
           <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
 
+          <button>Add</button>
+          <br/>
+          <br/>
+
+          <button className="secondary-button">Remove</button>
+          <br/>
+          <br/>
+          <br/>
+
+
           <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
           <br/>
           <br/>
