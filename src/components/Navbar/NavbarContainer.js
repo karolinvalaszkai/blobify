@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import NavbarPresentational from './NavbarPresentational'
 import { muteAudio, addSong, removeSong, loadPlaylist, setCurrentPlaylist, hideNavbar } from '../../actions'
-import { searchPlaylist } from '../../PlaylistModel'
+import { saveSong, searchPlaylist } from '../../PlaylistModel'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -56,8 +56,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   onDrop: (ev) => {
     console.log("Dropped into playlist");
     let song = ev.dataTransfer.getData("text/plain");
+
     //console.log(JSON.parse(song));
-    dispatch(addSong(JSON.parse(song)));
+    //dispatch(addSong(JSON.parse(song)));
+    saveSong(JSON.parse(song));
+
     //If song is already in playlist then don't put it in here.
     let miniPreview = document.getElementById("miniPreview");
     let root = document.getElementById(JSON.parse(song).track.id); //The original large blob

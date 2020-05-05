@@ -219,9 +219,10 @@ export function saveSong(song) {
 }
 
 // Loads a specific song from a firestore collection
-export function loadSong(song) {
-  db.collection('playlist').doc(song.track.id).get().then(function(doc) {
-    console.log(`${doc.id} => ${doc.data().title}`);
+export function loadSong(songID) {
+  console.log('Song in loadSong(): ', {songID});
+  return db.collection('playlist').doc(songID).get().then(function(doc) {
+    console.log(`in loadSong(): ${doc.id} => ${doc.data().title}`);
   });
 }
 
@@ -238,11 +239,7 @@ export function deleteSong(id) {
 export function loadCollection() {
   return db.collection("playlist").get().then((querySnapshot) => {
     let collection = [];
-    querySnapshot.forEach((doc, i) => {
-      let data = doc.data();  
-        console.log(`${doc.id} => ${doc.data()}`);
-        collection.push(doc.data());
-    });
+    querySnapshot.forEach((doc, i) => collection.push(doc.data()));
     console.log({collection});
     return collection;
   });
