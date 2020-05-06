@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import NavbarPresentational from './NavbarPresentational'
 import { muteAudio, addSong, removeSong, loadPlaylist, setCurrentPlaylist, hideNavbar } from '../../actions'
-import { saveSong, deleteSong, searchPlaylist, openTooltip} from '../../PlaylistModel'
+import { saveSong, deleteSong, searchPlaylist, openTooltip, getMiniBlob} from '../../PlaylistModel'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -59,6 +59,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     console.log("Dropped into playlist");
     let song = ev.dataTransfer.getData("text/plain");
 
+    /*
+      Turn off the elements draggable attribute to prevent multiple dragins.
+      This should be turned on later after the song is added in playlist.
+    */
+
+
     //console.log(JSON.parse(song));
     //dispatch(addSong(JSON.parse(song)));
 
@@ -67,29 +73,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     let root = document.getElementById(JSON.parse(song).track.id); //The original large blob
     let rootCopy = document.getElementById(JSON.parse(song).track.id).cloneNode(true); //this is the mini blob
 
+    root.setAttribute("draggable", false);
+
     //Change the svg/blob dimensions.
-    rootCopy.getElementsByTagName('g')[0].setAttribute("transform", "matrix(1 0 0 1 0 -10) scale(0.2)");
-    rootCopy.getElementsByTagName('svg')[0].setAttribute("height", "50");
-    rootCopy.getElementsByTagName('svg')[0].setAttribute("width", "50");
-    //rootCopy.removeAttribute("class");
-    //rootCopy.addAttribute("class", "miniBlob");
-    //Add a button event to miniBlob that removes the song from playlist and makes large blob visible.
-    rootCopy.addEventListener('click', function(ev) {
-      deleteSong(JSON.parse(song).track.id);
-      var children = miniPreview.children;
-      for(var i = 0; i < children.length; i++) {
-        var currChild = children[i];
-        if(currChild.getAttribute("id") === JSON.parse(song).track.id) {
-          miniPreview.removeChild(currChild);
-          break;
-        }
-      }
-      //Make root element visible.
-      root.getElementsByTagName('svg')[0].setAttribute("opacity", "1.0");
-    });
-    rootCopy.style.height = "70px";
-    rootCopy.style.width = "60px";
-    rootCopy.removeAttribute("draggable");
+    let miniBlob = getMiniBlob(rootCopy, root, JSON.parse(song).track.id);
     //rootCopy.removeAttribute("class", "songtooltip");
     //rootCopy.setAttribute("class", "song");
     //rootCopy.setAttribute("class", "songtooltipmini");
@@ -98,7 +85,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     // miniPreview.appendChild(rootCopy);
     // //Lower the div oppacity to show it's been added.
     // root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
-    saveSong(JSON.parse(song), root, rootCopy, miniPreview);
+    saveSong(JSON.parse(song), root, miniBlob, miniPreview);
   },
   onDragOver: (ev) => {
     ev.preventDefault()

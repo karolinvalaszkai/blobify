@@ -32,6 +32,7 @@ export function displaySongs(songListPromise) {
     setTimeout(() => {
       let songs = document.body.querySelectorAll('.song');
       songs.forEach(song => {
+        //deleteSong(song.id); USE THIS TO RESET THE PROGRAM!
         //collection.then(x=>console.log(x));
         let root = document.getElementById(song.id);
         let alreadyPresent = false; //If song present in our playlist set the bool to true.
@@ -45,7 +46,7 @@ export function displaySongs(songListPromise) {
           var energyElement = document.getElementById("energyH-"+song.id);
           var keyElement = document.getElementById("keyH-"+song.id);
           var tempoElement = document.getElementById("tempoH-"+song.id);
-          if (energyElement !== null){
+          if (energyElement !== null) {
             energyElement.innerHTML = 'Energy: ' + features.energy;
             keyElement.innerHTML = 'Key: ' + features.key;
             tempoElement.innerHTML = 'Tempo: ' + features.tempo + ' BPM';
@@ -54,21 +55,45 @@ export function displaySongs(songListPromise) {
             If alreadyPresent bool is true, we want the blob to appear transparent
             and a small version of the blob visible inside the preview.
           */
+          /*
+            PROBLEM JUST NU!! Blobbarna hinner inte renderas men de ritas ändå
+            som små och därför är de osynliga.
+          */
+
           collection.then(coll => {
             for(var j = 0; j < coll.length; j++) {
               if(coll[j].id == song.id) {
-                alreadyPresent = true;
-                if(alreadyPresent) {
-                  let blobRoot = document.getElementById(song.id);
-                  blobRoot.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
-                }
+
+                let blobRoot = document.getElementById(song.id);
+                blobRoot.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
+
+                //Put in preview part (HARD!)
+                /*
+                let blobCopy = document.getElementById(song.id).cloneNode(true); //small blob
+                //console.log(blobCopy);
+                let miniBlob = getMiniBlob(blobCopy, blobRoot, song.id);
+                let miniPreview = document.getElementById("miniPreview");
+                miniPreview.appendChild(miniBlob);
+                blobCopy.getElementsByTagName('svg')[0].setAttribute("transform", "scale(0.2)");
+                */
+                break;
               }
             }
           });
         });
-        //console.log(alreadyPresent);
       });
     }, 1000);
+    /*
+      Scale down all small preview blobs
+    */
+}
+
+export function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
 }
 
 export function getBlob(id, scale, root) {
@@ -88,6 +113,43 @@ export function getBlob(id, scale, root) {
 
   }, 1000);
 
+}
+
+/*
+  Function generates a mini blob that will be put into the small preview window.
+
+*/
+export function getMiniBlob(root, originalRoot, songID) {
+  let miniPreview = document.getElementById("miniPreview");
+  let tempSmallBlob = root.getElementsByTagName('g')[0];
+  if(tempSmallBlob != undefined) {
+    root.getElementsByTagName('g')[0].setAttribute("transform", "matrix(1 0 0 1 0 -10) scale(0.2)");
+  }
+  root.getElementsByTagName('svg')[0].setAttribute("height", "50");
+  root.getElementsByTagName('svg')[0].setAttribute("width", "50");
+  //root.getElementsByTagName('svg')[0].setAttribute("transform", "scale(0.2)");
+  //rootCopy.removeAttribute("class");
+  //rootCopy.addAttribute("class", "miniBlob");
+  //Add a button event to miniBlob that removes the song from playlist and makes large blob visible.
+  root.addEventListener('click', function(ev) {
+    deleteSong(songID);
+    var children = miniPreview.children;
+    for(var i = 0; i < children.length; i++) {
+      var currChild = children[i];
+      if(currChild.getAttribute("id") === songID) {
+        miniPreview.removeChild(currChild);
+        break;
+      }
+    }
+    //Make root element visible.
+    originalRoot.getElementsByTagName('svg')[0].setAttribute("opacity", "1.0");
+  });
+
+  root.style.height = "70px";
+  root.style.width = "60px";
+  root.removeAttribute("draggable");
+
+  return root;
 }
 
 
@@ -233,6 +295,7 @@ export function saveSong(song, root, rootCopy, miniPreview) {
           if(song.track.id == data[i].id) {
             //song is in playlist
             //console.log("Song already in playlist");
+            root.setAttribute("draggable", true);
             return false;
           }
         }
@@ -253,6 +316,7 @@ export function saveSong(song, root, rootCopy, miniPreview) {
       miniPreview.appendChild(rootCopy);
       //Lower the div oppacity to show it's been added.
       root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
+      root.setAttribute("draggable", true);
     } else {
       return false;
     }
