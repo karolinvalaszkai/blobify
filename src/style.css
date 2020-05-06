@@ -67,7 +67,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   align-content: space-evenly;
-  
+  overflow: visible;
   width: 100%;
 }
 
@@ -792,3 +792,50 @@ svg {
 #tableBody>.song {
   height: 10em;
 }
+
+
+
+
+
+
+
+
+
+
+select {
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+
+  width: 100%;
+  /* height: 2em; */
+  padding:0.8em 1.2em;
+ 
+  border:0.1em solid #ff9c7e;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: 'OpenSans-regular';
+  font-style: normal;
+
+  font-size: 14px;
+  color: rgb(8, 8, 8);
+  background-color: #ff9c7e;
+  
+  transition: all 0.2s;
+  border-radius:0em !important;
+  align-items: stretch;
+  /* margin:0.2em 0.5em 0.5em 0.2em; */
+  cursor: pointer;
+  overflow: visible;
+}
+
+select::-ms-expand { display: block; }
+
+
+select:hover {
+  background-color: rgb(8, 8, 8);
+  color: white;
+  border-color: black;
+}
+
+
