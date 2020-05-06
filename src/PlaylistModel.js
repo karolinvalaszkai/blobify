@@ -22,18 +22,21 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
 export function displaySongs(songListPromise) {
+  let collection = loadCollection();
+
   RenderPromise.render(
     songListPromise,
-    songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
+    songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song, collection))),
     document.getElementById('resultsDiv'));
-
 
     setTimeout(() => {
       let songs = document.body.querySelectorAll('.song');
       songs.forEach(song => {
+        //collection.then(x=>console.log(x));
         let root = document.getElementById(song.id);
-        searchAudioFeatures(song.id).then(features => {
+        let alreadyPresent = false; //If song present in our playlist set the bool to true.
 
+        searchAudioFeatures(song.id).then(features => {
           //Add svg blobs to the placeholder divs
           root.childNodes[2].remove(root.childNodes['img']);
           var svg = window["blobCreator"](features,1);
@@ -47,7 +50,23 @@ export function displaySongs(songListPromise) {
             keyElement.innerHTML = 'Key: ' + features.key;
             tempoElement.innerHTML = 'Tempo: ' + features.tempo + ' BPM';
           };
+          /*
+            If alreadyPresent bool is true, we want the blob to appear transparent
+            and a small version of the blob visible inside the preview.
+          */
+          collection.then(coll => {
+            for(var j = 0; j < coll.length; j++) {
+              if(coll[j].id == song.id) {
+                alreadyPresent = true;
+                if(alreadyPresent) {
+                  let blobRoot = document.getElementById(song.id);
+                  blobRoot.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
+                }
+              }
+            }
+          });
         });
+        //console.log(alreadyPresent);
       });
     }, 1000);
 }
@@ -213,7 +232,7 @@ export function saveSong(song, root, rootCopy, miniPreview) {
       for(var i = 0; i < data.length; i++) {
           if(song.track.id == data[i].id) {
             //song is in playlist
-            console.log("Song already in playlist");
+            //console.log("Song already in playlist");
             return false;
           }
         }
@@ -230,7 +249,7 @@ export function saveSong(song, root, rootCopy, miniPreview) {
       .catch(function(error) {
         console.error('Error writing new message to database', error);
       });
-      console.log(miniPreview);
+      //console.log(miniPreview);
       miniPreview.appendChild(rootCopy);
       //Lower the div oppacity to show it's been added.
       root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
