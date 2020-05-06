@@ -17,7 +17,8 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
 
       //SECOND COLUMN: DISPLAY SONG
       let column2 = document.createElement('td');
-      //let disp = displaySong(song, column2);
+      let disp = displaySong(song, column2);
+      console.log({disp});
       row.appendChild(column2);
 
       //THIRD COLUMN: SONG TITLE

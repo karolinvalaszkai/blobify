@@ -208,9 +208,7 @@ export function retrieve(query, type) {
 export function saveSong(song) {
   // Add a new song object to the database.
   db.collection('playlist').doc(song.track.id).set({
-    id: song.track.id,
-    title: song.track.name,
-    preview: song.track.preview_url,
+    track: song.track,
     timestamp: firebase.firestore.FieldValue.serverTimestamp()
   })
   .catch(function(error) {
