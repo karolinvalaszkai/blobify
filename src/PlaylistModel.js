@@ -27,30 +27,44 @@ export function displaySongs(songListPromise) {
     songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
     document.getElementById('resultsDiv'));
 
+
     setTimeout(() => {
       let songs = document.body.querySelectorAll('.song');
       songs.forEach(song => {
         let root = document.getElementById(song.id);
         searchAudioFeatures(song.id).then(features => {
-          var svg = window["blobCreator"](features);
+
+          //Add svg blobs to the placeholder divs
+          root.childNodes[2].remove(root.childNodes['img']);
+          var svg = window["blobCreator"](features,1);
           root.appendChild(svg);
-         
+          //Add features info into the tooltips
+          var energyElement = document.getElementById("energyH-"+song.id);
+          var keyElement = document.getElementById("keyH-"+song.id);
+          var tempoElement = document.getElementById("tempoH-"+song.id);
+          if (energyElement !== null){
+            energyElement.innerHTML = 'Energy: ' + features.energy;
+            keyElement.innerHTML = 'Key: ' + features.key;
+            tempoElement.innerHTML = 'Tempo: ' + features.tempo + ' BPM';
+          };
         });
       });
     }, 1000);
 }
 
-// console.log(songObj)
-
-export function getBlob(id, root) {
+export function getBlob(id, scale, root) {
   setTimeout(() => {
     let root = document.getElementById(id);
     if (root === null || root.getElementsByTagName('svg').length) {
       return;
     }
     searchAudioFeatures(id).then(features => {
-      var svg = window["blobCreator"](features);
+      root.childNodes[2].remove(root.childNodes['img']);
+      var svg = window["blobCreator"](features, scale);
+      //svg.addAttribute("onDragStart", "{(e)=>onDragStart(e, song)}");
+      //svg.addAttribute("draggable", true);
       root.appendChild(svg);
+
     });
 
   }, 1000);
@@ -63,30 +77,42 @@ export function getBlob(id, root) {
 */
 export function createSongDisplay(song) {
 
-
   if (song.track.preview_url !== null){
-  return (
-    <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
-          onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(song.track.id)}>
-      <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
-      <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
-        <h3>{song.track.name}</h3>
-        <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
-        <br/>
-        <h4>Dots, shape: Energy - {}</h4>
+    return (
+      <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
+            onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(e, song.track.id)}>
+        <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
+        <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
 
-        <h4>Color: Key - {song.key}</h4>
-        
-        {/* <h4>Dots, shape: Energy - {song.track.id.map(data => {return data.audio_features[0]})}</h4> */}
+
+          <h3>{song.track.name}</h3>
+          <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
+
+          <button>Add</button>
+          <br/>
+          <br/>
+
+          <button className="secondary-button">Remove</button>
+          <br/>
+          <br/>
+          <br/>
+
+
+          <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
+          <br/>
+          <br/>
+          <br/>
+
+          <h4 id={"energyH-"+song.track.id}></h4>
+          <h4 id={"tempoH-"+song.track.id}></h4>
+          <h4 id={"keyH-"+song.track.id}></h4>
+
+        </div>
+        {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
+        <img className='loadingBlobs' src="blurryblobBW.svg"  alt="blobyfied song" height='300' width='300'/>
         <br/>
-        <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
-        
       </div>
-    
-      {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
-      <br/>
-    </div>
-  );
+    );
   }
 }
 const onDragStart = (ev, song) => {
@@ -100,10 +126,11 @@ const onDragStart = (ev, song) => {
   // }
   ev.dataTransfer.effectAllowed = "copy";
 }
-const openTooltip = (id) => {
-  console.log("open tooltip")
+export function openTooltip(e, id) {
+  e.preventDefault();
+  console.log("open tooltip", id)
   var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
-  
+
     // for (var i = 0, len = visibleTooltips.length; i < len; i++) {
     //   console.log(visibleTooltips[i])
     //   visibleTooltips[i].classList.add('hidden');
@@ -113,7 +140,7 @@ const openTooltip = (id) => {
   // var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
   // visibleTooltips.classList.add('hidden');
   // visibleTooltips.classList.remove('visible');
-  
+
   var tooltip = document.getElementById("tooltip-"+id);
   let currentClass = tooltip.classList[1];
   tooltip.classList.remove(currentClass);
@@ -179,24 +206,54 @@ export function retrieve(query, type) {
 }
 
 // Saves a new song to your Cloud Firestore database.
-export function saveSong(song) {
-  // Add a new song object to the database.
-  db.collection('playlist').doc(song.track.id).set({
-    id: song.track.id,
-    title: song.track.name,
-    preview: song.track.preview_url,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-  })
-  .catch(function(error) {
-    console.error('Error writing new message to database', error);
+export function saveSong(song, root, rootCopy, miniPreview) {
+  //Check if song is in collection already or not
+  async function checkSongs() {
+    let res = await loadCollection().then((data)=> {
+      for(var i = 0; i < data.length; i++) {
+          if(song.track.id == data[i].id) {
+            //song is in playlist
+            console.log("Song already in playlist");
+            return false;
+          }
+        }
+        return true;
+    });
+    //let result = await res;
+    if(res == true) {
+      db.collection('playlist').doc(song.track.id).set({
+        id: song.track.id,
+        title: song.track.name,
+        preview: song.track.preview_url,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      })
+      .catch(function(error) {
+        console.error('Error writing new message to database', error);
+      });
+      console.log(miniPreview);
+      miniPreview.appendChild(rootCopy);
+      //Lower the div oppacity to show it's been added.
+      root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
+    } else {
+      return false;
+    }
+  }
+  checkSongs().then(d=>{
+      if(d == false) {
+        //Song is in playlist so return false.
+        return false
+      } else {
+        return true;
+      }
   });
-  
+  console.log("hej");
 }
 
 // Loads a specific song from a firestore collection
-export function loadSong(song) {
-  db.collection('playlist').doc(song.track.id).get().then(function(doc) {
-    console.log(`${doc.id} => ${doc.data().title}`);
+export function loadSong(songID) {
+  console.log('Song in loadSong(): ', {songID});
+  return db.collection('playlist').doc(songID).get().then(function(doc) {
+    console.log(`in loadSong(): ${doc.id} => ${doc.data().title}`);
   });
 }
 
@@ -213,12 +270,8 @@ export function deleteSong(id) {
 export function loadCollection() {
   return db.collection("playlist").get().then((querySnapshot) => {
     let collection = [];
-    querySnapshot.forEach((doc, i) => {
-      let data = doc.data();  
-        console.log(`${doc.id} => ${doc.data()}`);
-        collection.push(doc.data());
-    });
-    console.log({collection});
+    querySnapshot.forEach((doc, i) => collection.push(doc.data()));
+    //console.log({collection});
     return collection;
   });
 }

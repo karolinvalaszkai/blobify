@@ -1,17 +1,21 @@
 import { connect } from 'react-redux'
 import PlaylistPresentational from './PlaylistPresentational'
 import { removeSong } from '../../actions'
-import { createSongDisplay, getBlob } from '../../PlaylistModel.js'
+import { createSongDisplay, getBlob, loadSong, deleteSong, loadCollection } from '../../PlaylistModel.js'
 
 const mapStateToProps = (state) => {
   return { songs: state.songs };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  getSongCollection: () => loadCollection(),
   whenDone: [() => ownProps.history.push("/trending"), "Back to the trending songs"],
-  onDelete: song => dispatch(removeSong(song)),
-  displaySong: song => createSongDisplay(song),
-  getBlob: (id) => getBlob(id)
+  onDelete: song => deleteSong(song.id),
+  displaySong: (song, el) => {
+    loadSong(song.id);
+    el.appendChild(createSongDisplay(song));
+  },
+  getBlob: (id,scale) => getBlob(id,scale)
   /*call: getBlobs()*/
 })
 

@@ -66,3 +66,5 @@ src/apiConfig.js
 # MacOS storage files
 .DS_Store
 src/.DS_store
+my-app/src/components/Blob.js
+build/

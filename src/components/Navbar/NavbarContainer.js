@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import NavbarPresentational from './NavbarPresentational'
 import { muteAudio, addSong, removeSong, loadPlaylist, setCurrentPlaylist, hideNavbar } from '../../actions'
-import { searchPlaylist } from '../../PlaylistModel'
+import { saveSong, deleteSong, searchPlaylist, openTooltip} from '../../PlaylistModel'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -16,16 +16,31 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   playlistControl: [
     () => {let root = document.getElementById("miniPreview");
           while(root.firstChild) {root.removeChild(root.firstChild)};
-          ownProps.history.push("/myplaylist")},"Export to Spotify"],
+          ownProps.history.push("/myplaylist")},"View Collection"],
+  openTooltip: (e, id) => openTooltip(e, id),
+
   handleClick: (muted) => {
     dispatch(muteAudio(muted));
 
     let muteButton = document.body.querySelector('.muteButton');
     let currentClass = muteButton.classList[1];
-    muteButton.classList.remove(currentClass);
-    muteButton.classList.add((currentClass === 'mute'? 'unmute' : 'mute'));
+    //muteButton.classList.remove(currentClass);
+    //muteButton.classList.add((currentClass == 'mute'? 'unmute' : 'mute'));
 
     let audioElements = document.getElementsByTagName("audio");
+
+    //sound on
+    if (muted===false){
+      console.log('mute');
+      muteButton.classList.remove('mute');
+      muteButton.classList.add('unmute');
+
+    }
+    else if (muted===true){
+      console.log('unmute');
+      muteButton.classList.remove('unmute');
+      muteButton.classList.add('mute');
+    }
     Object.keys(audioElements).map((i) =>
       audioElements[i].muted = muted)
 
@@ -43,8 +58,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   onDrop: (ev) => {
     console.log("Dropped into playlist");
     let song = ev.dataTransfer.getData("text/plain");
+
     //console.log(JSON.parse(song));
-    dispatch(addSong(JSON.parse(song)));
+    //dispatch(addSong(JSON.parse(song)));
+
     //If song is already in playlist then don't put it in here.
     let miniPreview = document.getElementById("miniPreview");
     let root = document.getElementById(JSON.parse(song).track.id); //The original large blob
@@ -57,8 +74,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     //rootCopy.removeAttribute("class");
     //rootCopy.addAttribute("class", "miniBlob");
     //Add a button event to miniBlob that removes the song from playlist and makes large blob visible.
-    rootCopy.addEventListener('click', function(ev){
-      dispatch(removeSong(JSON.parse(song)));
+    rootCopy.addEventListener('click', function(ev) {
+      deleteSong(JSON.parse(song).track.id);
       var children = miniPreview.children;
       for(var i = 0; i < children.length; i++) {
         var currChild = children[i];
@@ -72,20 +89,30 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     });
     rootCopy.style.height = "70px";
     rootCopy.style.width = "60px";
+    rootCopy.removeAttribute("draggable");
+    //rootCopy.removeAttribute("class", "songtooltip");
+    //rootCopy.setAttribute("class", "song");
+    //rootCopy.setAttribute("class", "songtooltipmini");
 
-    miniPreview.appendChild(rootCopy);
-    //Lower the div oppacity to show it's been added.
-    root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
+
+    // miniPreview.appendChild(rootCopy);
+    // //Lower the div oppacity to show it's been added.
+    // root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
+    saveSong(JSON.parse(song), root, rootCopy, miniPreview);
   },
   onDragOver: (ev) => {
     ev.preventDefault()
   },
   selectPlaylist: (playlistID) => {
     document.querySelectorAll('.selected-playlist')
-      .forEach(button => button.classList.remove('selected-playlist'));
+      .forEach(button => {
+        button.classList.remove('selected-playlist');
+        button.disabled = false;
+      });
 
     let selectedButton = document.body.querySelector('#playlist'+playlistID);
     selectedButton.classList.add('selected-playlist');
+    selectedButton.disabled = true;
 
     searchPlaylist(playlistID).then(data => dispatch(setCurrentPlaylist(data)));
     dispatch(loadPlaylist(playlistID));
