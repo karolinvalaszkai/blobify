@@ -9,11 +9,11 @@ const App = () => (
     <Router>
       <div className="flexParent">
         <Switch>
-          <Route exact path="/" render={() => <Redirect to="/explore" />} />
+          <Route exact path="/" render={() => <Redirect to="/trending" />} />
         </Switch>
         
-        <Route path="/explore" component={Search}></Route>
-        <Route path="/mycollection" component={Playlist}></Route>
+        <Route path="/trending" component={Search}></Route>
+        <Route path="/myplaylist" component={Playlist}></Route>
         <Route component={Navbar}></Route>
       </div>
   </Router>

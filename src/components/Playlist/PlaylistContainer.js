@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   getSongCollection: () => loadCollection(),
-  whenDone: [() => ownProps.history.push("/explore"), "Back to the trending songs"],
+  whenDone: [() => ownProps.history.push("/trending"), "Back to the trending songs"],
   onDelete: song => deleteSong(song.id),
   displaySong: (song) => {
     return loadSong(song.track.id).then(doc => {
