@@ -230,9 +230,10 @@ button {
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 #menu-title {
+  position: relative;
   color: transparent;
   text-align: left;
-  padding-left: 8%;
+  padding-left: 3.125rem;
   z-index: 10;
 
     -webkit-touch-callout: none; /* iOS Safari */
@@ -287,11 +288,11 @@ button {
   margin-bottom: 10%;
 
   /* set width - remove for original width */
-  width: 16em;
+  width: 15em;
   
   /* padding: 8%; */
   padding: 3.125rem;
-  padding-right: 2rem;
+  /* padding-right: 2rem; */
   border-radius: 1.5em;
   /* margin: 15%; */
   text-align: left! important;
@@ -306,11 +307,11 @@ button {
 
   /* set width - remove for original width */
 
-  width: 16em;
+  width: 15em;
 
   /* padding: 8%; */
   padding: 3.125rem;
-  padding-right: 2rem;
+  /* padding-right: 2rem; */
 
   border-radius: 1.5em;
   /* margin: 15%; */
