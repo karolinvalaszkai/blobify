@@ -185,8 +185,7 @@ button {
   /* transform: scale(1.03); */
   }
 
-
-
+button:focus { outline:0 !important; }
     
 .buttonInvisible {
   display: none;
@@ -357,7 +356,7 @@ button {
 }
 
 /* .tooltip => blobify info box in Pick playlist */
-.tooltip .tooltiptext {
+.tooltip .tooltip-content {
   visibility: visible;
   width: 30em;
   background-color: #252525;
@@ -365,14 +364,14 @@ button {
   text-align: left;
   padding: 3.125rem;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 22%;
   left: 24em;
   opacity: 1;
   transition: opacity 0.3s;
 }
 /* .songtooltip => blobs info box */
-.songtooltip .tooltiptext {
+.songtooltip .tooltip-content {
   visibility: visible;
   width: 10em;
   background: #1e1e1e;
@@ -380,7 +379,7 @@ button {
   text-align: left;
   padding: 1em;
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   bottom: -40%;
   left: 50%;
   margin-left: -60px;
@@ -388,7 +387,7 @@ button {
   transition: opacity 0.3s;
 }
 
-.tooltip .tooltiptext::after {
+.tooltip .tooltip-content::after {
   content: "";
   position: absolute;
   top: 13%;
@@ -401,7 +400,7 @@ button {
 
 
 }
-.songtooltip .tooltiptext::after {
+.songtooltip .tooltip-content::after {
   content: "";
   position: absolute;
   top: -4%;
@@ -414,14 +413,25 @@ button {
 }
 
 div[class="tooltiptext hidden"] {
+  display: none;
   visibility: hidden !important;
   opacity: 0 !important;
 }
 
 div[class="tooltiptext visible"]{
+  display: block;
   visibility: visible !important;
   opacity: 1 !important;
 } 
+
+.tooltip-content {
+  position: relative;
+  z-index: 5;
+}
+
+
+
+
 
 /* blobs pointer */
 g {
@@ -664,6 +674,7 @@ h2 {
   100% {opacity:1;}
 }
 .loadingBlobs {
+  margin-top: -2em;
   animation-name: loadingBlurryBlob;
   animation-duration: 2s !important;
   animation-timing-function: ease-in;
@@ -684,7 +695,7 @@ h2 {
 
 #backgroundSummary {
   position: fixed;
-  background: rgb(8,8,8,0.6);
+  
   bottom: 0;
   right: 0rem;
   left: 0;
@@ -692,7 +703,9 @@ h2 {
   flex: 1;
   z-index: 2;
 }
-
+#summary>#backgroundSummary{
+  background: rgb(8,8,8,0.6);
+}
 #summaryContent{
   /* Position of collection summary menu */
   position: fixed;
@@ -872,4 +885,4 @@ select:hover {
   border-color: black;
 }
 
-
+select:focus { outline:0 !important; }

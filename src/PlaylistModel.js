@@ -33,21 +33,22 @@ export function displaySongs(songListPromise) {
       songs.forEach(song => {
         let root = document.getElementById(song.id);
         searchAudioFeatures(song.id).then(features => {
-          
-          //Add svg blobs to the placeholder divs
-          root.childNodes[2].remove(root.childNodes['img']);
-          var svg = window["blobCreator"](features,1);
-          root.appendChild(svg);
-          
-          //Add features info into the tooltips
-          var energyElement = document.getElementById("energyH-"+song.id);
-          var keyElement = document.getElementById("keyH-"+song.id);
-          var tempoElement = document.getElementById("tempoH-"+song.id);
-          if (energyElement !== null){
-            energyElement.innerHTML = 'Energy: ' + features.energy;
-            keyElement.innerHTML = 'Key: ' + features.key;
-            tempoElement.innerHTML = 'Tempo: ' + features.tempo + ' BPM';
-          };
+          if (features !== null){
+            //Add svg blobs to the placeholder divs
+            root.childNodes[2].remove(root.childNodes['img']);
+            var svg = window["blobCreator"](features,1);
+            root.appendChild(svg);
+            
+            //Add features info into the tooltips
+            var energyElement = document.getElementById("energyH-"+song.id);
+            var keyElement = document.getElementById("keyH-"+song.id);
+            var tempoElement = document.getElementById("tempoH-"+song.id);
+            if (energyElement !== null){
+              energyElement.innerHTML = 'Energy: ' + features.energy;
+              keyElement.innerHTML = 'Key: ' + features.key;
+              tempoElement.innerHTML = 'Tempo: ' + features.tempo + ' BPM';
+            };
+         };
         });
       });
     }, 1000);
@@ -83,7 +84,7 @@ export function createSongDisplay(song) {
         <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
         <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
 
-
+          <div className="tooltip-content">
           <h3>{song.track.name}</h3>
           <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
 
@@ -105,7 +106,9 @@ export function createSongDisplay(song) {
           <h4 id={"energyH-"+song.track.id}></h4>
           <h4 id={"tempoH-"+song.track.id}></h4>
           <h4 id={"keyH-"+song.track.id}></h4>
-          
+          </div>
+
+          <div id="backgroundSummary" onClick={(e)=>openTooltip(e, song.track.id)}></div>
         </div>
         {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
         <img className='loadingBlobs' src="blurryblobBW.svg"  alt="blobyfied song" height='300' width='300'/>
@@ -127,21 +130,18 @@ const onDragStart = (ev, song) => {
 }
 export function openTooltip(e, id) {
   e.preventDefault();
-  console.log("open tooltip", id)
-  var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
-  
-    // for (var i = 0, len = visibleTooltips.length; i < len; i++) {
-    //   console.log(visibleTooltips[i])
-    //   visibleTooltips[i].classList.add('hidden');
-    //   visibleTooltips[i].classList.remove('visible');
-    //   }
-
-  // var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
-  // visibleTooltips.classList.add('hidden');
-  // visibleTooltips.classList.remove('visible');
   
   var tooltip = document.getElementById("tooltip-"+id);
   let currentClass = tooltip.classList[1];
+  
+  //Makes div not draggable when tooltip is open
+  var draggableDiv = document.getElementById(id);
+  if (currentClass === "visible" && draggableDiv!==null){
+    draggableDiv.draggable = true;
+  } else if (currentClass === "hidden" && draggableDiv!==null) {
+    draggableDiv.draggable = false;
+  }
+  
   tooltip.classList.remove(currentClass);
   tooltip.classList.add((currentClass === 'hidden'? 'visible' : 'hidden'));
 }
