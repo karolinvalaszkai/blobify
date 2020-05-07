@@ -12,11 +12,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  homepageControl: [() => ownProps.history.push("/trending"), "Back to the trending songs"],
+  homepageControl: [() => ownProps.history.push("/explore"), "Back to the trending songs"],
   playlistControl: [
     () => {let root = document.getElementById("miniPreview");
           while(root.firstChild) {root.removeChild(root.firstChild)};
-          ownProps.history.push("/myplaylist")},"View Collection"],
+          ownProps.history.push("/mycollection")},"View Collection"],
   openTooltip: (e, id) => openTooltip(e, id),
 
   handleClick: (muted) => {

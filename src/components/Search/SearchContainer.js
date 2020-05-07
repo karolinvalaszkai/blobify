@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  whenDone: [() => ownProps.history.push("/myplaylist"), "Go to My Playlist"],
+  whenDone: [() => ownProps.history.push("/mycollection"), "Go to My Playlist"],
   onResultsClick: (clickedNode, loadedSongs) => {
         var clickOnSong = clickedNode.classList.contains("song");
         var clickOnAddButton = clickedNode.classList.contains("addButton");
