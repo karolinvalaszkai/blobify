@@ -74,6 +74,13 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     rootCopy.getElementsByTagName('svg')[0].setAttribute("width", "50");
     //rootCopy.removeAttribute("class");
     //rootCopy.addAttribute("class", "miniBlob");
+
+    //Adds delete crosses to mini blobs
+    var cross = document.createElement('img'); 
+    cross.src = 'cross.svg';
+    cross.className = 'delete-miniblob'
+    rootCopy.appendChild(cross);
+    
     //Add a button event to miniBlob that removes the song from playlist and makes large blob visible.
     rootCopy.addEventListener('click', function(ev){
       dispatch(removeSong(JSON.parse(song)));

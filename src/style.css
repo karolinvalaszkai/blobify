@@ -636,7 +636,7 @@ h2 {
 */
 
 .miniPreviewScroll {
-  height: 0%;
+  height: 5em;
   margin: 0em;
   margin-left: 0em;
   margin-bottom: 1.4em;
@@ -653,6 +653,26 @@ h2 {
 
 .miniPreviewScroll>.song {
   margin: 0em;
+  height: 0em;
+  width: 0em;
+  padding: 1em 0em 0em 1em;
+  margin: 0em -1.2em -4em 0em;
+  overflow: hidden;
+}
+.miniPreviewScroll>.song>.two>svg {
+  height: 1em;
+}
+.delete-miniblob {
+  position: absolute;
+  top: 1.35em;
+  left: 0.7em;
+  height: 1.8em;
+  opacity: 0;
+  transition: all 0.3s;
+
+}
+.delete-miniblob:hover {
+  opacity: 1;
 }
 
 .drophere::-webkit-scrollbar {
