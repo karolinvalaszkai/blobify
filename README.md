@@ -1,12 +1,13 @@
-## Project 
+# Blobify
+## Project description
 
 Blobify is a Spotify-powered web application that previews songs from four different popular playlists in an unique and interactive way. Songs are presented as 2D animated blobs whose attributes depend on actual acoustical features such as energy, tempo and key. Dragging a blob and dropping it in a specific area of the screen adds it to a custom collection, where all the user's favourite songs are stored. Upon opening up the collection, they are presented as a table with different attributes.
 
 ## Project status
 
-This project is currently being developed in its last details, and improvements are being implemented after getting reviewed by people outside the development team. In particular, responsiveness for mobile accessibility is the area that is being focused on. 
+This project is currently being developed in its last details, and improvements are being implemented after getting reviewed by people outside the development team. In particular, responsiveness for mobile accessibility is the area that is being focused on. The [pressure.js](https://pressurejs.com) library, in particular, was used to enable force touch on iPhones as a replacement to the right click of the mouse.
 
-User evaluations were collected through [hotjar](https://www.hotjar.com).
+User evaluations were collected as screen recordings, heatmaps and questionnaires with [hotjar](https://www.hotjar.com) and [videoask](https://www.videoask.com/).
 
 ## Setup
 
@@ -50,5 +51,14 @@ For the creation and animation of the blobs that represent the songs through the
 Other useful resources like fonts, svg graphic elements and the main stylesheet are all inside the `src/` directory.
 
 ## Deployment
-The latest version of the `master` branch on GitHub is auto-deployed to [URL](https://iprog2020.firebaseapp.com/trending).
+The latest version of the `development` branch on GitHub was deployed [here](https://iprog2020.web.app/). To deploy your own version of the project, simply run the following two commands in your command prompt:
+```
+$ npm run build
+$ firebase deploy
+```
 
+## Authors
+– Sabina Nordell: <sabnor@kth.se>
+– Daniel Parhizgar: 
+– Alessandro Iop: <aiop@kth.se>
+– Karolin Valaszkai: <karolinv@kth.se>
