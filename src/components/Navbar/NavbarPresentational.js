@@ -13,9 +13,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
     <div id="navbar" className="navbar debug nothidden">
       {/* <h1 id="menu-title" onClick={() => openNav(nav.navbarHidden)}>blobify</h1> */}
       <div className="navbarContent">
-      <h1 id="menu-title">
-        <span href="/explore">blobify.</span>
-       </h1>
+      <h1 id="menu-title"><span href="/trending">blobify.</span></h1>
 
         <div className="navbarContent-playlist">
           {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
@@ -23,10 +21,11 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
             <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}> <img className='question' src="info.svg"  alt="info" height='18' width='18'/>  
 
                 <div id={"tooltip-"+'info'} className="tooltiptext hidden">
+                    <div className="tooltip-content">
 
-                {/* <div className="cross close-summary" onClick={(e)=>openTooltip(e, 'info')}></div> */}
+                  {/* <div className="cross close-summary" onClick={(e)=>openTooltip(e, 'info')}></div> */}
 
-                <h3>What you see here is not random colors and shapes.</h3><br/>
+                  <h3>What you see here is not random colors and shapes.</h3><br/>
 
                 <h4>A blob is a visual representation of a songs <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features</a> - data on its energy, tempo and key.<br/>
                 </h4>
@@ -45,6 +44,9 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
                 {/* - We call it to blobify songs. <br/><br/> */}
 
                 </div>
+                <div id="backgroundSummary"></div>
+                </div>
+                
               </span>
             </h4>
      
