@@ -23,7 +23,7 @@ var db = firebase.firestore();
 
 export function displaySongs(songListPromise) {
   let collection = loadCollection();
-
+  console.log(collection);
   RenderPromise.render(
     songListPromise,
     songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song, 'search'))),
@@ -67,8 +67,8 @@ export function displaySongs(songListPromise) {
 
           collection.then(coll => {
             for(var j = 0; j < coll.length; j++) {
-              if(coll[j].id == song.id) {
-
+              //console.log(coll[j].id);
+              if(coll[j].track.id == song.id) {
                 let blobRoot = document.getElementById(song.id);
                 blobRoot.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
 
