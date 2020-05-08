@@ -36,7 +36,7 @@ export function displaySongs(songListPromise) {
           if (features !== null){
             //Add svg blobs to the placeholder divs
             root.childNodes[2].remove(root.childNodes['img']);
-            var svg = window["blobCreator"](features,1);
+            var svg = window["blobCreator"](features,1,'audio');
             root.appendChild(svg);
             
             //Add features info into the tooltips
@@ -54,17 +54,21 @@ export function displaySongs(songListPromise) {
     }, 1000);
 }
 
-export function getBlob(id, scale, url) {
-  let root = document.getElementById('playlist_item_' + id);
-  if (root === null || root.getElementsByTagName('svg').length) {
-    return;
+export function getBlob(song, scale, div) {
+  if (song.track.preview_url) {
+    console.log('Song in getBlob(): ', song.track.id)
+    let muteBoolean = document.querySelector('.muteButton').classList.contains('mute');
+
+    var sound = document.createElement('audio');
+    sound.id = 'audio-playlist' + song.track.id;
+    sound.muted = muteBoolean;
+    sound.src = song.track.preview_url;
+    sound.loop = 'loop';
+    div.appendChild(sound);
+
+    searchAudioFeatures(song.track.id)
+      .then(features => div.appendChild(window['blobCreator'](features, scale, 'audio-playlist')));
   }
-  searchAudioFeatures(id).then(features => {
-    //root.childNodes[2].remove(root.childNodes['img']);
-    var svg = window["blobCreator"](features, scale);
-    root.appendChild(svg);
-    //let audioDiv = document.createElement('audio', {src:url, muted, loop})
-  });
 }
 
 
@@ -72,12 +76,13 @@ export function getBlob(id, scale, url) {
   Give drag drop element to this.
 */
 export function createSongDisplay(song, componentName) {
+  let muteBoolean = document.querySelector('.muteButton').classList.contains('mute');
 
   if (song.track.preview_url !== null){
     return (
       <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
             onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(e, song.track.id)}>
-        <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
+        <audio id={'audio'+song.track.id} src={song.track.preview_url} muted={muteBoolean} loop></audio>
         <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
 
           <div className="tooltip-content">
@@ -245,15 +250,7 @@ export function deleteSong(id) {
 }
 
 // Loads the content of an entire database collection
-export function loadCollection() {
-  return db.collection("playlist").get().then((querySnapshot) => {
-    let collection = [];
-    querySnapshot.forEach((doc, i) => collection.push(doc.data()));
-    return collection;
-  });
-}
-
-export function loadCollection2(callback) {
+export function loadCollection(callback) {
   db.collection("playlist").onSnapshot({includeMetadataChanges:false}, querySnapshot => {
     let array = [];
     querySnapshot.forEach(doc => array = [...array, doc.data()]);
