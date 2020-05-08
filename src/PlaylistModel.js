@@ -22,7 +22,7 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
 export function displaySongs(songListPromise) {
-  let collection = loadCollection();
+  let collection = getCollectionList();
   console.log(collection);
   RenderPromise.render(
     songListPromise,
@@ -43,7 +43,7 @@ export function displaySongs(songListPromise) {
           if (features !== null){
             //Add svg blobs to the placeholder divs
             root.childNodes[2].remove(root.childNodes['img']);
-            var svg = window["blobCreator"](features,1);
+            var svg = window["blobCreator"](features,1,'audio');
             root.appendChild(svg);
 
             //Add features info into the tooltips
@@ -93,17 +93,21 @@ export function displaySongs(songListPromise) {
     */
 }
 
-export function getBlob(id, scale, url) {
-  let root = document.getElementById('playlist_item_' + id);
-  if (root === null || root.getElementsByTagName('svg').length) {
-    return;
+export function getBlob(song, scale, div) {
+  if (song.track.preview_url) {
+    console.log('Song in getBlob(): ', song.track.id)
+    let muteBoolean = document.querySelector('.muteButton').classList.contains('mute');
+
+    var sound = document.createElement('audio');
+    sound.id = 'audio-playlist' + song.track.id;
+    sound.muted = muteBoolean;
+    sound.src = song.track.preview_url;
+    sound.loop = 'loop';
+    div.appendChild(sound);
+
+    searchAudioFeatures(song.track.id)
+      .then(features => div.appendChild(window['blobCreator'](features, scale, 'audio-playlist')));
   }
-  searchAudioFeatures(id).then(features => {
-    //root.childNodes[2].remove(root.childNodes['img']);
-    var svg = window["blobCreator"](features, scale);
-    root.appendChild(svg);
-    //let audioDiv = document.createElement('audio', {src:url, muted, loop})
-  });
 }
 
 /*
@@ -148,12 +152,13 @@ export function getMiniBlob(root, originalRoot, songID) {
   Give drag drop element to this.
 */
 export function createSongDisplay(song, componentName) {
+  let muteBoolean = document.querySelector('.muteButton').classList.contains('mute');
 
   if (song.track.preview_url !== null){
     return (
       <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
             onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(e, song.track.id)}>
-        <audio id={'audio'+song.track.id} src={song.track.preview_url} muted loop></audio>
+        <audio id={'audio'+song.track.id} src={song.track.preview_url} muted={muteBoolean} loop></audio>
         <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
 
           <div className="tooltip-content">
@@ -176,10 +181,13 @@ export function createSongDisplay(song, componentName) {
 
           <button onClick={()=>{
             let root = document.getElementById(song.track.id);
+            //Disable Add functionality for the moment
+            root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = true;
             let rootCopy = root.cloneNode(true);
             rootCopy.getElementsByTagName('div')[0].remove();
             /* Remove the tooltip-id div from rootCopy before sending it in */
             saveSong(song, root, rootCopy);
+            //root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = false;
           }}>Add</button>
           <br/>
           <br/>
@@ -308,6 +316,10 @@ export function drawMiniBlob(rootCopy, root, song) {
   //Lower the div oppacity to show it's been added.
   root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
   root.setAttribute("draggable", true);
+  let button = root.getElementsByTagName('div')[0].getElementsByTagName('button');
+  if(button != undefined) {
+    root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = false;
+  }
 }
 
 export function retrieve(query, type) {
@@ -355,6 +367,7 @@ export function retrieve(query, type) {
 
 // Saves a new song to your Cloud Firestore database.
 export function saveSong(song, root, rootCopy) {
+  root.setAttribute("draggable", false);
   loadSong(song.track.id).then(item => {
     if(!item.exists) {
       console.log('Song not yet in playlist');
@@ -369,8 +382,13 @@ export function saveSong(song, root, rootCopy) {
       drawMiniBlob(rootCopy, root, song);
     }
     else console.log('Song already in playlist');
+    root.setAttribute("draggable", true);
+    let button = root.getElementsByTagName('div')[0].getElementsByTagName('button');
+    if(button != undefined) {
+      root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = false;
+    }
   })
-  root.setAttribute("draggable", true);
+  //root.setAttribute("draggable", true);
 }
 
 // Loads a specific song from a firestore collection
@@ -389,18 +407,19 @@ export function deleteSong(id) {
 }
 
 // Loads the content of an entire database collection
-export function loadCollection() {
-  return db.collection("playlist").get().then((querySnapshot) => {
-    let collection = [];
-    querySnapshot.forEach((doc, i) => collection.push(doc.data()));
-    return collection;
-  });
-}
-
-export function loadCollection2(callback) {
+export function loadCollection(callback) {
   db.collection("playlist").onSnapshot({includeMetadataChanges:false}, querySnapshot => {
     let array = [];
     querySnapshot.forEach(doc => array = [...array, doc.data()]);
     callback(array);
+  });
+}
+
+// Loads the content of an entire database collection
+export function getCollectionList() {
+  return db.collection("playlist").get().then((querySnapshot) => {
+    let collection = [];
+    querySnapshot.forEach((doc, i) => collection.push(doc.data()));
+    return collection;
   });
 }

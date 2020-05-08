@@ -1,6 +1,6 @@
 
 
-function blobCreator(songObj,scale) {
+function blobCreator(songObj,scale,type) {
 
   if (scale==undefined){
     scale = 1;
@@ -141,7 +141,7 @@ var two = new Two({
       }
     },3500);
 
-    var audioElem = document.getElementById("audio"+songObj.id);
+    var audioElem = document.getElementById(type+songObj.id);
 
     $(two.renderer.domElement).contextmenu(function(e) {
       e.preventDefault()

@@ -19,13 +19,13 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
             <tr>
               {/* <th>Track</th> */}
               {/* <th>Release date</th> */}
-              <th> </th>
+              {/* <th> </th>
 
 
               <td>TOTAL SONGS {c.length}</td>
               <td></td>
               <td></td>
-              <td><h4>Delete all</h4></td>
+              <td><h4>Delete all</h4></td> */}
 
             </tr>
           </thead>
@@ -33,15 +33,21 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
             {
               c.map((song, i) =>
                 <tr key={i}>
+                  {console.log('Song in c.map(): ', song.track.id)}
                   <td id={'playlist_item_'+song.track.id} className="blob"></td>
-                  {getBlob(song.track.id,0.6,song.track.preview_url)}
+                    {setTimeout(() => {
+                        let div = document.querySelector('#playlist_item_'+song.track.id);
+                        //console.log('Div', {div});
+
+                        if (div.childElementCount === 0) getBlob(song,0.6,div);
+                      }, 1000)}
                   <td>
                     <h3>{song.track.name}</h3><br/>
                     <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
                   </td>
-                  <td>
-                    {/* <h4 className="h4_black">{song.track.album.release_date}</h4> */}
-                  </td>
+                  {/* <td>
+                    <h4 className="h4_black">{song.track.album.release_date}</h4>
+                  </td> */}
                   <td><div className="cross delete-song" onClick={() => onDelete(song)}></div></td>
                 </tr>
               )
@@ -51,7 +57,7 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
 
             {/* <button onClick={() => console.log("Export to spotify")}>Export to Spotify</button> */}
           </tfoot>
-          <button id="export-button" onClick={() => console.log("Export to spotify")}>Export to Spotify</button>
+          {/* <button id="export-button" onClick={() => console.log("Export to spotify")}>Export to Spotify</button> */}
         </table>
       </div>
       <div id="backgroundSummary" onClick={() => doneCallback()}></div>
