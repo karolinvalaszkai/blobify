@@ -382,7 +382,7 @@ button:focus { outline:0 !important; }
   background: #1e1e1e;
   color: #fff;
   text-align: left;
-  padding: 1em;
+  padding: 1.125rem;
   position: absolute;
   z-index: 5;
   bottom: -40%;
@@ -534,6 +534,8 @@ h2 {
     text-align: left;
     /* letter-spacing: 0.1em; */
     margin-top: 0px;
+    margin-bottom: 0px;
+
     }
 
     
