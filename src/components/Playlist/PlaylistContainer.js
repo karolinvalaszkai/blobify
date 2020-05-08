@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       return r;
     });
   },
-  getBlob: (song,scale,div) => setTimeout(() => getBlob(song,scale,div), 3000)
+  getBlob: (song,scale,div) => getBlob(song,scale,div)
   /*call: getBlobs()*/
 })
 
