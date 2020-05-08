@@ -58,6 +58,21 @@ a {
   font-size: 16px; */
 }
 
+.grey_link {
+  color: #A0A0A0;
+}
+#resultsDiv{
+  margin: 1em;
+  margin-top: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+}
+.grey_link:hover{
+  color: #ffab91;
+
+}
+
 #search {
   text-align: center;
 }
@@ -67,13 +82,14 @@ a {
   display: flex;
   flex-wrap: wrap;
   align-content: space-evenly;
-
+  overflow: visible;
   width: 100%;
+
+  /* width: 95%; */
 }
 
 
 #resultsDiv>.song {
-  /*position: fixed;*/
   width: 19em;
   height: 14em;
   padding-top: 5em;
@@ -92,6 +108,8 @@ a {
 
 .question{
   color: #ffab91;
+  cursor: pointer;
+
 }
 
 
@@ -102,10 +120,10 @@ button {
   border:0.1em solid #FFFFFF;
   box-sizing: border-box;
   text-decoration:none;
-  font-family: 'OpenSans-regular';
+  font-family: 'OpenSans-regular'!important;
   font-style: normal;
 
-  font-size: 14px;
+  font-size: 11px!important;
   color: rgb(8, 8, 8);
   background-color: white;
   text-align:center;
@@ -129,7 +147,15 @@ button {
 }
   .playlistButton {
     font-size: 11px;
-    width: 10em;
+    width: 9em;
+    /* height: 3em; */
+    margin: 0.5rem;
+  }
+
+  .playlistButton:hover{
+    color:#fff!important;
+    background-color: #ff9c7e!important;
+    /* border:0.1em solid #000000; */
   }
 
   #collection-button {
@@ -137,8 +163,8 @@ button {
     /* width: 10em; */
     background-color: #fff;
     color: #000000;
-    width: 61%;
-    height: 61%;
+    width: 55%;
+    height: 30%;
     padding: 15px 20px;
     /* float: right; */
 
@@ -147,11 +173,14 @@ button {
   #export-button {
     width: 28%;
     /* width: 61%; */
-    height: 61%;
+    height: 28%!important;
     padding: 15px 20px;
     float: right;
   }
 
+  /* .miniPreviewScroll.onDragStart:{
+    background-color: #ff9c7e;
+  } */
 
 
 
@@ -162,8 +191,7 @@ button {
   /* transform: scale(1.03); */
   }
 
-
-
+button:focus { outline:0 !important; }
 
 .buttonInvisible {
   display: none;
@@ -197,6 +225,7 @@ button {
 .selected-playlist {
   border-color: #ff9c7e;
   background-color: #ff9c7e !important;
+  color: #fff
 
 }
 
@@ -222,11 +251,19 @@ button {
   position: relative;
   width: 100%;
   text-align: center;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 #menu-title {
+  position: relative;
   color: transparent;
   text-align: left;
-  padding-left: 8%;
+  padding-left: 3.125rem;
   z-index: 10;
 
     -webkit-touch-callout: none; /* iOS Safari */
@@ -281,11 +318,11 @@ button {
   margin-bottom: 10%;
 
   /* set width - remove for original width */
-  width: 16em;
+  width: 15em;
 
   /* padding: 8%; */
   padding: 3.125rem;
-  padding-right: 2rem;
+  /* padding-right: 2rem; */
   border-radius: 1.5em;
   /* margin: 15%; */
   text-align: left! important;
@@ -300,11 +337,11 @@ button {
 
   /* set width - remove for original width */
 
-  width: 16em;
+  width: 15em;
 
   /* padding: 8%; */
   padding: 3.125rem;
-  padding-right: 2rem;
+  /* padding-right: 2rem; */
 
   border-radius: 1.5em;
   /* margin: 15%; */
@@ -316,15 +353,16 @@ button {
 .tooltip {
   position: relative;
   display: inline-block;
-  cursor: pointer;
 }
+
+
 .songtooltip {
   position: relative;
   display: inline-block;
 }
 
 /* .tooltip => blobify info box in Pick playlist */
-.tooltip .tooltiptext {
+.tooltip .tooltip-content {
   visibility: visible;
   width: 30em;
   background-color: #252525;
@@ -332,14 +370,14 @@ button {
   text-align: left;
   padding: 3.125rem;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 22%;
   left: 24em;
   opacity: 1;
   transition: opacity 0.3s;
 }
 /* .songtooltip => blobs info box */
-.songtooltip .tooltiptext {
+.songtooltip .tooltip-content {
   visibility: visible;
   width: 10em;
   background: #1e1e1e;
@@ -347,16 +385,15 @@ button {
   text-align: left;
   padding: 1em;
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   bottom: -40%;
   left: 50%;
   margin-left: -60px;
-  transform: scale(0.2);
   opacity: 1;
   transition: opacity 0.3s;
 }
 
-.tooltip .tooltiptext::after {
+.tooltip .tooltip-content::after {
   content: "";
   position: absolute;
   top: 13%;
@@ -369,7 +406,7 @@ button {
 
 
 }
-. .tooltiptext::after {
+.songtooltip .tooltip-content::after {
   content: "";
   position: absolute;
   top: -4%;
@@ -382,14 +419,31 @@ button {
 }
 
 div[class="tooltiptext hidden"] {
+  display: none;
   visibility: hidden !important;
   opacity: 0 !important;
 }
 
 div[class="tooltiptext visible"]{
+  display: block;
   visibility: visible !important;
   opacity: 1 !important;
 }
+
+/* blobs pointer */
+g {
+  cursor: pointer;
+}
+
+
+.tooltip-content {
+  position: relative;
+  z-index: 5;
+}
+
+
+
+
 
 /* blobs pointer */
 g {
@@ -481,8 +535,8 @@ h2 {
     font-family: 'OpenSans-regular';
     font-style: normal;
     font-weight: 800;
-    font-size: 15px;
-    color: #ffffff;
+    font-size: 12px;
+    color: #A0A0A0;
 
     text-align: left;
     /* letter-spacing: 0.1em; */
@@ -593,7 +647,7 @@ h2 {
   margin: 0em;
   margin-left: 0em;
   margin-bottom: 1.4em;
-  border-radius: 1em;
+  /* border-radius: 1em; */
   /* border:0.1em solid #ffffff; */
   /* border-width: 0.05rem;
   border-style: inset; */
@@ -632,6 +686,7 @@ h2 {
   100% {opacity:1;}
 }
 .loadingBlobs {
+  margin-top: -2em;
   animation-name: loadingBlurryBlob;
   animation-duration: 2s !important;
   animation-timing-function: ease-in;
@@ -652,7 +707,7 @@ h2 {
 
 #backgroundSummary {
   position: fixed;
-  background: rgb(8,8,8,0.6);
+
   bottom: 0;
   right: 0rem;
   left: 0;
@@ -660,7 +715,9 @@ h2 {
   flex: 1;
   z-index: 2;
 }
-
+#summary>#backgroundSummary{
+  background: rgb(8,8,8,0.6);
+}
 #summaryContent{
   /* Position of collection summary menu */
   position: fixed;
@@ -794,3 +851,50 @@ svg {
 #tableBody>.song {
   height: 10em;
 }
+
+
+
+
+
+
+
+
+
+
+select {
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+
+  width: 100%;
+  /* height: 2em; */
+  padding:0.8em 1.2em;
+
+  border:0.1em solid #ff9c7e;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: 'OpenSans-regular';
+  font-style: normal;
+
+  font-size: 14px;
+  color: rgb(8, 8, 8);
+  background-color: #ff9c7e;
+
+  transition: all 0.2s;
+  border-radius:0em !important;
+  align-items: stretch;
+  /* margin:0.2em 0.5em 0.5em 0.2em; */
+  cursor: pointer;
+  overflow: visible;
+}
+
+select::-ms-expand { display: block; }
+
+
+select:hover {
+  background-color: rgb(8, 8, 8);
+  color: white;
+  border-color: black;
+}
+
+select:focus { outline:0 !important; }
