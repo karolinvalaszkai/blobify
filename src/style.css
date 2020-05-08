@@ -40,7 +40,6 @@ body::-webkit-scrollbar {
   background-color: transparent;
   margin-left: 22em;
   /* margin-top: 2em; */
-
 }
 
 .mainContent::-webkit-scrollbar {
@@ -76,12 +75,12 @@ a {
   text-align: center;
 }
 #resultsDiv{
-  margin: 1em;
   margin-top: 1em;
   display: flex;
   flex-wrap: wrap;
   align-content: space-evenly;
-  overflow: visible;
+  overflow-y: visible;
+  overflow-x: hidden;
   width: 100%;
 
   /* width: 95%; */
@@ -172,7 +171,7 @@ button {
   #export-button {
     width: 28%;
     /* width: 61%; */
-    height: 28%!important;
+    /* height: 28%!important; */
     padding: 15px 20px;
     float: right;
   }
@@ -370,7 +369,7 @@ button:focus { outline:0 !important; }
   padding: 3.125rem;
   position: fixed;
   z-index: 10;
-  top: 22%;
+  top: 11.5em;
   left: 24em;
   opacity: 1;
   transition: opacity 0.3s;
@@ -385,9 +384,9 @@ button:focus { outline:0 !important; }
   padding: 1.125rem;
   position: absolute;
   z-index: 5;
-  bottom: -40%;
-  left: 50%;
-  margin-left: -60px;
+  bottom: -55%;
+  left: 20%;
+  /* margin-left: -60px; */
   opacity: 1;
   transition: opacity 0.3s;
 }
@@ -409,7 +408,7 @@ button:focus { outline:0 !important; }
   content: "";
   position: absolute;
   top: -4%;
-  left: 30%;
+  left: 50%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -657,7 +656,7 @@ h2 {
   margin: 0em;
   height: 0em;
   width: 0em;
-  padding: 1em 0em 0em 1em;
+  padding: 0.6em 0em 0em 1em;
   margin: 0em -1.2em -4em 0em;
   overflow: hidden;
 }
@@ -666,7 +665,7 @@ h2 {
 }
 .delete-miniblob {
   position: absolute;
-  top: 1.35em;
+  top: 0.97em;
   left: 0.7em;
   height: 1.8em;
   opacity: 0;
@@ -731,16 +730,16 @@ h2 {
   z-index: 2;
 }
 #summary>#backgroundSummary{
-  background: rgb(8,8,8,0.6);
+  background: rgb(8,8,8,0.8);
 }
 #summaryContent{
   /* Position of collection summary menu */
   position: fixed;
-  margin: 4rem 6rem 4rem 25rem;
-  margin-bottom: 10%;
+  /* margin: 4rem 6rem 4rem 25rem; */
+  margin: 4em;
   padding: 3rem;
   overflow: visible;
-  background-color: #191919;
+  background-color: #1e1e1e;
   height: 70%;
   overflow: hidden;
   z-index: 5;
@@ -750,8 +749,8 @@ h2 {
 table {
   display: flex;
   flex-flow: column;
-  margin: 1rem;
-  padding: 1rem;
+  margin: 0rem;
+  padding: 0rem;
   padding-bottom: 2em;
   height: 100%;
   width: 100%;
@@ -774,7 +773,7 @@ table tbody {
   display: block;
   overflow-y: scroll;
   /* background-color: rgb(14, 14, 14); */
-  background-color: #2c2c2c;
+  /* background-color: #2c2c2c; */
   border-radius:1em;
   margin: 2rem 1rem 3rem 0rem;
   padding-left: 10em;
@@ -849,13 +848,13 @@ table tbody tr, table tfoot tr  {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgb(8, 8, 8);
+  background: #292929;
   border-radius: 0.3em;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #2c2c2c;
+  background: #3f3f3f;
   border-radius: 0.3em;
 }
 

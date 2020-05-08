@@ -34,7 +34,12 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
               c.map((song, i) =>
                 <tr key={i}>
                   <td id={'playlist_item_'+song.track.id} className="blob"></td>
-                  {getBlob(song.track.id,0.6,song.track.preview_url)}
+                    {setTimeout(() => {
+                        let div = document.querySelector('#playlist_item_'+song.track.id);
+                        console.log('Div', {div});
+
+                        if (div.childElementCount === 0) getBlob(song,0.6,div);
+                      }, 1000)}
                   <td>
                     <h3>{song.track.name}</h3><br/>
                     <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
