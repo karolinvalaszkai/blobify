@@ -58,8 +58,6 @@ export function getBlob(song, scale, div) {
   if (song.track.preview_url) {
     let muteBoolean = document.querySelector('.muteButton').classList.contains('mute');
 
-    console.log('The audio is muted: ', muteBoolean);
-
     var sound = document.createElement('audio');
     sound.id = 'audio-playlist' + song.track.id;
     sound.muted = muteBoolean;

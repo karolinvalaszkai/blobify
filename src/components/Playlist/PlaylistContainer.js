@@ -12,7 +12,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     loadCollection(callback);
   },
   whenDone: [() => ownProps.history.push("/trending"), "Back to the trending songs"],
-  onDelete: song => deleteSong(song.track.id),
+  onDelete: song => {
+    deleteSong(song.track.id);
+    //document.querySelector('#playlist_item_'+song.track.id).remove();
+  },
   displaySong: (song) => {
     return loadSong(song.track.id).then(doc => {
       let r = createSongDisplay(doc.data());
