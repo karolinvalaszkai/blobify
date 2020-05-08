@@ -51,7 +51,7 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
           
             {/* <button onClick={() => console.log("Export to spotify")}>Export to Spotify</button> */}
           </tfoot>
-          <button id="export-button" onClick={() => console.log("Export to spotify")}>Export to Spotify</button>
+          {/* <button id="export-button" onClick={() => console.log("Export to spotify")}>Export to Spotify</button> */}
         </table>
       </div>
       <div id="backgroundSummary" onClick={() => doneCallback()}></div>
