@@ -194,6 +194,7 @@ export function createSongDisplay(song, componentName) {
 
 
           <button onClick={()=> {
+            let miniPreview = document.getElementById("miniPreview");
             deleteSong(song.track.id)
             var children = miniPreview.children;
             for(var i = 0; i < children.length; i++) {
