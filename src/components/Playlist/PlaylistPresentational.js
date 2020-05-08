@@ -7,10 +7,9 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
   
   useEffect(() => {
     getSongCollection(updateC);
-    cCopy = c;
   }, []);
   setTimeout(() => console.log('c is: ', {c}), 2000);
-  
+
 
   return (
     <div id="summary" className="">
@@ -25,12 +24,12 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
               {/* <th>Release date</th> */}
               {/* <th> </th>
 
-              
+
               <td>TOTAL SONGS {c.length}</td>
               <td></td>
               <td></td>
               <td><h4>Delete all</h4></td> */}
-              
+
             </tr>
           </thead>
           <tbody id="tableBody">
@@ -59,7 +58,7 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
             }
           </tbody>
           <tfoot>
-          
+
             {/* <button onClick={() => console.log("Export to spotify")}>Export to Spotify</button> */}
           </tfoot>
           {/* <button id="export-button" onClick={() => console.log("Export to spotify")}>Export to Spotify</button> */}
