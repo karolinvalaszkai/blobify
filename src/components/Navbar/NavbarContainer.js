@@ -41,14 +41,13 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     }
     Object.keys(audioElements).map((i) =>
       audioElements[i].muted = muted)
-
   },
   openNav: (nav) => {
     dispatch(hideNavbar(nav));
 
     var navbarDiv = document.getElementById("navbar");
     let currentClass = navbarDiv.classList[2];
-
+    
     navbarDiv.classList.remove(currentClass);
     navbarDiv.classList.add((currentClass === 'hidden'? 'nothidden' : 'hidden'));
   },

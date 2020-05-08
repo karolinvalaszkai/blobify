@@ -11,7 +11,6 @@ const SearchPresentational = ({ songs, whenDone, onResultsClick, onAdd, onLoadPl
   return (
     <div id="search" className="mainContent debug">
       <div id="resultsDiv" onClick={event => onResultsClick(event.target, songs)}></div>
-      {/* <button className="nav" onClick={() => doneCallback()}>{doneMessage}</button> */}
     </div>
   )
 }

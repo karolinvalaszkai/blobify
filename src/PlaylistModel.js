@@ -98,7 +98,7 @@ export function getMiniBlob(root, originalRoot, songID) {
   }
   root.getElementsByTagName('svg')[0].setAttribute("height", "50");
   root.getElementsByTagName('svg')[0].setAttribute("width", "50");
-  //root.classList.remove('song');
+
   //Add a button event to miniBlob that removes the song from playlist and makes large blob visible.
   root.addEventListener('click', function(ev) {
     deleteSong(songID);
@@ -137,10 +137,6 @@ export function createSongDisplay(song, componentName) {
 
           <div className="tooltip-content">
 
-
-
-
-
           <h3>{song.track.name}</h3>
           <h4>{song.track.artists.map(artist => {return artist.name + "  "})}</h4>
 
@@ -148,7 +144,6 @@ export function createSongDisplay(song, componentName) {
             <a classname="open_spotify" href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify   <span ><img className='ext_link' src="external-link.svg"  alt="link" height='10' width='10'/>  </span></a>
           </h6>
           <br/>
-
 
           <h6 id={"energyH-"+song.track.id}></h6>
           <h6 id={"tempoH-"+song.track.id}></h6>
@@ -164,7 +159,6 @@ export function createSongDisplay(song, componentName) {
             rootCopy.classList.remove('song');
             saveSong(song, root, rootCopy);
           }}>Add</button>
-
 
           <button onClick={()=> {
             let miniPreview = document.getElementById("miniPreview");
@@ -183,14 +177,9 @@ export function createSongDisplay(song, componentName) {
 
           <br/>
           <br/>
-
-
-
           </div>
-
           <div id="backgroundSummary" onClick={(e)=>openTooltip(e, song.track.id)}></div>
         </div>
-        {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
         <img className='loadingBlobs' src="blurryblobBW.svg"  alt="blobyfied song" height='300' width='300'/>
         <br/>
       </div>
@@ -223,8 +212,7 @@ export function openTooltip(e, id) {
 export function searchPlaylist(name) {
   // Replace variables in case they are falsy (e.g. empty string, null, undefined)
   name = name || "37i9dQZEVXbMDoHDwVN2tF";
-
-  return retrieve(name, 'playlist').then(data => data.items); // leave out the unimportant parts of the response data
+  return retrieve(name, 'playlist').then(data => data.items);
 }
 
 export function searchAudioFeatures(id) {
@@ -343,7 +331,6 @@ export function saveSong(song, root, rootCopy) {
       root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = false;
     }
   })
-  //root.setAttribute("draggable", true);
 }
 
 // Loads a specific song from a firestore collection
