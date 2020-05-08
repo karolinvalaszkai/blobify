@@ -9,7 +9,7 @@
     flex-direction: row;
     height: 90%;
   }
- 
+
 
   }
 
@@ -65,7 +65,13 @@ a {
 .grey_link {
   color: #A0A0A0;
 }
-
+#resultsDiv{
+  margin: 1em;
+  margin-top: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+}
 .grey_link:hover{
   color: #ffab91;
 
@@ -191,7 +197,7 @@ button {
   }
 
 button:focus { outline:0 !important; }
-    
+
 .buttonInvisible {
   display: none;
 }
@@ -323,7 +329,7 @@ button:focus { outline:0 !important; }
 
   /* set width - remove for original width */
   width: 15em;
-  
+
   /* padding: 8%; */
   padding: 3.125rem;
   padding-top: 2rem;
@@ -436,7 +442,13 @@ div[class="tooltiptext visible"]{
   display: block;
   visibility: visible !important;
   opacity: 1 !important;
-} 
+}
+
+/* blobs pointer */
+g {
+  cursor: pointer;
+}
+
 
 .tooltip-content {
   position: relative;
@@ -489,7 +501,7 @@ h2 {
     color: #E0E0E0;
 
 
-    
+
     text-align: left;
     margin-bottom: 0px;
     /* letter-spacing: 0.1em; */
@@ -506,7 +518,7 @@ h2 {
     font-size: 15px;
     /* color: #b3b3b3; */
     color: #A0A0A0;
-    
+
     text-align: left;
     /* letter-spacing: 0.1em; */
     margin-top: 0px;
@@ -527,7 +539,7 @@ h2 {
     font-size: 10px;
     /* color: #b1b1b1; */
     color: #999999;
-    
+
     /* text-align: right;
     padding-right: 3%; */
     /* letter-spacing: 0.1em; */
@@ -539,7 +551,7 @@ h2 {
     font-weight: 800;
     font-size: 12px;
     color: #A0A0A0;
-    
+
     text-align: left;
     /* letter-spacing: 0.1em; */
     margin-top: 0px;
@@ -547,10 +559,10 @@ h2 {
 
     }
 
-    
-        
-  
-  
+
+
+
+
       @font-face {
         font-family: 'OpenSans-regular';
         font-style: normal;
@@ -654,7 +666,7 @@ h2 {
   /* border-radius: 1em; */
   /* border:0.1em solid #ffffff; */
   /* border-width: 0.05rem;
-  border-style: inset; */ 
+  border-style: inset; */
   overflow-x: hidden;
   overflow-y: visible;
   /* background-color: rgb(14, 14, 14); */
@@ -726,12 +738,12 @@ h2 {
   animation-name: loadingBlob;
   animation-duration: 2s;
   animation-timing-function: ease-in;
-  
+
 }
 
 #backgroundSummary {
   position: fixed;
-  
+
   bottom: 0;
   right: 0rem;
   left: 0;
@@ -774,16 +786,16 @@ table {
   width: 100%;
 
   text-align: left;
-  
-  
+
+
 }
 table thead {
-  /* head takes the height it requires, 
+  /* head takes the height it requires,
   and it's not scaled when table is resized */
   flex: 0 0 auto;
   width: calc(100% - 0.9em);
-  
-  
+
+
 }
 table tbody {
   /* body takes all the remaining available space */
@@ -803,7 +815,7 @@ table thead, table tbody tr, table tfoot tr  {
   display: table;
   table-layout: fixed;
   margin: 0em;
-  
+
 }
 table tbody tr, table tfoot tr  {
   width: 100%;
@@ -894,7 +906,7 @@ select {
   width: 100%;
   /* height: 2em; */
   padding:0.8em 1.2em;
- 
+
   border:0.1em solid #ff9c7e;
   box-sizing: border-box;
   text-decoration:none;
@@ -904,7 +916,7 @@ select {
   font-size: 14px;
   color: rgb(8, 8, 8);
   background-color: #ff9c7e;
-  
+
   transition: all 0.2s;
   border-radius:0em !important;
   align-items: stretch;
