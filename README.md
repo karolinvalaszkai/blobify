@@ -58,7 +58,7 @@ $ firebase deploy
 ```
 
 ## Authors
-– Sabina Nordell: <sabnor@kth.se>
-– Daniel Parhizgar: 
-– Alessandro Iop: <aiop@kth.se>
-– Karolin Valaszkai: <karolinv@kth.se>
+- Sabina Nordell: <sabnor@kth.se>
+- Daniel Parhizgar: <dpar@kth.se>
+- Alessandro Iop: <aiop@kth.se>
+- Karolin Valaszkai: <karolinv@kth.se>
