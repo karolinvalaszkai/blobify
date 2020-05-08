@@ -74,6 +74,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     let rootCopy = document.getElementById(JSON.parse(song).track.id).cloneNode(true); //this is the mini blob
 
     root.setAttribute("draggable", false);
+    rootCopy.classList.remove('song');
 
     let miniBlob = getMiniBlob(rootCopy, root, JSON.parse(song).track.id);
     saveSong(JSON.parse(song), root, rootCopy);

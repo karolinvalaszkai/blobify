@@ -116,6 +116,7 @@ export function getBlob(song, scale, div) {
 */
 export function getMiniBlob(root, originalRoot, songID) {
   let miniPreview = document.getElementById("miniPreview");
+
   let tempSmallBlob = root.getElementsByTagName('g')[0];
   if(tempSmallBlob != undefined) {
     root.getElementsByTagName('g')[0].setAttribute("transform", "matrix(1 0 0 1 0 -10) scale(0.2)");
