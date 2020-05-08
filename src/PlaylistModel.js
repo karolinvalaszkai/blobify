@@ -251,6 +251,46 @@ export function searchAudioFeatures(id) {
 
 }
 
+/*
+  Drawn a mini blob inside the preview window.
+*/
+export function drawMiniBlob(rootCopy, root, song) {
+  let miniPreview = document.getElementById("miniPreview");
+  //Change the svg/blob dimensions.
+  rootCopy.getElementsByTagName('g')[0].setAttribute("transform", "matrix(1 0 0 1 0 -10) scale(0.2)");
+  rootCopy.getElementsByTagName('svg')[0].setAttribute("height", "50");
+  rootCopy.getElementsByTagName('svg')[0].setAttribute("width", "50");
+  //rootCopy.removeAttribute("class");
+  //rootCopy.addAttribute("class", "miniBlob");
+
+  //Adds delete crosses to mini blobs
+  var cross = document.createElement('img');
+  cross.src = 'cross.svg';
+  cross.className = 'delete-miniblob'
+  rootCopy.appendChild(cross);
+
+  //Add a button event to miniBlob that removes the song from playlist and makes large blob visible.
+  rootCopy.addEventListener('click', function(ev){
+    deleteSong(song.track.id);
+    var children = miniPreview.children;
+    for(var i = 0; i < children.length; i++) {
+      var currChild = children[i];
+      if(currChild.getAttribute("id") == song.track.id) {
+        miniPreview.removeChild(currChild);
+        break;
+      }
+    }
+    //Make root element visible.
+    root.getElementsByTagName('svg')[0].setAttribute("opacity", "1.0");
+  });
+  rootCopy.style.height = "70px";
+  rootCopy.style.width = "60px";
+
+  miniPreview.appendChild(rootCopy);
+  //Lower the div oppacity to show it's been added.
+  root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
+  root.setAttribute("draggable", true);
+}
 
 export function retrieve(query, type) {
   const payload = apiConfig.clientID+":"+apiConfig.secretID;
@@ -296,7 +336,7 @@ export function retrieve(query, type) {
 }
 
 // Saves a new song to your Cloud Firestore database.
-export function saveSong(song) {
+export function saveSong(song, root, rootCopy) {
   loadSong(song.track.id).then(item => {
     if(!item.exists) {
       console.log('Song not yet in playlist');
@@ -308,10 +348,11 @@ export function saveSong(song) {
       .catch(function(error) {
         console.error('Error writing new message to database', error);
       });
+      drawMiniBlob(rootCopy, root, song);
     }
     else console.log('Song already in playlist');
   })
-
+  root.setAttribute("draggable", true);
 }
 
 // Loads a specific song from a firestore collection
