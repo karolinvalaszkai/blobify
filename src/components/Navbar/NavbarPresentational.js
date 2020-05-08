@@ -53,8 +53,6 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
           <div className="playlist">
  
         
-
-
           <button className='playlistButton selected-playlist' id='playlist37i9dQZF1DXcBWIGoYBM5M' onClick={() => selectPlaylist('37i9dQZF1DXcBWIGoYBM5M')}>Top Hits</button>
 
             {/* <button id='playlist37i9dQZEVXbMDoHDwVN2tF' className="selected-playlist" onClick={() => selectPlaylist('37i9dQZEVXbMDoHDwVN2tF')}>Global Top 50</button> */}
@@ -63,20 +61,14 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
 
           {/* <button value="2" className='playlistButton' id='playlist37i9dQZEVXbLiRSasKsNU9' onClick={() => selectPlaylist('37i9dQZEVXbLiRSasKsNU9')}>Global Viral 50</button> */}
           <button className='playlistButton' id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music</button>
-          {/* <button className='playlistButton' id='playlist37i9dQZF1DX2Wvd8VINtcF' onClick={() => selectPlaylist('37i9dQZF1DX2Wvd8VINtcF')}>Oyster</button>
-          <button className='playlistButton' id='playlist65hCGG0JopRfj06rs1ilmJ' onClick={() => selectPlaylist('65hCGG0JopRfj06rs1ilmJ')}>Musicguide</button> */}
-
+          <button className='playlistButton' id='playlist37i9dQZF1DX4WYpdgoIcn6' onClick={() => selectPlaylist('37i9dQZF1DX4WYpdgoIcn6')}>Chill Hits</button>
+          <button className='playlistButton' id='playlist65hCGG0JopRfj06rs1ilmJ' onClick={() => selectPlaylist('65hCGG0JopRfj06rs1ilmJ')}>Musicguide</button>
+          {/* <iframe src="https://open.spotify.com/embed/playlist/65hCGG0JopRfj06rs1ilmJ" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
 
         
           {/* <select>
 
-
             <option value="1" className='playlistButton selected-playlist' id='playlist37i9dQZF1DXcBWIGoYBM5M' onClick={() => selectPlaylist('37i9dQZF1DXcBWIGoYBM5M')}>Today's Top Hits</option>
-
-              {/* <button id='playlist37i9dQZEVXbMDoHDwVN2tF' className="selected-playlist" onClick={() => selectPlaylist('37i9dQZEVXbMDoHDwVN2tF')}>Global Top 50</button> */}
-              {/* <button id='playlist37i9dQZEVXbeATsTOiMcX0' onClick={() => selectPlaylist('37i9dQZEVXbeATsTOiMcX0')}>Release Radar</button> */}
-              {/* <button id='playlist37i9dQZF1DWWBHeXOYZf74' onClick={() => selectPlaylist('37i9dQZF1DWWBHeXOYZf74')}>Pollen</button> */}
-
               {/* <option value="2" className='playlistButton' id='playlist37i9dQZEVXbLiRSasKsNU9' onClick={() => selectPlaylist('37i9dQZEVXbLiRSasKsNU9')}>Global Viral 50</option>
               <option value="3" className='playlistButton' id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music Friday</option>
               <option value="4" className='playlistButton' id='playlist37i9dQZF1DX2Wvd8VINtcF' onClick={() => selectPlaylist('37i9dQZF1DX2Wvd8VINtcF')}>Oyster</option>
