@@ -24,7 +24,7 @@ var db = firebase.firestore();
 export function displaySongs(songListPromise) {
   RenderPromise.render(
     songListPromise,
-    songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song))),
+    songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song, 'search'))),
     document.getElementById('resultsDiv'));
 
 
@@ -54,28 +54,24 @@ export function displaySongs(songListPromise) {
     }, 1000);
 }
 
-export function getBlob(id, scale, root) {
-  setTimeout(() => {
-    let root = document.getElementById(id);
-    if (root === null || root.getElementsByTagName('svg').length) {
-      return;
-    }
-    searchAudioFeatures(id).then(features => {
-      root.childNodes[2].remove(root.childNodes['img']);
-      var svg = window["blobCreator"](features, scale);
-      root.appendChild(svg);
-      
-    });
-
-  }, 1000);
-
+export function getBlob(id, scale, url) {
+  let root = document.getElementById('playlist_item_' + id);
+  if (root === null || root.getElementsByTagName('svg').length) {
+    return;
+  }
+  searchAudioFeatures(id).then(features => {
+    //root.childNodes[2].remove(root.childNodes['img']);
+    var svg = window["blobCreator"](features, scale);
+    root.appendChild(svg);
+    //let audioDiv = document.createElement('audio', {src:url, muted, loop})
+  });
 }
 
 
 /*
   Give drag drop element to this.
 */
-export function createSongDisplay(song) {
+export function createSongDisplay(song, componentName) {
 
   if (song.track.preview_url !== null){
     return (
@@ -206,14 +202,20 @@ export function retrieve(query, type) {
 
 // Saves a new song to your Cloud Firestore database.
 export function saveSong(song) {
-  // Add a new song object to the database.
-  db.collection('playlist').doc(song.track.id).set({
-    track: song.track,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+  loadSong(song.track.id).then(item => {
+    if(!item.exists) {
+      console.log('Song not yet in playlist');
+      // Add a new song object to the database.
+      db.collection('playlist').doc(song.track.id).set({
+        track: song.track,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      })
+      .catch(function(error) {
+        console.error('Error writing new message to database', error);
+      });
+    }
+    else console.log('Song already in playlist');
   })
-  .catch(function(error) {
-    console.error('Error writing new message to database', error);
-  });
   
 }
 
