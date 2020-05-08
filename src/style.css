@@ -732,11 +732,15 @@ h2 {
 #summary>#backgroundSummary{
   background: rgb(8,8,8,0.8);
 }
+
+#summaryContent>h2 {
+  text-align: center;
+}
 #summaryContent{
   /* Position of collection summary menu */
   position: fixed;
-  /* margin: 4rem 6rem 4rem 25rem; */
-  margin: 4em;
+  margin: 4rem 6rem 4rem 25rem;
+  /* margin: 4em; */
   padding: 3rem;
   overflow: visible;
   background-color: #1e1e1e;
@@ -745,7 +749,11 @@ h2 {
   z-index: 5;
   border-radius:1em;
 }
-
+@media screen and (max-width: 992px) {
+  #summaryContent{
+    margin: 1em;
+  }
+}
 table {
   display: flex;
   flex-flow: column;

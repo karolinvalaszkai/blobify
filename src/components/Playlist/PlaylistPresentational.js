@@ -19,13 +19,13 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
             <tr>
               {/* <th>Track</th> */}
               {/* <th>Release date</th> */}
-              <th> </th>
+              {/* <th> </th>
 
               
               <td>TOTAL SONGS {c.length}</td>
               <td></td>
               <td></td>
-              <td><h4>Delete all</h4></td>
+              <td><h4>Delete all</h4></td> */}
               
             </tr>
           </thead>
@@ -45,9 +45,9 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
                     <h3>{song.track.name}</h3><br/>
                     <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
                   </td>
-                  <td>
-                    {/* <h4 className="h4_black">{song.track.album.release_date}</h4> */}
-                  </td>
+                  {/* <td>
+                    <h4 className="h4_black">{song.track.album.release_date}</h4>
+                  </td> */}
                   <td><div className="cross delete-song" onClick={() => onDelete(song)}></div></td>
                 </tr>
               )
