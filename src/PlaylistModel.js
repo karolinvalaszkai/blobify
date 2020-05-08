@@ -162,22 +162,24 @@ export function createSongDisplay(song, componentName) {
         <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
 
           <div className="tooltip-content">
+
+
+
+
+
           <h3>{song.track.name}</h3>
           <h4>{song.track.artists.map(artist => {return artist.name + "  "})}</h4>
+
+          <h6 >
+            <a classname="open_spotify" href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify   <span ><img className='ext_link' src="external-link.svg"  alt="link" height='10' width='10'/>  </span></a>
+          </h6>
+          <br/>
 
 
           <h6 id={"energyH-"+song.track.id}></h6>
           <h6 id={"tempoH-"+song.track.id}></h6>
           <h6 id={"keyH-"+song.track.id}></h6>
           <br/>
-
-
-          <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
-          <br/>
-          <br/>
-          <br/>
-
-
 
           <button onClick={()=>{
             let root = document.getElementById(song.track.id);
@@ -189,8 +191,7 @@ export function createSongDisplay(song, componentName) {
             saveSong(song, root, rootCopy);
             //root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = false;
           }}>Add</button>
-          <br/>
-          <br/>
+
 
           <button onClick={()=> {
             deleteSong(song.track.id)

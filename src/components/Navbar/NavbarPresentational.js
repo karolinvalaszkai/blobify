@@ -18,7 +18,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
         <div className="navbarContent-playlist">
           {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
           <h2 id="content-title">Pick playlist</h2>
-            <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}> <img className='question' src="info.svg"  alt="info" height='18' width='18'/>
+            <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}> <img className='question' src="info.svg"  alt="info" height='13' width='13'/>
 
                 <div id={"tooltip-"+'info'} className="tooltiptext hidden">
                     <div className="tooltip-content">
