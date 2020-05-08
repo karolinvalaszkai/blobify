@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import PlaylistPresentational from './PlaylistPresentational'
 import { removeSong } from '../../actions'
-import { createSongDisplay, getBlob, loadSong, deleteSong, loadCollection, loadCollection2 } from '../../PlaylistModel.js'
+import { createSongDisplay, getBlob, loadSong, deleteSong, loadCollection } from '../../PlaylistModel.js'
 
 const mapStateToProps = (state) => {
   return { songs: state.songs };
@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   getSongCollection: (callback) => {
-    loadCollection2(callback);
+    loadCollection(callback);
   },
   whenDone: [() => ownProps.history.push("/trending"), "Back to the trending songs"],
   onDelete: song => deleteSong(song.track.id),
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       return r;
     });
   },
-  getBlob: (id,scale) => getBlob(id,scale)
+  getBlob: (song,scale,div) => getBlob(song,scale,div)
   /*call: getBlobs()*/
 })
 
