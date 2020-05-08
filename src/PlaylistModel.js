@@ -237,7 +237,14 @@ export function loadCollection() {
   return db.collection("playlist").get().then((querySnapshot) => {
     let collection = [];
     querySnapshot.forEach((doc, i) => collection.push(doc.data()));
-    console.log({collection});
     return collection;
+  });
+}
+
+export function loadCollection2(callback) {
+  db.collection("playlist").onSnapshot({includeMetadataChanges:false}, querySnapshot => {
+    let array = [];
+    querySnapshot.forEach(doc => array = [...array, doc.data()]);
+    callback(array);
   });
 }
