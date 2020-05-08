@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-const PlaylistPresentational = ({ songs, getSongCollection, getSongCollection2, whenDone, onDelete, displaySong, getBlob}) => {
+const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, displaySong, getBlob}) => {
   const [c, updateC] = useState([]);
   const [doneCallback, doneMessage] = whenDone;
-  let collection = getSongCollection(updateC);
-
-  //setTimeout(() => console.log('c is: ', {c}), 2000);
   
-  //getSongCollection2(updateC);
+  useEffect(() => getSongCollection(updateC), []);
+  setTimeout(() => console.log('c is: ', {c}), 2000);
+  
 
   return (
     <div id="summary" className="">
@@ -34,8 +33,8 @@ const PlaylistPresentational = ({ songs, getSongCollection, getSongCollection2, 
             {
               c.map((song, i) =>
                 <tr key={i}>
-                  {/*getBlob(song.track.id,0.6)*/}
-                  <td className="blob">{/*displaySong(song)*/}</td>
+                  <td id={'playlist_item_'+song.track.id} className="blob"></td>
+                  {getBlob(song.track.id,0.6,song.track.preview_url)}
                   <td>
                     <h3>{song.track.name}</h3><br/>
                     <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
