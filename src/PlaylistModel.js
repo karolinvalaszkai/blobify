@@ -98,7 +98,7 @@ export function getMiniBlob(root, originalRoot, songID) {
   }
   root.getElementsByTagName('svg')[0].setAttribute("height", "50");
   root.getElementsByTagName('svg')[0].setAttribute("width", "50");
-
+  //root.classList.remove('song');
   //Add a button event to miniBlob that removes the song from playlist and makes large blob visible.
   root.addEventListener('click', function(ev) {
     deleteSong(songID);
@@ -160,7 +160,8 @@ export function createSongDisplay(song, componentName) {
             //Disable Add functionality for the moment
             root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = true;
             let rootCopy = root.cloneNode(true);
-            rootCopy.getElementsByTagName('div')[0].remove();
+            rootCopy.getElementsByTagName('div')[0].remove(); //Remove the setting div
+            rootCopy.classList.remove('song');
             saveSong(song, root, rootCopy);
           }}>Add</button>
 
