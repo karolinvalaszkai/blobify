@@ -85,9 +85,11 @@ export function createSongDisplay(song, componentName) {
           <h4>{song.track.artists.map(artist => {return artist.name + "  "})}</h4>
 
         
-          <h4 id={"energyH-"+song.track.id}></h4>
-          <h4 id={"tempoH-"+song.track.id}></h4>
-          <h4 id={"keyH-"+song.track.id}></h4>
+          <h6 id={"energyH-"+song.track.id}></h6>
+          <h6 id={"tempoH-"+song.track.id}></h6>
+          <h6 id={"keyH-"+song.track.id}></h6>          
+          <br/>
+
 
           <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
           <br/>
@@ -104,11 +106,9 @@ export function createSongDisplay(song, componentName) {
 
           <br/>
           <br/>
-          <br/>
 
-          <h4 id={"energyH-"+song.track.id}></h4>
-          <h4 id={"tempoH-"+song.track.id}></h4>
-          <h4 id={"keyH-"+song.track.id}></h4>
+
+        
           </div>
 
           <div id="backgroundSummary" onClick={(e)=>openTooltip(e, song.track.id)}></div>
