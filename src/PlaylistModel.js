@@ -85,26 +85,29 @@ export function createSongDisplay(song) {
 
 
           <h3>{song.track.name}</h3>
-          <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
+          <h4>{song.track.artists.map(artist => {return artist.name + "  "})}</h4>
 
-          <button>Add</button>
-          <br/>
-          <br/>
-
-          <button className="secondary-button">Remove</button>
-          <br/>
-          <br/>
-          <br/>
-
+        
+          <h4 id={"energyH-"+song.track.id}></h4>
+          <h4 id={"tempoH-"+song.track.id}></h4>
+          <h4 id={"keyH-"+song.track.id}></h4>
 
           <a href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify</a>
           <br/>
           <br/>
           <br/>
 
-          <h4 id={"energyH-"+song.track.id}></h4>
-          <h4 id={"tempoH-"+song.track.id}></h4>
-          <h4 id={"keyH-"+song.track.id}></h4>
+          
+
+          <button onClick={()=>saveSong(song)}>Add</button>
+          <br/>
+          <br/>
+
+          <button onClick={()=>deleteSong(song)} className="secondary-button">Remove</button>
+
+          <br/>
+          <br/>
+          <br/>
           
         </div>
         {/* <button className='addButton buttonInvisible'>Add to playlist</button><br/> */}
