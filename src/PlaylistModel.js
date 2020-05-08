@@ -26,7 +26,7 @@ export function displaySongs(songListPromise) {
 
   RenderPromise.render(
     songListPromise,
-    songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song, collection))),
+    songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song, 'search'))),
     document.getElementById('resultsDiv'));
 
 
@@ -93,21 +93,17 @@ export function displaySongs(songListPromise) {
     */
 }
 
-export function getBlob(id, scale, root) {
-  setTimeout(() => {
-    let root = document.getElementById(id);
-    if (root === null || root.getElementsByTagName('svg').length) {
-      return;
-    }
-    searchAudioFeatures(id).then(features => {
-      root.childNodes[2].remove(root.childNodes['img']);
-      var svg = window["blobCreator"](features, scale);
-      root.appendChild(svg);
-
-    });
-
-  }, 1000);
-
+export function getBlob(id, scale, url) {
+  let root = document.getElementById('playlist_item_' + id);
+  if (root === null || root.getElementsByTagName('svg').length) {
+    return;
+  }
+  searchAudioFeatures(id).then(features => {
+    //root.childNodes[2].remove(root.childNodes['img']);
+    var svg = window["blobCreator"](features, scale);
+    root.appendChild(svg);
+    //let audioDiv = document.createElement('audio', {src:url, muted, loop})
+  });
 }
 
 /*
@@ -151,7 +147,7 @@ export function getMiniBlob(root, originalRoot, songID) {
 /*
   Give drag drop element to this.
 */
-export function createSongDisplay(song) {
+export function createSongDisplay(song, componentName) {
 
   if (song.track.preview_url !== null){
     return (
@@ -162,15 +158,12 @@ export function createSongDisplay(song) {
 
           <div className="tooltip-content">
           <h3>{song.track.name}</h3>
-          <h4>{song.track.artists.map(artist => {return artist.name})}</h4>
+          <h4>{song.track.artists.map(artist => {return artist.name + "  "})}</h4>
 
-          <button>Add</button>
-          <br/>
-          <br/>
 
-          <button className="secondary-button">Remove</button>
-          <br/>
-          <br/>
+          <h6 id={"energyH-"+song.track.id}></h6>
+          <h6 id={"tempoH-"+song.track.id}></h6>
+          <h6 id={"keyH-"+song.track.id}></h6>
           <br/>
 
 
@@ -179,9 +172,19 @@ export function createSongDisplay(song) {
           <br/>
           <br/>
 
-          <h4 id={"energyH-"+song.track.id}></h4>
-          <h4 id={"tempoH-"+song.track.id}></h4>
-          <h4 id={"keyH-"+song.track.id}></h4>
+
+
+          <button onClick={()=>saveSong(song)}>Add</button>
+          <br/>
+          <br/>
+
+          <button onClick={()=>deleteSong(song)} className="secondary-button">Remove</button>
+
+          <br/>
+          <br/>
+
+
+
           </div>
 
           <div id="backgroundSummary" onClick={(e)=>openTooltip(e, song.track.id)}></div>
@@ -293,22 +296,11 @@ export function retrieve(query, type) {
 }
 
 // Saves a new song to your Cloud Firestore database.
-export function saveSong(song, root, rootCopy, miniPreview) {
-  //Check if song is in collection already or not
-  async function checkSongs() {
-    let res = await loadCollection().then((data)=> {
-      for(var i = 0; i < data.length; i++) {
-          if(song.track.id == data[i].id) {
-            //song is in playlist
-            //console.log("Song already in playlist");
-            root.setAttribute("draggable", true);
-            return false;
-          }
-        }
-        return true;
-    });
-    //let result = await res;
-    if(res == true) {
+export function saveSong(song) {
+  loadSong(song.track.id).then(item => {
+    if(!item.exists) {
+      console.log('Song not yet in playlist');
+      // Add a new song object to the database.
       db.collection('playlist').doc(song.track.id).set({
         track: song.track,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
@@ -316,24 +308,10 @@ export function saveSong(song, root, rootCopy, miniPreview) {
       .catch(function(error) {
         console.error('Error writing new message to database', error);
       });
-      //console.log(miniPreview);
-      miniPreview.appendChild(rootCopy);
-      //Lower the div oppacity to show it's been added.
-      root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
-      root.setAttribute("draggable", true);
-    } else {
-      return false;
     }
-  }
-  checkSongs().then(d=>{
-      if(d == false) {
-        //Song is in playlist so return false.
-        return false
-      } else {
-        return true;
-      }
-  });
-  console.log("hej");
+    else console.log('Song already in playlist');
+  })
+
 }
 
 // Loads a specific song from a firestore collection

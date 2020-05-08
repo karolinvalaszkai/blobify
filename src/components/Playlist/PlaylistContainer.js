@@ -11,7 +11,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   getSongCollection: (callback) => {
     loadCollection2(callback);
   },
-  getSongCollection2: (callback) => loadCollection().then(coll => callback([...coll])),
   whenDone: [() => ownProps.history.push("/trending"), "Back to the trending songs"],
   onDelete: song => deleteSong(song.track.id),
   displaySong: (song) => {

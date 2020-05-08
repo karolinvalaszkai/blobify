@@ -75,17 +75,42 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
     root.setAttribute("draggable", false);
 
-    //Change the svg/blob dimensions.
     let miniBlob = getMiniBlob(rootCopy, root, JSON.parse(song).track.id);
-    //rootCopy.removeAttribute("class", "songtooltip");
-    //rootCopy.setAttribute("class", "song");
-    //rootCopy.setAttribute("class", "songtooltipmini");
-
-
-    // miniPreview.appendChild(rootCopy);
-    // //Lower the div oppacity to show it's been added.
-    // root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
     saveSong(JSON.parse(song), root, miniBlob, miniPreview);
+
+    //Change the svg/blob dimensions.
+    rootCopy.getElementsByTagName('g')[0].setAttribute("transform", "matrix(1 0 0 1 0 -10) scale(0.2)");
+    rootCopy.getElementsByTagName('svg')[0].setAttribute("height", "50");
+    rootCopy.getElementsByTagName('svg')[0].setAttribute("width", "50");
+    //rootCopy.removeAttribute("class");
+    //rootCopy.addAttribute("class", "miniBlob");
+
+    //Adds delete crosses to mini blobs
+    var cross = document.createElement('img');
+    cross.src = 'cross.svg';
+    cross.className = 'delete-miniblob'
+    rootCopy.appendChild(cross);
+
+    //Add a button event to miniBlob that removes the song from playlist and makes large blob visible.
+    rootCopy.addEventListener('click', function(ev){
+      dispatch(removeSong(JSON.parse(song)));
+      var children = miniPreview.children;
+      for(var i = 0; i < children.length; i++) {
+        var currChild = children[i];
+        if(currChild.getAttribute("id") == JSON.parse(song).track.id) {
+          miniPreview.removeChild(currChild);
+          break;
+        }
+      }
+      //Make root element visible.
+      root.getElementsByTagName('svg')[0].setAttribute("opacity", "1.0");
+    });
+    rootCopy.style.height = "70px";
+    rootCopy.style.width = "60px";
+
+    miniPreview.appendChild(rootCopy);
+    //Lower the div oppacity to show it's been added.
+    root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
   },
   onDragOver: (ev) => {
     ev.preventDefault()

@@ -9,12 +9,17 @@
     flex-direction: row;
     height: 90%;
   }
-  .navbarContent {
-  }
+ 
 
   }
 
 
+  /* small screens */
+@media (max-width: 640px){
+  .navbarContent:-webkit-scrollbar  {
+    width: 80%;
+  }
+}
 
 body {
   /* background-color: rgb(8, 8, 8); */
@@ -383,7 +388,7 @@ button:focus { outline:0 !important; }
   background: #1e1e1e;
   color: #fff;
   text-align: left;
-  padding: 1em;
+  padding: 1.125rem;
   position: absolute;
   z-index: 5;
   bottom: -40%;
@@ -541,6 +546,8 @@ h2 {
     text-align: left;
     /* letter-spacing: 0.1em; */
     margin-top: 0px;
+    margin-bottom: 0px;
+
     }
 
 
@@ -643,7 +650,7 @@ h2 {
 */
 
 .miniPreviewScroll {
-  height: 0%;
+  height: 5em;
   margin: 0em;
   margin-left: 0em;
   margin-bottom: 1.4em;
@@ -660,6 +667,26 @@ h2 {
 
 .miniPreviewScroll>.song {
   margin: 0em;
+  height: 0em;
+  width: 0em;
+  padding: 1em 0em 0em 1em;
+  margin: 0em -1.2em -4em 0em;
+  overflow: hidden;
+}
+.miniPreviewScroll>.song>.two>svg {
+  height: 1em;
+}
+.delete-miniblob {
+  position: absolute;
+  top: 1.35em;
+  left: 0.7em;
+  height: 1.8em;
+  opacity: 0;
+  transition: all 0.3s;
+
+}
+.delete-miniblob:hover {
+  opacity: 1;
 }
 
 .drophere::-webkit-scrollbar {
@@ -851,13 +878,6 @@ svg {
 #tableBody>.song {
   height: 10em;
 }
-
-
-
-
-
-
-
 
 
 
