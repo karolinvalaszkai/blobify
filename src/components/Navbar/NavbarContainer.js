@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import NavbarPresentational from './NavbarPresentational'
 import { muteAudio, addSong, removeSong, loadPlaylist, setCurrentPlaylist, hideNavbar } from '../../actions'
-import { saveSong, deleteSong, searchPlaylist, openTooltip, getMiniBlob} from '../../PlaylistModel'
+import { saveSong, searchPlaylist, openTooltip} from '../../PlaylistModel'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -28,13 +28,13 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     //muteButton.classList.add((currentClass == 'mute'? 'unmute' : 'mute'));
 
     let audioElements = document.getElementsByTagName("audio");
-
-    //sound on
+    
+    //sound on 
     if (muted===false){
       console.log('mute');
       muteButton.classList.remove('mute');
       muteButton.classList.add('unmute');
-
+    
     }
     else if (muted===true){
       console.log('unmute');
@@ -43,7 +43,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     }
     Object.keys(audioElements).map((i) =>
       audioElements[i].muted = muted)
-
+    
   },
   openNav: (nav) => {
     dispatch(hideNavbar(nav));
@@ -52,32 +52,55 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     let currentClass = navbarDiv.classList[2];
 
     navbarDiv.classList.remove(currentClass);
-    navbarDiv.classList.add((currentClass === 'hidden'? 'nothidden' : 'hidden'));
+    navbarDiv.classList.add((currentClass == 'hidden'? 'nothidden' : 'hidden'));
   },
 
   onDrop: (ev) => {
     console.log("Dropped into playlist");
     let song = ev.dataTransfer.getData("text/plain");
 
-    /*
-      Turn off the elements draggable attribute to prevent multiple dragins.
-      This should be turned on later after the song is added in playlist.
-    */
-
-
     //console.log(JSON.parse(song));
     //dispatch(addSong(JSON.parse(song)));
+    saveSong(JSON.parse(song));
 
     //If song is already in playlist then don't put it in here.
     let miniPreview = document.getElementById("miniPreview");
     let root = document.getElementById(JSON.parse(song).track.id); //The original large blob
     let rootCopy = document.getElementById(JSON.parse(song).track.id).cloneNode(true); //this is the mini blob
 
-    root.setAttribute("draggable", false);
+    //Change the svg/blob dimensions.
+    rootCopy.getElementsByTagName('g')[0].setAttribute("transform", "matrix(1 0 0 1 0 -10) scale(0.2)");
+    rootCopy.getElementsByTagName('svg')[0].setAttribute("height", "50");
+    rootCopy.getElementsByTagName('svg')[0].setAttribute("width", "50");
+    //rootCopy.removeAttribute("class");
+    //rootCopy.addAttribute("class", "miniBlob");
 
-    let miniBlob = getMiniBlob(rootCopy, root, JSON.parse(song).track.id);
-    saveSong(JSON.parse(song), root, rootCopy);
-    console.log("We made it!!");
+    //Adds delete crosses to mini blobs
+    var cross = document.createElement('img'); 
+    cross.src = 'cross.svg';
+    cross.className = 'delete-miniblob'
+    rootCopy.appendChild(cross);
+    
+    //Add a button event to miniBlob that removes the song from playlist and makes large blob visible.
+    rootCopy.addEventListener('click', function(ev){
+      dispatch(removeSong(JSON.parse(song)));
+      var children = miniPreview.children;
+      for(var i = 0; i < children.length; i++) {
+        var currChild = children[i];
+        if(currChild.getAttribute("id") == JSON.parse(song).track.id) {
+          miniPreview.removeChild(currChild);
+          break;
+        }
+      }
+      //Make root element visible.
+      root.getElementsByTagName('svg')[0].setAttribute("opacity", "1.0");
+    });
+    rootCopy.style.height = "70px";
+    rootCopy.style.width = "60px";
+
+    miniPreview.appendChild(rootCopy);
+    //Lower the div oppacity to show it's been added.
+    root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
   },
   onDragOver: (ev) => {
     ev.preventDefault()

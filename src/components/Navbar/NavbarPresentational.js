@@ -18,7 +18,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
         <div className="navbarContent-playlist">
           {/* <button onClick={() => homepageAction()}>{homepageMessage}</button> */}
           <h2 id="content-title">Pick playlist</h2>
-            <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}> <img className='question' src="info.svg"  alt="info" height='13' width='13'/>
+            <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}> <img className='question' src="info.svg"  alt="info" height='13' width='13'/>  
 
                 <div id={"tooltip-"+'info'} className="tooltiptext hidden">
                     <div className="tooltip-content">
@@ -33,23 +33,23 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
                 <h6>
                 {/* The <span className="h4_white">energy</span> of the track is mapped to the number of dots in the blobs which determines its <span className="h4_white">shape</span>.<br/><br/>  */}
 
-                The energy of the song is mapped to the number of dots in the blobs which determines its shape.<br/><br/>
+                The energy of the song is mapped to the number of dots in the blobs which determines its shape.<br/><br/> 
                 {/* <h4>The higher the energy, the more aggressive blob.</h4><br/> */}
 
                 The tempo of the song is mapped to the speed of the blob.<br/><br/>
 
-
+                                                    
                 The key of the song is mapped to the color of the blob based on <a className="grey_link" href="http://www.harmonics.com/lucy/lsd/colors.html" target="_blank">Charles Fourier's theory.</a><br/>
-                </h6>
+                </h6>                
                 {/* - We call it to blobify songs. <br/><br/> */}
 
                 </div>
                 <div id="backgroundSummary"></div>
                 </div>
-
+                
               </span>
             </h4>
-
+     
           <div className="playlist">
  
         

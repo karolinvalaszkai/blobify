@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         if (clickOnAddButton) {
           //console.log(clickedNode.parentNode.id);
           let clickedSongId = clickedNode.parentNode.id;
-          let song = loadedSongs.find(d => d.track.id === clickedSongId);
+          let song = loadedSongs.find(d => d.track.id == clickedSongId);
           //console.log({song});
 
           saveSong(song);
