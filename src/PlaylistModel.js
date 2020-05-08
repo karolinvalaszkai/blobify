@@ -174,11 +174,29 @@ export function createSongDisplay(song, componentName) {
 
 
 
-          <button onClick={()=>saveSong(song)}>Add</button>
+          <button onClick={()=>{
+            let root = document.getElementById(song.track.id);
+            let rootCopy = root.cloneNode(true);
+            rootCopy.getElementsByTagName('div')[0].remove();
+            /* Remove the tooltip-id div from rootCopy before sending it in */
+            saveSong(song, root, rootCopy);
+          }}>Add</button>
           <br/>
           <br/>
 
-          <button onClick={()=>deleteSong(song)} className="secondary-button">Remove</button>
+          <button onClick={()=> {
+            deleteSong(song.track.id)
+            var children = miniPreview.children;
+            for(var i = 0; i < children.length; i++) {
+              var currChild = children[i];
+              if(currChild.getAttribute("id") === song.track.id) {
+                miniPreview.removeChild(currChild);
+                break;
+              }
+            }
+            let root = document.getElementById(song.track.id);
+            root.getElementsByTagName('svg')[0].setAttribute("opacity", "1.0");
+          }} className="secondary-button">Remove</button>
 
           <br/>
           <br/>
