@@ -14,7 +14,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   whenDone: [() => ownProps.history.push("/trending"), "Back to the trending songs"],
   onDelete: song => {
     deleteSong(song.track.id);
-    //document.querySelector('#playlist_item_'+song.track.id).remove();
   },
   displaySong: (song) => {
     return loadSong(song.track.id).then(doc => {
@@ -23,7 +22,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     });
   },
   getBlob: (song,scale,div) => getBlob(song,scale,div)
-  /*call: getBlobs()*/
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaylistPresentational);

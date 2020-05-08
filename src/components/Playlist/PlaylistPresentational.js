@@ -4,7 +4,7 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
   const [c, updateC] = useState([]);
   const [doneCallback, doneMessage] = whenDone;
   let cCopy;
-  
+
   useEffect(() => {
     getSongCollection(updateC);
   }, []);
@@ -40,8 +40,6 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
                   <td id={'playlist_item_'+song.track.id} className="blob"></td>
                     {setTimeout(() => {
                         let div = document.querySelector('#playlist_item_'+song.track.id);
-                        //console.log('Div', {div});
-
                         div.innerHTML='';
                         getBlob(song,0.6,div);
                       }, 0)}

@@ -33,10 +33,7 @@ export function displaySongs(songListPromise) {
     setTimeout(() => {
       let songs = document.body.querySelectorAll('.song');
       songs.forEach(song => {
-        //deleteSong(song.id); USE THIS TO RESET THE PROGRAM!
-        //collection.then(x=>console.log(x));
         let root = document.getElementById(song.id);
-        let alreadyPresent = false; //If song present in our playlist set the bool to true.
 
         searchAudioFeatures(song.id).then(features => {
 
@@ -56,31 +53,13 @@ export function displaySongs(songListPromise) {
               tempoElement.innerHTML = 'Tempo: ' + features.tempo + ' BPM';
             };
          };
-          /*
-            If alreadyPresent bool is true, we want the blob to appear transparent
-            and a small version of the blob visible inside the preview.
-          */
-          /*
-            PROBLEM JUST NU!! Blobbarna hinner inte renderas men de ritas ändå
-            som små och därför är de osynliga.
-          */
 
+          //If the song is already in playlist, make the blob transparent
           collection.then(coll => {
             for(var j = 0; j < coll.length; j++) {
-              //console.log(coll[j].id);
               if(coll[j].track.id == song.id) {
                 let blobRoot = document.getElementById(song.id);
                 blobRoot.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
-
-                //Put in preview part (HARD!)
-                /*
-                let blobCopy = document.getElementById(song.id).cloneNode(true); //small blob
-                //console.log(blobCopy);
-                let miniBlob = getMiniBlob(blobCopy, blobRoot, song.id);
-                let miniPreview = document.getElementById("miniPreview");
-                miniPreview.appendChild(miniBlob);
-                blobCopy.getElementsByTagName('svg')[0].setAttribute("transform", "scale(0.2)");
-                */
                 break;
               }
             }
@@ -88,9 +67,6 @@ export function displaySongs(songListPromise) {
         });
       });
     }, 1000);
-    /*
-      Scale down all small preview blobs
-    */
 }
 
 export function getBlob(song, scale, div) {
@@ -112,7 +88,6 @@ export function getBlob(song, scale, div) {
 
 /*
   Function generates a mini blob that will be put into the small preview window.
-
 */
 export function getMiniBlob(root, originalRoot, songID) {
   let miniPreview = document.getElementById("miniPreview");
@@ -123,9 +98,7 @@ export function getMiniBlob(root, originalRoot, songID) {
   }
   root.getElementsByTagName('svg')[0].setAttribute("height", "50");
   root.getElementsByTagName('svg')[0].setAttribute("width", "50");
-  //root.getElementsByTagName('svg')[0].setAttribute("transform", "scale(0.2)");
-  //rootCopy.removeAttribute("class");
-  //rootCopy.addAttribute("class", "miniBlob");
+
   //Add a button event to miniBlob that removes the song from playlist and makes large blob visible.
   root.addEventListener('click', function(ev) {
     deleteSong(songID);
@@ -188,9 +161,7 @@ export function createSongDisplay(song, componentName) {
             root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = true;
             let rootCopy = root.cloneNode(true);
             rootCopy.getElementsByTagName('div')[0].remove();
-            /* Remove the tooltip-id div from rootCopy before sending it in */
             saveSong(song, root, rootCopy);
-            //root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = false;
           }}>Add</button>
 
 
@@ -228,28 +199,10 @@ export function createSongDisplay(song, componentName) {
 const onDragStart = (ev, song) => {
   console.log("Song " + song.track.name + " is being dragged");
   ev.dataTransfer.setData("text/plain", JSON.stringify(song));
-  //Want to transfer the html element being dragged
-  //let root = document.getElementById(song.track.id);
-  //If the element has an svg child => the blob
-  // if(root.getElementsByTagName('svg').length) {
-  //   ev.dataTransfer.setData("text/html", root);
-  // }
   ev.dataTransfer.effectAllowed = "copy";
 }
 export function openTooltip(e, id) {
   e.preventDefault();
-  //console.log("open tooltip", id)
-  //var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
-
-    // for (var i = 0, len = visibleTooltips.length; i < len; i++) {
-    //   console.log(visibleTooltips[i])
-    //   visibleTooltips[i].classList.add('hidden');
-    //   visibleTooltips[i].classList.remove('visible');
-    //   }
-
-  // var visibleTooltips = document.getElementsByClassName("tooltiptext visible");
-  // visibleTooltips.classList.add('hidden');
-  // visibleTooltips.classList.remove('visible');
 
   var tooltip = document.getElementById("tooltip-"+id);
   let currentClass = tooltip.classList[1];
@@ -289,8 +242,6 @@ export function drawMiniBlob(rootCopy, root, song) {
   rootCopy.getElementsByTagName('g')[0].setAttribute("transform", "matrix(1 0 0 1 0 -10) scale(0.2)");
   rootCopy.getElementsByTagName('svg')[0].setAttribute("height", "50");
   rootCopy.getElementsByTagName('svg')[0].setAttribute("width", "50");
-  //rootCopy.removeAttribute("class");
-  //rootCopy.addAttribute("class", "miniBlob");
 
   //Adds delete crosses to mini blobs
   var cross = document.createElement('img');
@@ -396,7 +347,6 @@ export function saveSong(song, root, rootCopy) {
 
 // Loads a specific song from a firestore collection
 export function loadSong(songID) {
-  //console.log('Song in loadSong(): ', {songID});
   return db.collection('playlist').doc(songID).get();
 }
 

@@ -24,19 +24,17 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
     let muteButton = document.body.querySelector('.muteButton');
     let currentClass = muteButton.classList[1];
-    //muteButton.classList.remove(currentClass);
-    //muteButton.classList.add((currentClass == 'mute'? 'unmute' : 'mute'));
 
     let audioElements = document.getElementsByTagName("audio");
 
     //sound on
-    if (muted===false){
+    if (muted===false) {
       console.log('mute');
       muteButton.classList.remove('mute');
       muteButton.classList.add('unmute');
 
     }
-    else if (muted===true){
+    else if (muted===true) {
       console.log('unmute');
       muteButton.classList.remove('unmute');
       muteButton.classList.add('mute');
@@ -59,19 +57,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     console.log("Dropped into playlist");
     let song = ev.dataTransfer.getData("text/plain");
 
-    /*
-      Turn off the elements draggable attribute to prevent multiple dragins.
-      This should be turned on later after the song is added in playlist.
-    */
-
-
-    //console.log(JSON.parse(song));
-    //dispatch(addSong(JSON.parse(song)));
-
-    //If song is already in playlist then don't put it in here.
     let miniPreview = document.getElementById("miniPreview");
     let root = document.getElementById(JSON.parse(song).track.id); //The original large blob
-    let rootCopy = document.getElementById(JSON.parse(song).track.id).cloneNode(true); //this is the mini blob
+    let rootCopy = document.getElementById(JSON.parse(song).track.id).cloneNode(true); //The mini blob
 
     root.setAttribute("draggable", false);
     rootCopy.classList.remove('song');
