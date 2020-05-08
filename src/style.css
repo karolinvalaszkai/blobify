@@ -17,7 +17,7 @@
   /* small screens */
 @media (max-width: 640px){
   .navbarContent:-webkit-scrollbar  {
-    width: 80%;
+    /* width: 80%; */
   }
 }
 
@@ -134,7 +134,6 @@ button {
   /* margin:0.2em 0.5em 0.5em 0.2em; */
   cursor: pointer;
 
-  
   /* margin-right: 1rem;
   margin-left: 0rem; */
   }
@@ -143,6 +142,8 @@ button {
     background-color: #1e1e1e;
     color: #fff;
     border:0.1em solid #ffffff;
+    margin: 0.5rem;
+
 }
   .playlistButton {
     font-size: 11px;
@@ -221,6 +222,8 @@ button:focus { outline:0 !important; }
 }
 
 
+
+
 .selected-playlist {
   border-color: #ff9c7e;
   background-color: #ff9c7e !important;
@@ -278,6 +281,9 @@ button:focus { outline:0 !important; }
     transition-duration: 0.4s;
     transition-delay: 0.05s;
     cursor: pointer;
+    margin-bottom: -2%;
+    /* margin-top: -1%; */
+
   }
 
 /* NAVBAR */
@@ -314,13 +320,15 @@ button:focus { outline:0 !important; }
   /* background: #fff; */
 
   margin-top: 5%;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 
   /* set width - remove for original width */
   width: 15em;
   
   /* padding: 8%; */
   padding: 3.125rem;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
   /* padding-right: 2rem; */
   border-radius: 1.5em;
   /* margin: 15%; */
@@ -332,7 +340,7 @@ button:focus { outline:0 !important; }
   position: relative;
 
   background: #1e1e1e;
-  margin-bottom: 15%;
+  /* margin-bottom: 5%; */
 
   /* set width - remove for original width */
 
@@ -340,6 +348,8 @@ button:focus { outline:0 !important; }
 
   /* padding: 8%; */
   padding: 3.125rem;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
   /* padding-right: 2rem; */
 
   border-radius: 1.5em;
@@ -449,7 +459,7 @@ h1 {
   font-family: 'Gilroy-Bold ☞';
   font-style: normal;
   font-weight: 800;
-  font-size: 34px;
+  font-size: 30px;
   /* color: #E0E0E0; */
 
   -webkit-text-stroke: 0.03em #E0E0E0;
