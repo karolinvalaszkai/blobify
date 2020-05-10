@@ -1,7 +1,9 @@
 # Blobify
 ## Project description
 
-Blobify is a Spotify-powered web application that previews songs from four different popular playlists in an unique and interactive way. Songs are presented as 2D animated blobs whose attributes depend on actual acoustical features such as energy, tempo and key. Dragging a blob and dropping it in a specific area of the screen adds it to a custom collection, where all the user's favourite songs are stored. Upon opening up the collection, they are presented as a table with different attributes.
+Blobify is a Spotify-powered web application for exploring music playlist through a visual representation of the song's energy, tempo and key. 
+
+Songs are presented as 2D animated blobs whose attributes depend on the [audio features](https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features) energy, tempo and key. Dragging a blob and dropping it in a specific area of the screen adds it to a custom collection, where all the user's favorite songs are stored. Upon opening up the collection, they are presented as a table with different attributes.
 
 ## Project status
 
@@ -58,7 +60,7 @@ $ firebase deploy
 ```
 
 ## Authors
-- Sabina Nordell: <sabnor@kth.se>
-- Daniel Parhizgar: <dpar@kth.se>
 - Alessandro Iop: <aiop@kth.se>
+- Daniel Parhizgar: <dpar@kth.se>
 - Karolin Valaszkai: <karolinv@kth.se>
+- Sabina Nordell: <sabnor@kth.se>
