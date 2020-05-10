@@ -9,6 +9,9 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
 
   return (
     <div id="navbar" className="navbar debug nothidden">
+    
+    <div id="mobile_pop_up"><h2>Rotate your device 90°</h2><br/><h4 className="h4_white">psst... try force touch on the blobs</h4></div>
+
       <div className="navbarContent">
         <h1 id="menu-title"><span href="/trending">blobify.</span></h1>
           <div className="navbarContent-playlist">
