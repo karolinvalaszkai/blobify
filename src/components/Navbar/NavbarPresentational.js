@@ -14,6 +14,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
 
       <div className="navbarContent">
         <h1 id="menu-title"><span href="/trending">blobify.</span></h1>
+        <div className="menu">
           <div className="navbarContent-playlist">
             <h2 id="content-title">Pick playlist</h2>
               <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}> <img className='question' src="info.svg"  alt="info" height='13' width='13'/>
@@ -40,28 +41,31 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
               </span>
             </h4>
 
-          <div className="playlist">
+            <div className="playlist">
 
-            <button className='playlistButton selected-playlist' id='playlist37i9dQZF1DXcBWIGoYBM5M' onClick={() => selectPlaylist('37i9dQZF1DXcBWIGoYBM5M')}>Today's Hits</button>
-            <button className='playlistButton' id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music</button>
-            <button className='playlistButton' id='playlist37i9dQZF1DWVzMIQ8BnDGm' onClick={() => selectPlaylist('37i9dQZF1DWVzMIQ8BnDGm')}>Vibe</button>
-            <button className='playlistButton' id='playlist65hCGG0JopRfj06rs1ilmJ' onClick={() => selectPlaylist('65hCGG0JopRfj06rs1ilmJ')}>Critic's Picks</button>
+              <button className='playlistButton selected-playlist' id='playlist37i9dQZF1DXcBWIGoYBM5M' onClick={() => selectPlaylist('37i9dQZF1DXcBWIGoYBM5M')}>Today's Hits</button>
+              <button className='playlistButton' id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music</button>
+              <button className='playlistButton' id='playlist37i9dQZF1DWVzMIQ8BnDGm' onClick={() => selectPlaylist('37i9dQZF1DWVzMIQ8BnDGm')}>Vibe</button>
+              <button className='playlistButton' id='playlist65hCGG0JopRfj06rs1ilmJ' onClick={() => selectPlaylist('65hCGG0JopRfj06rs1ilmJ')}>Critic's Picks</button>
 
+            </div>
+            <h5 id="fetched">Fetched from Spotify</h5>
           </div>
-          <h5 id="fetched">Fetched from Spotify</h5>
-        </div>
 
-        <div className="navbarContent-save droppable drophere"
-          onDragOver={dragOverEvent}
-          onDrop={dropEvent}>
-          <h2 id="content-title">Save songs</h2>
-          <h4 id="content-title">Drag and drop blobs here to add songs to your personal collection.</h4>
-          <div className="collection">
-            <div id="miniPreview" className="miniPreviewScroll"></div>
-            <button id="collection-button" onClick={() => playlistAction()}>{playlistMessage}</button>
+          <div className="navbarContent-save droppable drophere"
+            onDragOver={dragOverEvent}
+            onDrop={dropEvent}>
+            <h2 id="content-title">Save songs</h2>
+            <h4 id="content-title">Drag and drop blobs here to add songs to your personal collection.</h4>
+            <div className="collection">
+              <div id="miniPreview" className="miniPreviewScroll"></div>
+              <button id="collection-button" onClick={() => playlistAction()}>{playlistMessage}</button>
+            </div>
           </div>
+
         </div>
       </div>
+  
       <div className='muteButton mute' onClick={() => handleClick(muted.audioMuted)}></div>
     </div>
   )

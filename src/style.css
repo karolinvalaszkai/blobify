@@ -14,6 +14,8 @@
 
   /* small screens - portrait mode */
 @media (max-width: 640px) and (orientation: portrait){
+  
+  /* mobile flip pop up */
   #mobile_pop_up{
     visibility: visible!important;
     width: 65%;
@@ -33,28 +35,66 @@
 }
 
   /* small screens - landscape mode */
-
-
-
 @media (max-width: 640px) and (orientation: landscape){
   #mobile_pop_up{
     display: none!important; 
   }
-
 }
 
+  /* small screens */
 @media (min-width: 641px){
-  .navbarContent:-webkit-scrollbar  {
-    /* width: 80%; */
-  }
-
-  /* mobile flip pop up */
+/* mobile flip pop up */
 #mobile_pop_up{
   display: none!important; 
 }
+
+.navbarContent {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.navbar{
+  background-color: #171717;
+}
+
+#navbar>.navbarContent {
+  margin-top: 1rem!important;
+  margin-bottom: 0%!important;
+  padding-left: 5%!important;
+  padding-right: 5%!important;
+  margin-right: 1%!important;
+}
+
+.navbarContent-save{
+  margin-bottom: 5%!important;
+}
+
+.tooltip .tooltip-content {
+  visibility: visible;
+  width: 30em;
+  background-color: #252525;
+  color: #ffffff;
+  text-align: left;
+  padding: 3.125rem;
+  position: fixed;
+  z-index: 10;
+  top: 1.5em!important;
+  left: 5em!important;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.spinnerClass {
+  text-align: center;
+  position: fixed;
+  vertical-align: center;
+  margin-left: 15%!important;
+  margin-top: 15%!important;
+}
 }
 
 
+html{
+  overflow-x: hidden;
+}
 body {
   /* background-color: rgb(8, 8, 8); */
   background-color: #121212;
@@ -64,6 +104,8 @@ body {
   height: 100%;
   display: flex;
   z-index: 0;
+  overflow-x: hidden;
+
 }
 
 body::-webkit-scrollbar {
