@@ -12,10 +12,17 @@
 
   }
 
+  
+
   /* small screens - portrait mode */
-@media (max-width: 640px) and (orientation: portrait){
+@media (max-width: 479px) and (orientation: portrait){
+  
+  /* mobile flip pop up */
   #mobile_pop_up{
-    visibility: visible!important;
+  visibility: visible!important;
+  
+  }
+  #mobile_pop_up-content{
     width: 65%;
     background: #ff9c7e;
     color: #fff!important;
@@ -23,38 +30,90 @@
     align-items: center!important;
     padding: 3.125rem;
     position: absolute;
-    z-index: 5;
     opacity: 1;
     transition: opacity 0.3s;
     margin-left: 1rem;
-    margin-top: 60%;
+    margin-top: 55%;
+    z-index: 10 !important;
+  }
+  #mobile_pop_up>.backgroundSummary {
+    background: rgb(8,8,8,0.8);
   }
 
 }
 
-  /* small screens - landscape mode */
 
-
-
-@media (max-width: 640px) and (orientation: landscape){
-  #mobile_pop_up{
-    display: none!important; 
-  }
-
-}
-
-@media (min-width: 641px){
-  .navbarContent:-webkit-scrollbar  {
-    /* width: 80%; */
-  }
-
-  /* mobile flip pop up */
+  /* small screens - landscape mode - scrollable menu */
+@media (min-width: 480px) and (max-width: 959px){
+/* mobile flip pop up */
 #mobile_pop_up{
   display: none!important; 
 }
+/*scrollable menu */
+.navbarContent {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.navbar{
+  background-color: #171717;
+}
+
+#navbar>.navbarContent {
+  margin-top: 1rem!important;
+  margin-bottom: 0%!important;
+  padding-left: 5%!important;
+  padding-right: 5%!important;
+  margin-right: 1%!important;
+}
+
+.navbarContent-save{
+  margin-bottom: 5%!important;
+}
+
+.tooltip .tooltip-content {
+  visibility: visible;
+  width: 32em !important;
+  background-color: #252525;
+  color: #ffffff;
+  text-align: left;
+  padding: 3.125rem;
+  position: fixed;
+  z-index: 10;
+  top: 1.5em!important;
+  left: 4em!important;
+  opacity: 1;
+  transition: opacity 0.3s;
+  overflow-y: scroll;
+  height: 70%;
+}
+#tooltip-info>.backgroundSummary {
+  background: rgb(8,8,8,0.8);
+}
+.spinnerClass {
+  text-align: center;
+  position: fixed;
+  vertical-align: center;
+  margin-left: 15%!important;
+  margin-top: 15%!important;
+}
+
+}
+/* ------------------------------------------- */
+
+@media (min-width:960px){
+  #mobile_pop_up{
+    display: none!important; 
+  }
+}
+
+@media (min-width:1200px){
+
 }
 
 
+html{
+  overflow-x: hidden;
+}
 body {
   /* background-color: rgb(8, 8, 8); */
   background-color: #121212;
@@ -64,6 +123,8 @@ body {
   height: 100%;
   display: flex;
   z-index: 0;
+  overflow-x: hidden;
+
 }
 
 body::-webkit-scrollbar {
@@ -101,13 +162,7 @@ a {
 .grey_link {
   color: #A0A0A0;
 }
-#resultsDiv{
-  margin: 1em;
-  margin-top: 1em;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-evenly;
-}
+
 .grey_link:hover{
   color: #ffab91;
 
@@ -118,6 +173,8 @@ a {
 }
 #resultsDiv{
   margin-top: 1em;
+  margin-top: 1em;
+  padding-bottom: 10em;
   display: flex;
   flex-wrap: wrap;
   align-content: space-evenly;
@@ -412,18 +469,19 @@ button:focus { outline:0 !important; }
   display: inline-block;
 }
 
-/* .tooltip => blobify info box in Pick playlist */
-.tooltip .tooltip-content {
+ /* .tooltip => blobify info box in Pick playlist */
+ .tooltip .tooltip-content {
   visibility: visible;
   width: 30em;
   background-color: #252525;
   color: #ffffff;
   text-align: left;
   padding: 3.125rem;
+  padding-top: 2.125rem;
   position: fixed;
   z-index: 10;
-  top: 11.5em;
-  left: 24em;
+  top: 9.3em;
+  left: 23em;
   opacity: 1;
   transition: opacity 0.3s;
 }
@@ -493,15 +551,6 @@ g {
 }
 
 
-
-
-
-/* blobs pointer */
-g {
-  cursor: pointer;
-}
-
-
 /* Fonts */
 h1 {
   font-family: 'Gilroy-Bold ☞';
@@ -549,7 +598,7 @@ h2 {
     }
 
   h4 {
-    font-family: 'OpenSans-regular';
+    font-family: 'OpenSans-regular', Helvetica, sans-serif;
     font-style: normal;
     font-weight: 800;
     font-size: 15px;
@@ -776,7 +825,7 @@ h2 {
 
 }
 
-#backgroundSummary {
+.backgroundSummary {
   position: fixed;
 
   bottom: 0;
@@ -786,7 +835,7 @@ h2 {
   flex: 1;
   z-index: 2;
 }
-#summary>#backgroundSummary{
+#summary>.backgroundSummary{
   background: rgb(8,8,8,0.8);
 }
 
@@ -904,6 +953,25 @@ table tbody tr, table tfoot tr  {
 .delete-song:before, .delete-song:after {
   height: 1.5rem;
   width: 2px;
+}
+
+.close-tooltip{
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 1em;
+  right: 1.8em;
+}
+
+
+.close-tooltip:before, .close-tooltip:after {
+  height: 1.5rem;
+  width: 2px;
+}
+
+#tooltip-info>.tooltip-content>.close-tooltip {
+  top: 2.125em;
+  right: 3em;
 }
 /* SCROLLBAR */
 /* width */
