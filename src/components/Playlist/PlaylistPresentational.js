@@ -45,7 +45,7 @@ const PlaylistPresentational = ({ songs, getSongCollection, whenDone, onDelete, 
           </tfoot>
         </table>
       </div>
-      <div id="backgroundSummary" onClick={() => doneCallback()}></div>
+      <div className="backgroundSummary" onClick={() => doneCallback()}></div>
     </div>
   )
 

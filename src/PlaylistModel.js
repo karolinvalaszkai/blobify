@@ -139,7 +139,7 @@ export function createSongDisplay(song, componentName) {
 
           <h3>{song.track.name}</h3>
           <h4>{song.track.artists.map(artist => {return artist.name + "  "})}</h4>
-
+          <div className="cross close-tooltip" onClick={(e)=>openTooltip(e, song.track.id)} onContextMenu={(e)=>openTooltip(e, song.track.id)}></div>
           <h6 >
             <a classname="open_spotify" href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify   <span ><img className='ext_link' src="external-link.svg"  alt="link" height='10' width='10'/>  </span></a>
           </h6>
@@ -178,7 +178,7 @@ export function createSongDisplay(song, componentName) {
           <br/>
           <br/>
           </div>
-          <div id="backgroundSummary" onClick={(e)=>openTooltip(e, song.track.id)}></div>
+          <div className="backgroundSummary" onClick={(e)=>openTooltip(e, song.track.id)}></div>
         </div>
         <img className='loadingBlobs' src="blurryblobBW.svg"  alt="blobyfied song" height='300' width='300'/>
         <br/>

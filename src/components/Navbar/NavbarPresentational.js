@@ -10,16 +10,17 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
   return (
     <div id="navbar" className="navbar debug nothidden">
     
-    <div id="mobile_pop_up"><h2>Rotate your device 90°</h2><br/><h4 className="h4_white">psst... try force touch on the blobs</h4></div>
+    <div id="mobile_pop_up"><span id="mobile_pop_up-content"><h2>Rotate your device 90°</h2><br/><h4 className="h4_white">psst... try force touch on the blobs</h4></span><div className="backgroundSummary"></div></div>
 
       <div className="navbarContent">
         <h1 id="menu-title"><span href="/trending">blobify.</span></h1>
         <div className="menu">
           <div className="navbarContent-playlist">
             <h2 id="content-title">Pick playlist</h2>
-              <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}> <img className='question' src="info.svg"  alt="info" height='13' width='13'/>
+              <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip"> <img className='question' src="info.svg"  alt="info" height='13' width='13' onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}/>
                 <div id={"tooltip-"+'info'} className="tooltiptext hidden">
                   <div className="tooltip-content">
+                    <div className="cross close-tooltip" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}></div>
 
                     <h3>What you see here is not random colors and shapes.</h3><br/>
 
@@ -36,7 +37,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
                    </h6>
 
                 </div>
-                <div id="backgroundSummary"></div>
+                <div className="backgroundSummary" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}></div>
                 </div>
               </span>
             </h4>
