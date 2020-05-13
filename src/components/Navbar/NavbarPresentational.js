@@ -24,16 +24,16 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
 
                     <h3>What you see here is not random colors and shapes.</h3><br/>
 
-                    <h4>A blob is a visual representation of a songs <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features</a> - data on its energy, tempo and key.<br/>
+                    <h4>A blob is a visual representation of a song's <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features</a> - data on its energy, tempo and key.<br/>
                     </h4>
 
                     <h6>
 
                       The energy of the song is mapped to the number of dots in the blobs which determines its shape.<br/><br/>
 
-                      The tempo of the song is mapped to the speed of the blob.<br/><br/>
+                      The tempo of the song is mapped to the movement of the blob.<br/><br/>
 
-                      The key of the song is mapped to the color of the blob based on <a className="grey_link" href="http://www.harmonics.com/lucy/lsd/colors.html" target="_blank">Charles Fourier's theory.</a><br/>
+                      The key of the song is mapped to the color of the blob based on <a className="grey_link" href="http://www.harmonics.com/lucy/lsd/colors.html" target="_blank">Charles Fourier's Theory.</a><br/>
                    </h6>
 
                 </div>
