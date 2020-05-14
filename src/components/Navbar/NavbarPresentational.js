@@ -16,7 +16,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
         <h1 id="menu-title"><span href="/trending">blobify.</span></h1>
         <div className="menu">
           <div className="navbarContent-playlist">
-            <h2 id="content-title">Pick playlist</h2>
+            <h2 id="content-title">Pick Playlist</h2>
               <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip"> <img className='question' src="info.svg"  alt="info" height='13' width='13' onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}/>
                 <div id={"tooltip-"+'info'} className="tooltiptext hidden">
                   <div className="tooltip-content">
@@ -56,7 +56,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
           <div className="navbarContent-save droppable drophere"
             onDragOver={dragOverEvent}
             onDrop={dropEvent}>
-            <h2 id="content-title">Save songs</h2>
+            <h2 id="content-title">Save Songs</h2>
             <h4 id="content-title">Drag and drop blobs here to add songs to your personal collection.</h4>
             <div className="collection">
               <div id="miniPreview" className="miniPreviewScroll"></div>
