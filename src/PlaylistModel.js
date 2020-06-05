@@ -23,7 +23,7 @@ var db = firebase.firestore();
 
 export function displaySongs(songListPromise) {
   let collection = getCollectionList();
-  console.log(collection);
+  //console.log(collection);
   RenderPromise.render(
     songListPromise,
     songs => React.createElement(React.Fragment, {}, songs.map(song => createSongDisplay(song, 'search'))),
@@ -315,7 +315,7 @@ export function saveSong(song, root, rootCopy) {
     if(!item.exists) {
       console.log('Song not yet in playlist');
       // Add a new song object to the database.
-      db.collection('playlist').doc(song.track.id).set({
+      db.collection(localStorage.getItem('ClientIPAddress')).doc(song.track.id).set({
         track: song.track,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       })
@@ -335,12 +335,12 @@ export function saveSong(song, root, rootCopy) {
 
 // Loads a specific song from a firestore collection
 export function loadSong(songID) {
-  return db.collection('playlist').doc(songID).get();
+  return db.collection(localStorage.getItem('ClientIPAddress')).doc(songID).get();
 }
 
 // Deletes a specific song from a firestore collection
 export function deleteSong(id) {
-  db.collection("playlist").doc(id).delete().then(function() {
+  db.collection(localStorage.getItem('ClientIPAddress')).doc(id).delete().then(function() {
     console.log("Document successfully deleted!");
   }).catch(function(error) {
       console.error("Error removing document: ", error);
@@ -349,18 +349,25 @@ export function deleteSong(id) {
 
 // Loads the content of an entire database collection
 export function loadCollection(callback) {
-  db.collection("playlist").onSnapshot({includeMetadataChanges:false}, querySnapshot => {
-    let array = [];
-    querySnapshot.forEach(doc => array = [...array, doc.data()]);
-    callback(array);
-  });
+  
+
+    db.collection(localStorage.getItem('ClientIPAddress')).onSnapshot({includeMetadataChanges:false}, querySnapshot => {
+      let array = [];
+      querySnapshot.forEach(doc => array = [...array, doc.data()]);
+      callback(array);
+    });
+  
 }
 
 // Loads the content of an entire database collection
 export function getCollectionList() {
-  return db.collection("playlist").get().then((querySnapshot) => {
+  return db.collection(localStorage.getItem('ClientIPAddress')).get().then((querySnapshot) => {
     let collection = [];
     querySnapshot.forEach((doc, i) => collection.push(doc.data()));
     return collection;
   });
+}
+
+export function createCollection() {
+  
 }

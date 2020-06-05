@@ -14,9 +14,18 @@ store.subscribe(() =>
   localStorage.setItem('reduxState', JSON.stringify(store.getState()))
 );
 
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-)
+//get client IP adress
+fetch("https://api.ipify.org?format=json").then(response => {
+  return response.json();
+}, "jsonp").then(res => {
+  console.log('My IP', res.ip);
+  localStorage.setItem('ClientIPAddress', res.ip);
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root')
+  );
+}).catch(err => console.log(err));
+
+
