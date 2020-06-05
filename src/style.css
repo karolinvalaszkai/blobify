@@ -190,6 +190,7 @@ a {
   width: 19em;
   height: 14em;
   padding-top: 5em;
+  overflow: visible !important;
 
   display: inline-block;
   vertical-align: top;
@@ -814,15 +815,16 @@ h2 {
 
 }
 @keyframes loadingBlob {
-  from {filter: grayscale(10%);
-        opacity: 0;}
-  to {filter: grayscale(0%);opacity: 1;}
+  0%   {opacity: 0;}
+  20% {opacity: 0.4}
+  80%  {opacity: 0.6;}
+  100% {opacity:1;}
 }
-#resultsDiv>.two {
+#resultsDiv g {
+  overflow: visible !important;
   animation-name: loadingBlob;
-  animation-duration: 2s;
+  animation-duration: 5s;
   animation-timing-function: ease-in;
-
 }
 
 .backgroundSummary {
