@@ -7,6 +7,10 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
   const dropEvent = onDrop;
   const dragOverEvent = onDragOver;
 
+  let mutedStatus;
+  if (muted.audioMuted === undefined || !muted.audioMuted) mutedStatus = 'muteButton mute';
+  else if (muted.audioMuted) mutedStatus = 'muteButton unmute'
+
   return (
     <div id="navbar" className="navbar debug nothidden">
     
@@ -67,7 +71,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
         </div>
       </div>
   
-      <div className='muteButton mute' onClick={() => handleClick(muted.audioMuted)}></div>
+      <div className={mutedStatus} onClick={() => handleClick(muted.audioMuted)}></div>
     </div>
   )
 }
