@@ -70,6 +70,8 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
 
             </div>
             {/* <h5 id="fetched">Fetched from Spotify</h5> */}
+            {/* <button id="primary-button">Got it</button> */}
+
           </div>
 
           <div className="navbarContent-save droppable drophere"
