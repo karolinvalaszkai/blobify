@@ -131,55 +131,29 @@ export function createSongDisplay(song, componentName) {
   if (song.track.preview_url !== null){
     return (
       <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
-            // onDragStart={(e)=>onDragStart(e, song)} draggable onContextMenu={(e)=>openTooltip(e, song.track.id)}
-            >
+            onClick={(e)=>openTooltip(e, song.track.id)}>
         <audio id={'audio'+song.track.id} src={song.track.preview_url} muted={muteBoolean} loop></audio>
         <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
 
           <div className="tooltip-content">
 
-          <h3>{song.track.name}</h3>
-          <h4>{song.track.artists.map(artist => {return artist.name + "  "})}</h4>
-          <div className="cross close-tooltip" onClick={(e)=>openTooltip(e, song.track.id)} onContextMenu={(e)=>openTooltip(e, song.track.id)}></div>
-          <h6 >
-            <a classname="open_spotify" href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify   <span ><img className='ext_link' src="external-link.svg"  alt="link" height='10' width='10'/>  </span></a>
-          </h6>
-          <br/>
+            <h3>{song.track.name}</h3>
+            <h4>{song.track.artists.map(artist => {return artist.name + "  "})}</h4>
+              <div className="cross close-tooltip" onClick={(e)=>openTooltip(e, song.track.id)}></div>
+            <h6>
+              <a classname="open_spotify" href={song.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Open in Spotify   <span ><img className='ext_link' src="external-link.svg"  alt="link" height='10' width='10'/>  </span></a>
+            </h6>
+            <br/>
 
-          <h6 id={"energyH-"+song.track.id}></h6>
-          <h6 id={"tempoH-"+song.track.id}></h6>
-          <h6 id={"keyH-"+song.track.id}></h6>
-          <br/>
-{/* 
-          <button onClick={()=>{
-            let root = document.getElementById(song.track.id);
-            //Disable Add functionality for the moment
-            root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = true;
-            let rootCopy = root.cloneNode(true);
-            rootCopy.getElementsByTagName('div')[0].remove(); //Remove the setting div
-            rootCopy.classList.remove('song');
-            saveSong(song, root, rootCopy);
-          }}>Add</button>
-
-          <button onClick={()=> {
-            let miniPreview = document.getElementById("miniPreview");
-            deleteSong(song.track.id)
-            var children = miniPreview.children;
-            for(var i = 0; i < children.length; i++) {
-              var currChild = children[i];
-              if(currChild.getAttribute("id") === song.track.id) {
-                miniPreview.removeChild(currChild);
-                break;
-              }
-            }
-            let root = document.getElementById(song.track.id);
-            root.getElementsByTagName('svg')[0].setAttribute("opacity", "1.0");
-          }} className="secondary-button">Remove</button> */}
+            <h6 id={"energyH-"+song.track.id}></h6>
+            <h6 id={"tempoH-"+song.track.id}></h6>
+            <h6 id={"keyH-"+song.track.id}></h6>
+            <br/>
 
           <br/>
           <br/>
           </div>
-          <div className="backgroundSummary" onClick={(e)=>openTooltip(e, song.track.id)}></div>
+          {/* <div className="backgroundSummary" onClick={(e)=>openTooltip(e, song.track.id)}></div> */}
         </div>
         <img className='loadingBlobs' src="blurryblobBW.svg"  alt="blobyfied song" height='300' width='300'/>
         <br/>
