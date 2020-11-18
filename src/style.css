@@ -249,6 +249,7 @@ button {
     width: 9em;
     /* height: 3em; */
     margin: 0.5rem;
+    visibility: hidden;
   }
 
   .playlistButton:hover{
