@@ -131,7 +131,7 @@ export function createSongDisplay(song, componentName) {
   if (song.track.preview_url !== null){
     return (
       <div id={song.track.id} key={song.track.id} className='song draggable songtooltip'
-            onClick={(e)=>openTooltip(e, song.track.id)}>
+        onClick={(e)=>openTooltip(e, song.track.id)}>
         <audio id={'audio'+song.track.id} src={song.track.preview_url} muted={muteBoolean} loop></audio>
         <div id={"tooltip-"+song.track.id} className="tooltiptext hidden">
 
