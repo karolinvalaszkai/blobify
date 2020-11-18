@@ -967,6 +967,7 @@ table tbody tr, table tfoot tr  {
   height: 1rem;
   top: 1em;
   right: 1.8em;
+  cursor: pointer;
 }
 
 
