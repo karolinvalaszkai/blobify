@@ -149,7 +149,7 @@ export function createSongDisplay(song, componentName) {
           <h6 id={"tempoH-"+song.track.id}></h6>
           <h6 id={"keyH-"+song.track.id}></h6>
           <br/>
-
+{/* 
           <button onClick={()=>{
             let root = document.getElementById(song.track.id);
             //Disable Add functionality for the moment
@@ -173,7 +173,7 @@ export function createSongDisplay(song, componentName) {
             }
             let root = document.getElementById(song.track.id);
             root.getElementsByTagName('svg')[0].setAttribute("opacity", "1.0");
-          }} className="secondary-button">Remove</button>
+          }} className="secondary-button">Remove</button> */}
 
           <br/>
           <br/>
