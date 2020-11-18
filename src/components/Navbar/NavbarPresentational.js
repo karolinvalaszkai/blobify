@@ -20,8 +20,23 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
         <h1 id="menu-title"><span href="/trending">blobify.</span></h1>
         <div className="menu">
           <div className="navbarContent-playlist">
-            <h2 id="content-title">Pick Playlist</h2>
-              <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip"> <img className='question' src="info.svg"  alt="info" height='13' width='13' onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}/>
+            {/* <h2 id="content-title">Pick Playlist</h2> */}
+
+
+            <h2>What you see here is not random colors and shapes.</h2>
+
+              <h4>A blob is a visual representation of a song's <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features</a> - data on its energy, tempo and key.<br/>
+              </h4>
+             
+              <h6>
+
+                The energy of the song is mapped to the number of dots in the blobs which determines its shape.<br/><br/>
+
+                The tempo of the song is mapped to the movement of the blob.<br/><br/>
+
+                The key of the song is mapped to the color of the blob based on <a className="grey_link" href="http://www.harmonics.com/lucy/lsd/colors.html" target="_blank">Charles Fourier's Theory.</a><br/>
+              </h6>
+              {/* <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip"> <img className='question' src="info.svg"  alt="info" height='13' width='13' onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}/>
                 <div id={"tooltip-"+'info'} className="tooltiptext hidden">
                   <div className="tooltip-content">
                     <div className="cross close-tooltip" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}></div>
@@ -44,7 +59,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
                 <div className="backgroundSummary" onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}></div>
                 </div>
               </span>
-            </h4>
+            </h4> */}
 
             <div className="playlist">
 
@@ -54,7 +69,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
               <button className='playlistButton' id='playlist65hCGG0JopRfj06rs1ilmJ' onClick={() => selectPlaylist('65hCGG0JopRfj06rs1ilmJ')}>Critic's Picks</button>
 
             </div>
-            <h5 id="fetched">Fetched from Spotify</h5>
+            {/* <h5 id="fetched">Fetched from Spotify</h5> */}
           </div>
 
           <div className="navbarContent-save droppable drophere"
