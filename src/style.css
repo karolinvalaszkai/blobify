@@ -423,6 +423,7 @@ button:focus { outline:0 !important; }
 
   /* set width - remove for original width */
   width: 15em;
+  height: 40em;
 
   /* padding: 8%; */
   padding: 3.125rem;
@@ -454,6 +455,8 @@ button:focus { outline:0 !important; }
   border-radius: 1.5em;
   /* margin: 15%; */
   text-align: left! important;
+
+  visibility: hidden;
 }
 
 
