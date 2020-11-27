@@ -9,10 +9,10 @@ const App = () => (
     <Router>
       <div className="flexParent">
         <Switch>
-          <Route exact path="/" render={() => <Redirect to="/trending" />} />
+          <Route exact path="/" render={() => <Redirect to="/" />} />
         </Switch>
         
-        <Route path="/trending" component={Search}></Route>
+        <Route path="/" component={Search}></Route>
         <Route path="/myplaylist" component={Playlist}></Route>
         <Route component={Navbar}></Route>
       </div>

@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  homepageControl: [() => ownProps.history.push("/trending"), "Back to the trending songs"],
+  homepageControl: [() => ownProps.history.push("/"), "Back to the trending songs"],
   playlistControl: [
     () => {let root = document.getElementById("miniPreview");
           while(root.firstChild) {root.removeChild(root.firstChild)};
