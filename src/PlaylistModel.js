@@ -48,7 +48,7 @@ export function displaySongs(songListPromise) {
             var keyElement = document.getElementById("keyH-"+song.id);
             var tempoElement = document.getElementById("tempoH-"+song.id);
             if (energyElement !== null){
-              energyElement.innerHTML = 'Energy: ' + features.energy;
+              energyElement.innerHTML = 'Energy: ' + features.energy +'/1.0';
               keyElement.innerHTML = 'Key: ' + features.key;
               tempoElement.innerHTML = 'Tempo: ' + features.tempo + ' BPM';
             };
@@ -175,7 +175,7 @@ export function openTooltip(e, id) {
   //Makes div not draggable when tooltip is open
   var draggableDiv = document.getElementById(id);
   if (currentClass === "visible" && draggableDiv!==null){
-    draggableDiv.draggable = true;
+    draggableDiv.draggable = false;
   } else if (currentClass === "hidden" && draggableDiv!==null) {
     draggableDiv.draggable = false;
   }
@@ -233,7 +233,7 @@ export function drawMiniBlob(rootCopy, root, song) {
   miniPreview.appendChild(rootCopy);
   //Lower the div oppacity to show it's been added.
   root.getElementsByTagName('svg')[0].setAttribute("opacity", "0.2");
-  root.setAttribute("draggable", true);
+  root.setAttribute("draggable", false);
   let button = root.getElementsByTagName('div')[0].getElementsByTagName('button');
   if(button != undefined) {
     root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = false;
@@ -300,7 +300,7 @@ export function saveSong(song, root, rootCopy) {
       drawMiniBlob(rootCopy, root, song);
     }
     else console.log('Song already in playlist');
-    root.setAttribute("draggable", true);
+    root.setAttribute("draggable", false);
     let button = root.getElementsByTagName('div')[0].getElementsByTagName('button');
     if(button != undefined) {
       root.getElementsByTagName('div')[0].getElementsByTagName('button')[0].disabled = false;
