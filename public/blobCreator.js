@@ -235,28 +235,156 @@ var two = new Two({
     foreground.translation.copy(background.translation);
   }
 
-  function getColor() {
-    if (songObj.key == 0 || songObj.key == 1) {
-      hex = '#c24cf6'; //violet
+  // CHARLES - FOURIER THEORY - 7 COLORS
+  // function getColor() {
+  //   if (songObj.key == 0 || songObj.key == 1) {
+  //     hex = '#c24cf6'; //violet
+  //   }
+  //   else if (songObj.key == 2 || songObj.key == 3) {
+  //     hex = '#7122fa'; //indigo
+  //   }
+  //   else if (songObj.key == 4) {
+  //     hex = '#03dddc'; //azure
+  //   }
+  //   else if (songObj.key == 5 || songObj.key == 6) {
+  //     hex = '#7fff00'; //green
+  //   }
+  //   else if (songObj.key == 7 || songObj.key == 8) {
+  //     hex = '#fef900'; //yellow
+  //   }
+  //   else if (songObj.key == 9 || songObj.key == 10) {
+  //     hex = '#ff5f01'; //orange
+  //   }
+  //   else {
+  //     hex = '#f21a1d'; //red
+  //   }
+
+   // My own order
+   function getColor() {
+    if (songObj.key == 0) {
+      hex = '#C031FF'; //C: violet
     }
-    else if (songObj.key == 2 || songObj.key == 3) {
-      hex = '#7122fa'; //indigo
+    else if (songObj.key == 1) {
+      hex = '#D983FF'; //C#: violet 60% opacity
+    }
+    else if (songObj.key == 2) {
+      hex = '#6309FF'; //D: Indigo
+    }
+    else if (songObj.key == 3) {
+      hex = '#A16BFF'; //D#: Indigo 60% opacity
     }
     else if (songObj.key == 4) {
-      hex = '#03dddc'; //azure
+      hex = '#03dddc'; //E: Azure
     }
-    else if (songObj.key == 5 || songObj.key == 6) {
-      hex = '#7fff00'; //green
+    else if (songObj.key == 5) {
+      hex = '#7fff00'; ///F: Green
     }
-    else if (songObj.key == 7 || songObj.key == 8) {
-      hex = '#fef900'; //yellow
+    else if ( songObj.key == 6) {
+      hex = '#B2FF66'; //F#: indigo opacity
     }
-    else if (songObj.key == 9 || songObj.key == 10) {
-      hex = '#ff5f01'; //orange
+    else if (songObj.key == 7) {
+      hex = '#fef900'; //G: Yellow
+    }
+    else if (songObj.key == 8) {
+      hex = '#FEFA9E'; //G#: Red
+    }
+    else if (songObj.key == 9) {
+      hex = '#ff5f01'; //A: Orange
+    }
+    else if (songObj.key == 10) {
+      hex = '#F4A580'; //A#: Orange
+    }
+    else if (songObj.key == 11) {
+      hex = '#F21A1D'; //B: Red
     }
     else {
-      hex = '#f21a1d'; //red
+      hex = '#F21A1D'; //red
     }
+
+  // The Rosicrucian Order 
+  // function getColor() {
+  //   if (songObj.key == 0) {
+  //     hex = '#cdf506'; //C: yellow-green
+  //   }
+  //   else if (songObj.key == 1) {
+  //     hex = '#00bb00'; //C#: green
+  //   }
+  //   else if (songObj.key == 2) {
+  //     hex = '#00dfbe'; //D: Green-Blue
+  //   }
+  //   else if (songObj.key == 3) {
+  //     hex = '#1300f2'; //D#: Blue
+  //   }
+  //   else if (songObj.key == 4) {
+  //     hex = '#8220c5'; //E: Blue-Violet
+  //   }
+  //   else if (songObj.key == 5) {
+  //     hex = '#c488c2'; //F: Violet
+  //   }
+  //   else if ( songObj.key == 6) {
+  //     hex = '#c13f89'; //F#: Violet-Red
+  //   }
+  //   else if (songObj.key == 7) {
+  //     hex = '#960104'; //G: Deep red
+  //   }
+  //   else if (songObj.key == 8) {
+  //     hex = '#ff0000'; //G#: Red
+  //   }
+  //   else if (songObj.key == 9) {
+  //     hex = '#ff5f01'; //A: Red-orange
+  //   }
+  //   else if (songObj.key == 10) {
+  //     hex = '#ff8041'; //A#: Orange
+  //   }
+  //   else if (songObj.key == 11) {
+  //     hex = '#feff00'; //B: Yellow
+  //   }
+  //   else {
+  //     hex = '#f21a1d'; //red
+  //   }
+
+    // The Rosicrucian Order shades
+  // function getColor() {
+  //   if (songObj.key == 0) {
+  //     hex = '#7fff00'; //C: yellow-green
+  //   }
+  //   else if (songObj.key == 1) {
+  //     hex = '#07d950'; //C#: green
+  //   }
+  //   else if (songObj.key == 2) {
+  //     hex = '#03dddc'; //D: Green-Blue
+  //   }
+  //   else if (songObj.key == 3) {
+  //     hex = '#0a2df2'; //D#: Blue
+  //   }
+  //   else if (songObj.key == 4) {
+  //     hex = '#7021BF'; //E: Blue-Violet
+  //   }
+  //   else if (songObj.key == 5) {
+  //     hex = '#C488C2'; //F: Violet
+  //   }
+  //   else if ( songObj.key == 6) {
+  //     hex = '#C13F89'; //F#: Violet-Red
+  //   }
+  //   else if (songObj.key == 7) {
+  //     hex = '#941316'; //G: Deep red
+  //   }
+  //   else if (songObj.key == 8) {
+  //     hex = '#ff0000'; //G#: Red
+  //   }
+  //   else if (songObj.key == 9) {
+  //     hex = '#CC450B'; //A: Red-orange
+  //   }
+  //   else if (songObj.key == 10) {
+  //     hex = '#FF8041'; //A#: Orange
+  //   }
+  //   else if (songObj.key == 11) {
+  //     hex = '#feff00'; //B: Yellow
+  //   }
+  //   else {
+  //     hex = '#ff0000'; //red
+  //   }
+
 
     var color = {
       hex: hex,
