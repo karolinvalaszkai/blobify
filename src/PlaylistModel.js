@@ -186,7 +186,7 @@ export function openTooltip(e, id) {
 
 export function searchPlaylist(name) {
   // Replace variables in case they are falsy (e.g. empty string, null, undefined)
-  name = name || "37i9dQZEVXbMDoHDwVN2tF";
+  name = name || "37i9dQZF1DX4JAvHpjipBk";
   return retrieve(name, 'playlist').then(data => data.items);
 }
 
