@@ -5,7 +5,7 @@ const SearchPresentational = ({ songs, whenDone, onResultsClick, onAdd, onLoadPl
   const [addCallback, addMessage] = onAdd;
 
   useEffect(() => {
-    onLoadPlaylist('37i9dQZEVXbMDoHDwVN2tF')
+    onLoadPlaylist('37i9dQZF1DX4JAvHpjipBk')
   }, []);
 
   return (
