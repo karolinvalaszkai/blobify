@@ -51,7 +51,7 @@
 }
 
 
-  /* small screens - landscape mode - scrollable menu */
+  /* small screens - landscape mode - scrollable  */
 @media (min-width: 480px) and (max-width: 959px){
 
 .menu{
@@ -91,7 +91,7 @@
 } */
 
 .tooltip .tooltip-content {
-  visibility: visible;
+  /* visibility: visible; */
   width: 32em !important;
   background-color: #252525;
   color: #ffffff;
@@ -105,6 +105,7 @@
   transition: opacity 0.3s;
   overflow-y: scroll;
   height: 70%;
+  visibility: hidden;
 }
 #tooltip-info>.backgroundSummary {
   background: rgb(8,8,8,0.8);
@@ -371,7 +372,7 @@ button:focus { outline:0 !important; }
   font-size: 15px;
 }
 
-/* MENUS */
+/* S */
 
 .navbarContent {
   position: relative;
@@ -444,11 +445,13 @@ button:focus { outline:0 !important; }
   /* background: #fff; */
 
   margin-top: 5%;
+  /* margin-top: 20%; */
   margin-bottom: 5%;
 
   /* set width - remove for original width */
   width: 15em;
-  height: 40em;
+  /* height: 40em; */
+  /* height: 20em; */
 
   /* padding: 8%; */
   padding: 3.125rem;
@@ -481,7 +484,7 @@ button:focus { outline:0 !important; }
   /* margin: 15%; */
   text-align: left! important;
 
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 
@@ -529,6 +532,7 @@ button:focus { outline:0 !important; }
   /* margin-left: -60px; */
   opacity: 1;
   transition: opacity 0.3s;
+  cursor: pointer;
 }
 
 .tooltip .tooltip-content::after {
@@ -873,7 +877,7 @@ h2 {
   text-align: center;
 }
 #summaryContent{
-  /* Position of collection summary menu */
+  /* Position of collection summary  */
   position: fixed;
   margin: 4rem 6rem 4rem 25rem;
   /* margin: 4em; */
@@ -992,6 +996,7 @@ table tbody tr, table tfoot tr  {
   top: 1em;
   right: 1.8em;
   cursor: pointer;
+  visibility: hidden;
 }
 
 
