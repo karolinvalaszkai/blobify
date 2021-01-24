@@ -21,13 +21,21 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
       
         <div className="menu">
 
+        <div className="navbarContent-playlist">
+          <h2>What you see here is not random colors and shapes.</h2>
+              <h4>A blob is a data visualization  of a song's <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features:</a> energy, tempo and key.<br/></h4>
+              <iframe src="https://player.vimeo.com/video/503935680" width="240" height="160" frameborder="0" allow="autoplay; fullscreen; " allowfullscreen></iframe>
+              <iframe src="https://player.vimeo.com/video/503935782" width="240" height="160" frameborder="0" allow="autoplay; fullscreen; " allowfullscreen></iframe>
 
-          <div className="navbarContent-playlist">
+</div>
+
+          {/* <div className="navbarContent-playlist"> */}
+          
 
             {/* <h2 id="content-title">Pick Playlist</h2> */}
-            <h2>What you see here is not random colors and shapes.</h2>
-              <h4>A blob is a data visualization  of a song's <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features</a> - energy, tempo and key.<br/></h4><br/>
-                {/* <img  src="blob.svg"  alt="blobyfied song" width='50%'/><br/><br/><br/><br/> */}               
+            {/* <iframe src="https://player.vimeo.com/video/503697607" width="240" height="160" frameborder="0" allowfullscreen></iframe>                */}
+            {/* <iframe src="https://player.vimeo.com/video/503935680" width="240" height="160" frameborder="0" allow="autoplay; fullscreen; " allowfullscreen></iframe> */}
+            {/* <img  src="blob.svg"  alt="blobyfied song" width='50%'/><br/><br/><br/><br/>                */}
               {/* <h4 id="content-title">Switch playlist to blobify songs <span className="tooltip"> <img className='question' src="info.svg"  alt="info" height='13' width='13' onClick={(e)=>openTooltip(e, 'info')} onContextMenu={(e)=>openTooltip(e, 'info')}/>
                 <div id={"tooltip-"+'info'} className="tooltiptext hidden">
                   <div className="tooltip-content">
@@ -59,9 +67,9 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
             {/* <h5 id="fetched">Fetched from Spotify</h5> */}
             {/* <button id="primary-button">Got it</button> */}
 
-          </div>
+          {/* </div> */}
 
-          <div className="navbarContent-save droppable drophere"
+          {/* <div className="navbarContent-save droppable drophere"
           
             // onDragOver={dragOverEvent}
             // onDrop={dropEvent}>
@@ -72,9 +80,9 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
             //   <button id="collection-button" onClick={() => playlistAction()}>{playlistMessage}</button>
             // </div>
 
-            ><iframe title="vimeo-player" src="https://player.vimeo.com/video/503697607" width="340" height="160" frameborder="0" allowfullscreen></iframe>               
-
-          </div>
+            >
+            <iframe src="https://player.vimeo.com/video/503935782" width="240" height="160" frameborder="0" allow="autoplay; fullscreen; " allowfullscreen></iframe>
+          </div> */}
 
 
         </div>
