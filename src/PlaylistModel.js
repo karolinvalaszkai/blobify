@@ -47,9 +47,11 @@ export function displaySongs(songListPromise) {
             var energyElement = document.getElementById("energyH-"+song.id);
             var keyElement = document.getElementById("keyH-"+song.id);
             var tempoElement = document.getElementById("tempoH-"+song.id);
+            var modeElement = document.getElementById("modeH-"+song.id);
             if (energyElement !== null){
               energyElement.innerHTML = 'Energy: ' + features.energy +'/1.0';
               keyElement.innerHTML = 'Key: ' + features.key;
+              modeElement.innerHTML = 'Mode: ' + features.mode;
               tempoElement.innerHTML = 'Tempo: ' + features.tempo + ' BPM';
             };
          };
@@ -148,6 +150,7 @@ export function createSongDisplay(song, componentName) {
             <h6 id={"energyH-"+song.track.id}></h6>
             <h6 id={"tempoH-"+song.track.id}></h6>
             <h6 id={"keyH-"+song.track.id}></h6>
+            <h6 id={"modeH-"+song.track.id}></h6>
             <br/>
 
           <br/>
