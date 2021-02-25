@@ -19,13 +19,13 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
       <div className="navbarContent">
         <h1 id="menu-title"><span href="/">blobify.</span></h1> <br/>
       
-        <div className="menu">
+        {/* <div className="menu">
 
         <div className="navbarContent-playlist">
           <h2>What you see here is not random colors and shapes.</h2>
               <h4>A blob is a data visualization  of a song's <a className="link" href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-several-audio-features/" target="_blank">audio features:</a> energy, tempo and key.<br/></h4>
               <iframe src="https://player.vimeo.com/video/503935680" width="240" height="160" frameborder="0" allow="autoplay; fullscreen; " allowfullscreen></iframe>
-              <iframe src="https://player.vimeo.com/video/503935782" width="240" height="160" frameborder="0" allow="autoplay; fullscreen; " allowfullscreen></iframe>
+              <iframe src="https://player.vimeo.com/video/503935782" width="240" height="160" frameborder="0" allow="autoplay; fullscreen; " allowfullscreen></iframe> */}
 
 </div>
 
@@ -57,13 +57,13 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
 
 
 
-            <div className="playlist">
-              <button className='playlistButton selected-playlist' id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music</button>
+            {/* <div className="playlist"> */}
+              {/* <button className='playlistButton selected-playlist' id='playlist37i9dQZF1DX4JAvHpjipBk' onClick={() => selectPlaylist('37i9dQZF1DX4JAvHpjipBk')}>New Music</button> */}
               {/* <button className='playlistButton' id='playlist37i9dQZF1DXcBWIGoYBM5M' onClick={() => selectPlaylist('37i9dQZF1DXcBWIGoYBM5M')}>Today's Hits</button>
               <button className='playlistButton' id='playlist37i9dQZF1DWVzMIQ8BnDGm' onClick={() => selectPlaylist('37i9dQZF1DWVzMIQ8BnDGm')}>Vibe</button>
               <button className='playlistButton' id='playlist65hCGG0JopRfj06rs1ilmJ' onClick={() => selectPlaylist('65hCGG0JopRfj06rs1ilmJ')}>Critic's Picks</button> */}
 
-            </div>
+            {/* </div> */}
             {/* <h5 id="fetched">Fetched from Spotify</h5> */}
             {/* <button id="primary-button">Got it</button> */}
 
@@ -84,10 +84,10 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
             <iframe src="https://player.vimeo.com/video/503935782" width="240" height="160" frameborder="0" allow="autoplay; fullscreen; " allowfullscreen></iframe>
           </div> */}
 
-
+{/* 
         </div>
 
-      </div>
+      </div> */}
   
       <div className={mutedStatus} onClick={() => handleClick(muted.audioMuted)}></div>
     </div>

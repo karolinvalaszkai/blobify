@@ -158,7 +158,8 @@ body::-webkit-scrollbar {
 .mainContent {
   flex: 1;
   background-color: transparent;
-  margin-left: 22em;
+  margin-top: 5em;
+  /* margin-left: 22em; */
   /* margin-top: 2em; */
 }
 
@@ -420,7 +421,7 @@ button:focus { outline:0 !important; }
   position: fixed;
   display: flex;
   overflow: visible;
-  height: 100%;
+  /* height: 100%; */
   left: 0px;
   top: 0px;
 }
