@@ -261,41 +261,77 @@ var two = new Two({
 
    // My own order
    function getColor() {
-    if (songObj.key == 0) {
-      hex = '#C031FF'; //C: violet
+    if (songObj.key == 0 && songObj.mode == 1)  {
+      hex = '#D5F24F'; //C-major:  light green
     }
-    else if (songObj.key == 1) {
-      hex = '#D983FF'; //C#: violet 60% opacity
+    else if (songObj.key == 0 && songObj.mode == 0)  {
+      hex = '#EEFAB9'; //C-minor: opacity
     }
-    else if (songObj.key == 2) {
-      hex = '#6309FF'; //D: Indigo
+    else if (songObj.key == 1 && songObj.mode == 1) {
+      hex = '#54B735'; //C# major: green
     }
-    else if (songObj.key == 3) {
-      hex = '#A16BFF'; //D#: Indigo 60% opacity
+    else if (songObj.key == 1 && songObj.mode == 0) {
+      hex = '#AADB9A'; //C# minor: opacity
     }
-    else if (songObj.key == 4) {
-      hex = '#03dddc'; //E: Azure
+    else if (songObj.key == 2 && songObj.mode == 1) {
+      hex = '#63DADA'; //D-major: light blue
     }
-    else if (songObj.key == 5) {
-      hex = '#7fff00'; ///F: Green
+    else if (songObj.key == 2 && songObj.mode == 0) {
+      hex = '#B1EDED'; //D-minor:  opacity
     }
-    else if ( songObj.key == 6) {
-      hex = '#B2FF66'; //F#: indigo opacity
+    else if (songObj.key == 3 && songObj.mode == 1) {
+      hex = '#001FE8'; //D#-major: blue
     }
-    else if (songObj.key == 7) {
-      hex = '#fef900'; //G: Yellow
+    else if (songObj.key == 3 && songObj.mode == 0) {
+      hex = '#5C70F1'; //D#-minor:  opacity
     }
-    else if (songObj.key == 8) {
-      hex = '#FEFA9E'; //G#: Red
+    else if (songObj.key == 4 && songObj.mode == 1) {
+      hex = '#7730BE'; //E-major: purple
     }
-    else if (songObj.key == 9) {
-      hex = '#ff5f01'; //A: Orange
+    else if (songObj.key == 4 && songObj.mode == 0) {
+      hex = '#BB98DF'; //E-minor:  opacity
     }
-    else if (songObj.key == 10) {
-      hex = '#F4A580'; //A#: Orange
+    else if (songObj.key == 5 && songObj.mode == 1) {
+      hex = '#BB8CBF'; ///F-major: 
     }
-    else if (songObj.key == 11) {
-      hex = '#F21A1D'; //B: Red
+    else if (songObj.key == 5 && songObj.mode == 0) {
+      hex = '#C9A3CC'; ///F-minor:  opacity
+    }
+    else if ( songObj.key == 6 && songObj.mode == 1) {
+      hex = '#B34A87'; //F#-major:
+    }
+    else if ( songObj.key == 6 && songObj.mode == 0) {
+      hex = '#C26E9F'; //F#-minor:  opacity
+    }
+    else if (songObj.key == 7 && songObj.mode == 1) {
+      hex = '#8A1A13'; //G-major: Deep red
+    }
+    else if (songObj.key == 7 && songObj.mode == 0) {
+      hex = '#A14842'; //G-minor: Deep red  opacity
+    }
+    else if (songObj.key == 8 && songObj.mode == 1) {
+      hex = '#EB3223'; //G#-major: Bright Red
+    }
+    else if (songObj.key == 8 && songObj.mode == 0) {
+      hex = '#EF5B4F'; //G#-minor: Bright Red opacity
+    }
+    else if (songObj.key == 9 && songObj.mode == 1) {
+      hex = '#BD4E24'; //A-major: Red-Orange
+    }
+    else if (songObj.key == 9 && songObj.mode == 0) {
+      hex = '#CA7150'; //A-minor:  Red-Orange opacity
+    }
+    else if (songObj.key == 10 && songObj.mode == 1) {
+      hex = '#EF8650'; //A#-major: Orange
+    }
+    else if (songObj.key == 10 && songObj.mode == 0) {
+      hex = '#EF8650'; //A#-minor: Orange opacity
+    }
+    else if (songObj.key == 11 && songObj.mode == 1) {
+      hex = '#FEF753'; //B-major: Yellow
+    }
+    else if (songObj.key == 11 && songObj.mode == 0) {
+      hex = '#FEF975'; //B-minor: Yellow opacity
     }
     else {
       hex = '#F21A1D'; //red
