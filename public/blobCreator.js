@@ -262,79 +262,79 @@ var two = new Two({
    // My own order
    function getColor() {
     if (songObj.key == 0 && songObj.mode == 1)  {
-      hex = '#D5F24F'; //C-major:  light green
+      hex = '#B2FF59'; //C-major:  light green
     }
     else if (songObj.key == 0 && songObj.mode == 0)  {
-      hex = '#EEFAB9'; //C-minor: opacity
+      hex = '#CCFF90'; //C-minor: opacity
     }
     else if (songObj.key == 1 && songObj.mode == 1) {
-      hex = '#54B735'; //C# major: green
+      hex = '#69F0AE'; //C# major: green
     }
     else if (songObj.key == 1 && songObj.mode == 0) {
-      hex = '#AADB9A'; //C# minor: opacity
+      hex = '#B9F6CA'; //C# minor: opacity
     }
     else if (songObj.key == 2 && songObj.mode == 1) {
-      hex = '#63DADA'; //D-major: light blue
+      hex = '#18FFFF'; //D-major: light blue
     }
     else if (songObj.key == 2 && songObj.mode == 0) {
-      hex = '#B1EDED'; //D-minor:  opacity
+      hex = '#84FFFF'; //D-minor:  opacity
     }
     else if (songObj.key == 3 && songObj.mode == 1) {
-      hex = '#001FE8'; //D#-major: blue
+      hex = '#536DFE'; //D#-major: blue
     }
     else if (songObj.key == 3 && songObj.mode == 0) {
-      hex = '#5C70F1'; //D#-minor:  opacity
+      hex = '#82B1FF'; //D#-minor:  opacity
     }
     else if (songObj.key == 4 && songObj.mode == 1) {
-      hex = '#7730BE'; //E-major: purple
+      hex = '#7C4DFF'; //E-major: purple
     }
     else if (songObj.key == 4 && songObj.mode == 0) {
-      hex = '#BB98DF'; //E-minor:  opacity
+      hex = '#B388FF'; //E-minor:  opacity
     }
     else if (songObj.key == 5 && songObj.mode == 1) {
-      hex = '#BB8CBF'; ///F-major: 
+      hex = '#E040FB'; ///F-major: 
     }
     else if (songObj.key == 5 && songObj.mode == 0) {
-      hex = '#C9A3CC'; ///F-minor:  opacity
+      hex = '#EA80FC'; ///F-minor:  opacity
     }
     else if ( songObj.key == 6 && songObj.mode == 1) {
-      hex = '#B34A87'; //F#-major:
+      hex = '#FF4081'; //F#-major:
     }
     else if ( songObj.key == 6 && songObj.mode == 0) {
-      hex = '#C26E9F'; //F#-minor:  opacity
+      hex = '#FF80AB'; //F#-minor:  opacity
     }
     else if (songObj.key == 7 && songObj.mode == 1) {
-      hex = '#8A1A13'; //G-major: Deep red
+      hex = '#B71C1C'; //G-major: Deep red
     }
     else if (songObj.key == 7 && songObj.mode == 0) {
-      hex = '#A14842'; //G-minor: Deep red  opacity
+      hex = '#C85A54'; //G-minor: Deep red  opacity
     }
     else if (songObj.key == 8 && songObj.mode == 1) {
-      hex = '#EB3223'; //G#-major: Bright Red
+      hex = '#FF5252'; //G#-major: Bright Red
     }
     else if (songObj.key == 8 && songObj.mode == 0) {
-      hex = '#EF5B4F'; //G#-minor: Bright Red opacity
+      hex = '#FF8A80'; //G#-minor: Bright Red opacity
     }
     else if (songObj.key == 9 && songObj.mode == 1) {
-      hex = '#BD4E24'; //A-major: Red-Orange
+      hex = '#FF6E40'; //A-major: Red-Orange
     }
     else if (songObj.key == 9 && songObj.mode == 0) {
-      hex = '#CA7150'; //A-minor:  Red-Orange opacity
+      hex = '#FF9E80'; //A-minor:  Red-Orange opacity
     }
     else if (songObj.key == 10 && songObj.mode == 1) {
-      hex = '#EF8650'; //A#-major: Orange
+      hex = '#FFAB40'; //A#-major: Orange
     }
     else if (songObj.key == 10 && songObj.mode == 0) {
-      hex = '#EF8650'; //A#-minor: Orange opacity
+      hex = '#FFD180'; //A#-minor: Orange opacity
     }
     else if (songObj.key == 11 && songObj.mode == 1) {
-      hex = '#FEF753'; //B-major: Yellow
+      hex = '#FFFF00'; //B-major: Yellow
     }
     else if (songObj.key == 11 && songObj.mode == 0) {
-      hex = '#FEF975'; //B-minor: Yellow opacity
+      hex = '#FFFF8D'; //B-minor: Yellow opacity
     }
     else {
-      hex = '#F21A1D'; //red
+      hex = '#FF5252'; //brightred
     }
 
   // The Rosicrucian Order 
