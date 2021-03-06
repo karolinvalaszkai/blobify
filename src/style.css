@@ -9,11 +9,6 @@
     flex-direction: row;
     height: 90%;
   }
-
-  #key{
-    display: none;
-    }
-  
   }
 
   
@@ -81,6 +76,11 @@
 #mobile_pop_up{
   display: none!important; 
 }
+
+#key{
+  display: none;
+  }
+
 
 /*scrollable menu */
 /* .navbarContent {
