@@ -22,6 +22,12 @@
 
   .mainContent{
   margin: 2em!important;
+
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
   }
   
   
@@ -160,11 +166,6 @@ body::-webkit-scrollbar {
   background-color: transparent;
   margin-top: 5em;
 
-  user-select: none; /* supported by Chrome and Opera */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
 
   /* margin-left: 22em; */
   /* margin-top: 2em; */
@@ -206,7 +207,7 @@ a {
 }
 #resultsDiv{
   margin-top: 1em;
-  margin-top: 1em;
+  margin-top: 14em;
   padding-bottom: 10em;
   /* display: flex; */
   flex-wrap: wrap;
@@ -214,14 +215,18 @@ a {
   overflow-y: visible;
   overflow-x: hidden;
   width: 100%;
-  
-  user-select: none; /* supported by Chrome and Opera */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-
   /* width: 95%; */
+}
+
+#key{
+  position: fixed;
+  right: 20em;
+  top: -5em;
+  height: 100px;
+  background-color: #1e1e1e;
+  padding: 4em;
+  border-radius: 1.5em;
+  padding-top: 10em;
 }
 
 
