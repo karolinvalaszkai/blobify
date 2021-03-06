@@ -9,6 +9,10 @@
     flex-direction: row;
     height: 90%;
   }
+
+  #key{
+    display: none;
+    }
   
   }
 
@@ -52,6 +56,10 @@
   }
   #mobile_pop_up>.backgroundSummary {
     background: rgb(8,8,8,0.8);
+  }
+
+  #key{
+  display: none;
   }
 
 }
