@@ -287,6 +287,7 @@ button {
 
   /* margin-right: 1rem;
   margin-left: 0rem; */
+  visibility: hidden;
   }
 
   .secondary-button{
@@ -334,7 +335,9 @@ button {
     background-color: #ff9c7e;
   } */
 
+.videoask-embed__button_rectangle--izYd- .videoask-embed__video_thumb--22ZtF{
 
+}
 
   button:hover{
   color:#fff!important;
