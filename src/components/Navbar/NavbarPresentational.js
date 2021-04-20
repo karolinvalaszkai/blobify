@@ -18,7 +18,7 @@ const NavbarPresentational = ({songs, muted, nav,  homepageControl, playlistCont
 
       <div className="navbarContent">
         <h1 id="menu-title"><span href="/">blobify.</span></h1> <br/>
-        <img id='key' src="key.svg" alt="link" />
+        {/* <img id='key' src="key.svg" alt="link" /> */}
         {/* <div className="menu">
 
         <div className="navbarContent-playlist">
