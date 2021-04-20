@@ -53,9 +53,9 @@
     background: rgb(8,8,8,0.8);
   }
 
-  #key{
+  /* #key{
   display: none;
-  }
+  } */
 
 }
 
@@ -215,7 +215,7 @@ a {
 }
 #resultsDiv{
   margin-top: 1em;
-  margin-top: 14em;
+  /* margin-top: 14em; */
   padding-bottom: 10em;
   /* display: flex; */
   flex-wrap: wrap;
@@ -226,7 +226,7 @@ a {
   /* width: 95%; */
 }
 
-#key{
+/* #key{
   position: fixed;
   right: 20em;
   top: -5em;
@@ -235,7 +235,7 @@ a {
   padding: 4em;
   border-radius: 1.5em;
   padding-top: 10em;
-}
+} */
 
 
 #resultsDiv>.song {
